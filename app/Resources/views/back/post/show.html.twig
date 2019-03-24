@@ -1,0 +1,83 @@
+{% extends 'back/base.html.twig' %}
+
+{% block body %}
+    <h1>Post</h1>
+
+    <table class="table table-bordered table-striped">
+        <tbody>
+            <tr>
+                <th>Title</th>
+                <td>{{ post.title }}</td>
+            </tr>
+            <tr>
+                <th>Seotitle</th>
+                <td>{{ post.seoTitle }}</td>
+            </tr>
+            <tr>
+                <th>Kategorija</th>
+                <td>{{ post.category }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ post.author }}</td>
+            </tr>
+            <tr>
+                <th>Adminid</th>
+                <td>{{ post.adminId }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if post.created %}{{ post.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ post.status }}</td>
+            </tr>
+            <tr>
+                <th>Class</th>
+                <td>{{ post.class }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {# show ip #}
+    {% if user_ip.ip is defined %}
+        <span class="btn btn-primary do-not-receive">{{ user_ip.ip }}</span>
+    {% endif %}
+
+    <ul class="buttons">
+        <li>
+            <a href="{{ path('post_index') }}" class="btn btn-primary"><i class="fa fa-list"></i>Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('post_edit', { 'id': post.id }) }}" class="btn btn-primary"><i class="fa fa-pencil" style="color: white;"></i>Edit</a>
+        </li>
+        <li>
+            <a href="{{ asset('uploads/posts/' ~ post.body) }}" target="_blank" class="btn btn-primary">Pregled fajla</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <i style="color:white;" class="fa fa-trash move-right"></i><input type="submit" value="Delete" class="btn btn-move-fafa">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+    <script>
+        $(document).ready(function () {
+            $('.do-not-receive').on('click', function () {
+                var ip = $(this).text();
+                //console.log(ip);
+                $.ajax({
+                    url: "{{ path('forbid_ip')|escape('js') }}",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        ip: ip
+                    }
+                }).done(function (data) {
+                    console.log(data);
+                });
+            });
+        });
+    </script>
+{% endblock %}

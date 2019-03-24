@@ -1,0 +1,26 @@
+{% extends 'front/front-main.html.twig' %}
+
+{% block body %}
+    <h3 style="margin: 20px 0 30px 0;">Stupite u kontakt, pitajte, predlažite</h3>
+
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.author) }}
+        {{ form_errors(form.author) }}
+        {{ form_widget(form.author) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.body) }}
+        {{ form_errors(form.body) }}
+        {{ form_widget(form.body) }}
+    </div>
+        <i class="fa fa-plus move-right" style="color:white; right:-10px; margin-top: 15px"></i><input type="submit" value="Create" style="position:relative; left: -10px!important;" class="btn btn-primary btn-create btn-move-fafa"/>
+    {{ form_end(form) }}
+
+    
+{% endblock %}

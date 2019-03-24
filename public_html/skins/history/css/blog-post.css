@@ -1,0 +1,104 @@
+/*!
+ * Start Bootstrap - Blog Post (http://startbootstrap.com/template-overviews/blog-post)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-blog-post/blob/master/LICENSE)
+ */
+
+.row #search-content .width-90{
+    width: 90%;
+}
+
+.margin-bottom-20{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.float-right{
+    float: right;
+}
+
+body {
+    padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+        
+    }
+}
+
+@media (max-width: 989px) {
+    #video-frame {
+        height: 100%; 
+        width:95%
+         
+    }
+    
+}
+
+@media (min-width: 990px) {
+    #video-frame {
+        position:absolute; 
+        height: 60%; 
+        width:95%
+        
+    }
+    #video-title {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .pillars {
+        display: none;
+        
+    }
+}
+.menu-list {
+    position: absolute;
+    padding-left: 0px;
+    display:inline-block;
+    display: none;
+    list-style: none;
+    
+}
+
+.menu-list li {
+    display: block;
+    border: #212529 1px solid;
+    
+    padding-left: 15px;
+    width: 150px;
+    text-align: left;
+    height: 30px;
+    background: #212529;
+}
+
+.main-nav a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.menu-list a {
+    color: white !important;
+    text-decoration: none;
+} 
+
+.title-main{
+    font-size: 25px;
+    margin-top: 0px;
+}
+
+#search-content .size-12{
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.calendar {
+    height: 400px;
+}

@@ -1,0 +1,64 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Comment;
+
+
+/**
+ * Contact
+ *
+ * @ORM\Table(name="contact")
+ * @ORM\Entity
+ */
+class Contact
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="author", type="string", length=100, nullable=false)
+     */
+    private $author;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="body", type="string", length=255, nullable=false)
+     */
+    private $body;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
+     */
+    private $created;
+
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     */
+    private $email = '0';
+    
+    
+    
+    
+    
+    
+
+    public function __toString()
+    {
+        return $this->author;
+    }
+}

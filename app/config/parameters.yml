@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: mysql579.loopia.se
+    database_port: null
+    database_name: istorija58_in_rs
+    database_user: dragorad@i39896
+    database_password: first132.
+    mailer_transport: smtp
+    mailer_host: null
+    mailer_user: null
+    mailer_password: null
+    secret: ThisTokenIsNotSoSecretChangeIt

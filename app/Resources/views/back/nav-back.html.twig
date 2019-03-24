@@ -1,0 +1,56 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+    <div class="navbar-header" style="padding: 0 0 0 0; margin: 0 0 0 0;">
+        <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </button>-->
+        <a class="navbar-brand icon-bar title-pic" style="padding: 5px 0 0 5px; margin: 0 0 0 0;" href="{{ path('homepage') }}">
+            <img src="{{asset('favicon.jpg')}}" style="width:30px; height:30px; border-radius: 5px">
+            Istorija58 | Admin panel
+        </a>
+    </div>
+
+    <ul class="navbar-right" style="list-style-type: none; color: black; display: inline; float:right; margin-bottom: 0px;">
+        <li style="padding-right: 20px; float:right!important ;">
+            <div>
+                <a class="navbar-brand header-link" href="{{ path('logout') }}" style="color:black;">
+                    Logout
+                </a>
+            </div>
+        </li>
+        <li style="padding-right: 20px; float:right!important ;">
+            <div class="search-div">
+                <form action="{{ path('search_back') }}" class="searchform" method="get" name="searchform" target="_blank">
+                <input type="text" name="q" placeholder="Pretrazi postove"/>
+                <button type="submit">Go!</button>
+                </form>
+            </div>
+        </li>
+        <li style="padding-right: 20px; float:right!important ;">
+            <div>
+                <a class="navbar-brand header-link" href="{{ path('main_front_page') }}" style="color:black;">
+                    Naslovna
+                </a>
+            </div>
+        </li>
+        <li style="padding-right: 20px; float:right!important ;" class="back-nav-dropdown">
+            <div>
+                <a class="navbar-brand header-link " href="#" style="color:black;">
+                    Kategorije
+                </a>
+            </div>
+            <div>    
+                <ul class="back-nav-dropdown-ul">
+                    {% for category in categories %}
+                        <li class="back-nav-dropdown-li" style="padding: 0 0 0 0;">
+                            <a class="back-nav-dropdown-li-a" href="{{ path( 'list_posts_by_categories_back', { 'id': category.id, 'title': category.title } ) }}">{{ category.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </li>
+
+    </ul>

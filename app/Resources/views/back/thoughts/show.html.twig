@@ -1,0 +1,41 @@
+{% extends 'back/base.html.twig' %}
+
+{% block body %}
+    <h1>Thought</h1>
+
+    <table class="table table-bordered table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ thought.id }}</td>
+            </tr>
+            <tr>
+                <th>Text</th>
+                <td>{{ thought.text }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ thought.author }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if thought.created %}{{ thought.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="buttons">
+        <li>
+            <a href="{{ path('thoughts_index') }}" class="btn btn-primary"><i class="fa fa-list"></i>Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('thoughts_edit', { 'id': thought.id }) }}" class="btn btn-primary"><i class="fa fa-pencil" style="color: white;"></i>Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <i style="color:white;" class="fa fa-trash move-right"></i>
+            <input type="submit" value="Delete" class="btn btn-move-fafa">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

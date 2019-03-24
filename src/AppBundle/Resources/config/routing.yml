@@ -1,0 +1,4 @@
+app_thoughts:
+    resource: "@AppBundle/Resources/config/routing/thoughts.yml"
+    prefix:   /thoughts
+

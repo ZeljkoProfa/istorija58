@@ -1,0 +1,91 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+
+/**
+ * Category
+ *
+ * @ORM\Table(name="category")
+ * @ORM\Entity
+ */
+class Category
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=100, nullable=false)
+     */
+    private $title;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
+     */
+    private $created;
+
+    /**
+     * @var \AppBundle\Entity\Admin
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Admin", inversedBy="categories")
+     * @ORM\JoinColumn(name="adminId", referencedColumnName="id")
+     */
+    private $adminId;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="category")
+     */
+    private $posts;
+
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Category
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}

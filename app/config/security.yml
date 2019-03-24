@@ -1,0 +1,50 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        AppBundle\Entity\Admin: plaintext
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        our_db_provider:
+            entity:
+                class: AppBundle:Admin
+                property: username
+            
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            provider: our_db_provider
+            #pattern:    ^/
+            #http_basic: ~
+            
+            form_login:
+                #username_parameter: _email
+                login_path: /login
+                check_path: /login
+                provider: our_db_provider
+        
+            logout:
+                path:   /logout
+                target: /login
+    
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/post, roles: ROLE_ADMIN }
+        - { path: ^/category, roles: ROLE_ADMIN }
+        - { path: ^/homepage, roles: ROLE_ADMIN }
+        - { path: ^/comment, roles: ROLE_ADMIN }
+        - { path: ^/contact, roles: ROLE_ADMIN }
+        - { path: ^/back, roles: ROLE_ADMIN }
+        - { path: ^/search-back, roles: ROLE_ADMIN }
+        - { path: ^/logout, roles: ROLE_ADMIN }
+        - { path: ^/quiz, roles: ROLE_ADMIN }
+        - { path: ^/quizquestions, roles: ROLE_ADMIN }
+
+

@@ -1,0 +1,48 @@
+
+
+    <div class="input-group">
+        {{ render(controller('AppBundle:front/Counter:visitor')) }}
+    </div>
+    
+    <!--<div>
+        {# render(controller('AppBundle:front/RQuiz:listQuizzes')) #}
+    </div>-->
+    <!-- Search Widget -->
+    <form action="http://www.google.com/search" class="searchform" method="get" name="searchform" target="_blank">
+        <div class="card my-4">
+            <h5 class="card-header">Pretraži web</h5>
+            <div class="card-body">
+                <div class="input-group">
+                    <input type="text" autocomplete="of" name="q" class="form-control" placeholder="Search for..." required="required">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="submit">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form action="{{ path('search') }}" class="searchform" method="get" name="searchform" target="_blank">
+        <div class="card my-4">
+            <h5 class="card-header">Pretraži sajt</h5>
+            <div class="card-body">
+                <div class="input-group">
+                    <input id="searchAjax" type="text" autocomplete="of" name="q" class="form-control" placeholder="Search for..." required="required">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="submit">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- Categories Widget -->
+    <div class="card my-4" >
+        <h5 class="card-header">Kalendar <button id="b1" class="ap">Srbija</button><button id="b2" class="ap">Vojvodina</button></h5>
+        <div style="overflow: auto;">
+            <a href="{{ asset('uploads/calendar/srbija-kal-1718.jpg')}}" target="_blanc"><img class="calendar" id="k1" src="{{ asset('uploads/calendar/srbija-kal-1718.jpg')}}"  type='application/pdf'></a>
+        </div>
+        <div style="overflow: auto;">
+            <a href="{{ asset('uploads/calendar/vojvodina-kal-1718.jpg')}}" target="_blanc"><img class="calendar2" id="k2" style="display:none;" src="{{ asset('uploads/calendar/vojvodina-kal-1718.jpg')}}"  type='application/pdf'></a>
+        </div>
+    </div>
+    {{ render(controller('AppBundle:front/MainPage:listLastPowPP')) }}
+

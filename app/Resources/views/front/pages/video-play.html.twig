@@ -1,0 +1,11 @@
+{% extends 'front/front-main.html.twig' %}
+{% block body %}
+
+    <div>
+        <h4 id="video-title">{{ video.title }}</h4>
+        <iframe id="video-frame" 
+                src="{{ video.path }}"
+                frameborder="0" allowfullscreen >
+        </iframe>
+    </div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'back/base.html.twig' %}
+
+{% set page_title = title %}
+{% block body %}
+    <h5 style="margin-top: 15px;">Svi unosi iz kategorije {{ title }}:</h5>
+    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>Naslov</th>
+                <th>Dodao</th>
+                <th>Vreme dodavanja</th>
+                <th>Status</th>
+                <th>Akcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td>{{ post.title }}</td>
+                    <td>
+                        {% if post.author is defined %} 
+                            {{ post.author }} 
+                        {% elseif post.adminId is defined %} 
+                            {{ post.adminId }} 
+                        {% else %}
+                            {{ nepoznat }} 
+                        {% endif %}
+                    </td>
+                    <td>{% if post.created %}
+                        {{ post.created|date('Y-m-d H:i:s') }}
+                        {% endif %}
+                        </td>
+                        <td>{{ post.status }}</td>
+                        <td>
+
+                            <a class="btn btn-primary fixed_left" style="margin-left: 15px" href="{{ asset('uploads/posts/') }}{{post.body}}" target="_blank">Otvori</a>
+                            <a href="{{ path('post_show', { 'id': post.id }) }} " style="margin-left: 15px" class="btn btn-primary"><i class="fa fa-eye"></i>show</a>
+
+                            <a href="{{ path('post_edit', { 'id': post.id }) }}" style="margin-left: 15px" class="btn btn-primary"><i class="fa fa-pencil"></i>edit</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% if maxPages > 1 %}
+                    <ul class="pagination pagination-sm bcrumb-pages">
+                        {# `«` arrow  #}
+                        {# `currentPage var is the one defined in routing yaml/pageroute/defaults.  #}
+                        <li {% if thisPage == 1  %} class="disabled" {% endif %} >
+                            <a href="{{ path('list_posts_by_categories_back', { 'id': id, 'title': title, currentPage: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+                        </li>
+
+                        {# Render each page number #}
+                        {% for i in 1..maxPages %}{# Creates a sequence based on the operand before and after the operator!!! #}
+                            <li {% if thisPage == i  %} class="active" {% endif %} >
+
+                                <a href="{{ path('list_posts_by_categories_back', { 'id': id, 'title': title, currentPage: i}) }}" >{{ i }}</a>
+                            </li>
+                        {% endfor %}
+
+                        {# `»` arrow #}
+                        <li {% if thisPage == maxPages %} class="disabled" {% endif %} >
+                            <a href="{{ path('list_posts_by_categories_back', { 'id': id, 'title': title, currentPage: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+                        </li>
+                    </ul>
+                {% endif %}
+                {% endblock %}    
+

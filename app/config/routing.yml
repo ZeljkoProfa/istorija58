@@ -1,0 +1,78 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+
+app_admin:
+        resource: "@AppBundle/Resources/config/routing/admin.yml"
+        prefix:   /admin
+
+app_category:
+        resource: "@AppBundle/Resources/config/routing/category.yml"
+        prefix:   /category
+        
+app_comment:
+        resource: "@AppBundle/Resources/config/routing/comment.yml"
+        prefix:   /comment
+        
+app_post:
+        resource: "@AppBundle/Resources/config/routing/post.yml"
+        prefix:   /post
+        
+app_contact:
+        resource: "@AppBundle/Resources/config/routing/contact.yml"
+        prefix:   /contact
+        
+app_video:
+        resource: "@AppBundle/Resources/config/routing/video.yml"
+        prefix:   /video
+        
+app_front:
+        resource: "@AppBundle/Resources/config/routing/front.yml"
+        prefix:   /
+        
+app_quiz:
+        resource: "@AppBundle/Resources/config/routing/quiz.yml"
+        prefix:   /quiz
+    
+app_quiz_questions:
+        resource: "@AppBundle/Resources/config/routing/quizquestions.yml"
+        prefix:   /quizquestions
+        
+thoughts:
+        resource: "@AppBundle/Resources/config/routing/thoughts.yml"
+        prefix:   /thoughts
+        
+login:
+    path:       /login
+    defaults:   { _controller: "AppBundle:back/Security:login" }
+    
+logout:
+    path:       /logout
+           
+homepage:
+    path:       /homepage
+    defaults:   { _controller: "AppBundle:back/Homepage:indexLastAdded", "currentPage":1}
+    
+list_posts_by_categories_back:
+    path:       /back/{title}/{id}/{currentPage}
+    defaults:   { _controller: "AppBundle:back/ListByCategoriesBack:listByCategories", "currentPage":1}
+    
+search_back:
+    path:       /search-back
+    defaults:   { _controller: "AppBundle:back/SearchBack:siteBack", "currentPage":1}
+    
+quiz:
+    path:       /{id}/kviz
+    defaults:   { _controller: "AppBundle:front/QuizFirst:playQuiz" }
+    methods:    GET
+    
+quiz_list:
+    path:       /lista-kvizova
+    defaults:   { _controller: "AppBundle:front/QuizFirst:quizList" }
+    methods:    GET
+    
+forbid_ip:
+    path:       /forbid
+    defaults:   { _controller: "AppBundle:back/Security:forbid" }
+    methods:    POST

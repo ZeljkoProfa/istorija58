@@ -1,0 +1,34 @@
+{% extends 'back/base.html.twig' %}
+
+{% block body %}
+    <h1>Quiz creation</h1>
+    
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.quizName) }}
+        {{ form_errors(form.quizName) }}
+        {{ form_widget(form.quizName) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.quizCategory) }}
+        {{ form_errors(form.quizCategory) }}
+        {{ form_widget(form.quizCategory) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.status) }}
+        {{ form_errors(form.status) }}
+        {{ form_widget(form.status) }}
+    </div>
+        <i class="fa fa-plus move-right" style="color:white; right:-10px;"></i>
+        <input type="submit" value="Create" style="position:relative; left: -15px!important;" class="btn btn-primary btn-create btn-move-fafa"/>
+        
+    {{ form_end(form) }}
+
+    <ul class="buttons" >
+        <li>
+            <a href="{{ path('quiz_index') }}" style="margin-left: -40px !important;" class="btn btn-primary fixed_left">
+                <i class="fa fa-list"></i>Back to the list
+            </a>
+        </li>
+    </ul>
+{% endblock %}

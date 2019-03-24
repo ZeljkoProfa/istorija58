@@ -1,0 +1,70 @@
+{% extends 'back/base.html.twig' %}
+
+{% block body %}
+    <h1>Quizquestion</h1>
+{# dump(quizQuestions) #}
+    <table class="table table-bordered table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ quizQuestions.id }}</td>
+            </tr>
+            <tr>
+                <th>Quizid</th>
+                <td>{{ quizQuestions.quizId }}</td>
+            </tr>
+            <tr>
+                <th>Question</th>
+                <td>{{ quizQuestions.question }}</td>
+            </tr>
+            <tr>
+                <th>Answer1</th>
+                <td>{{ quizQuestions.answer1 }}</td>
+            </tr>
+            <tr>
+                <th>Answer2</th>
+                <td>{{ quizQuestions.answer2 }}</td>
+            </tr>
+            <tr>
+                <th>Answer3</th>
+                <td>{{ quizQuestions.answer3 }}</td>
+            </tr>
+            <tr>
+                <th>Answer4</th>
+                <td>{{ quizQuestions.answer4 }}</td>
+            </tr>
+            <tr>
+                <th>Trueanswer</th>
+                <td>{{ quizQuestions.trueAnswer }}</td>
+            </tr>
+            <tr>
+                <th>Points</th>
+                <td>{{ quizQuestions.points }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if quizQuestions.created %}{{ quizQuestions.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+            {% if quizQuestions.img %}
+                <div class="show-submited-img col-xs-12" >
+                    <span>Slika dodata uz pitanje:</span><br>
+                    <img src="{{ '/uploads/img/' ~ quizQuestions.img }}">
+                </div>
+            {% endif %}
+    <ul class="buttons">
+        <li>
+            <a href="{{ path('quiz_show', { 'id': quizid }) }}" class="btn btn-primary"><i class="fa fa-list"></i>Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('quizquestions_edit', { 'id': quizQuestions.id }) }}" class="btn btn-primary"><i class="fa fa-pencil" style="color: white;"></i>Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <i style="color:white;" class="fa fa-trash move-right"></i>
+            <input type="submit" value="Delete" class="btn btn-move-fafa">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

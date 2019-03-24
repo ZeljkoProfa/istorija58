@@ -1,0 +1,46 @@
+main_front_page:
+    path:       /
+    defaults:   { _controller: "AppBundle:front/MainPage:listLastAdded", "currentPage":1}
+    
+content_pages:
+    path:       /kategorije/{title}/{id}/{currentPage}
+    defaults:   { _controller: "AppBundle:front/ContentPages:contentPages", "currentPage":1}
+    
+front_submit_post:
+    path:       /dodaj-sadrzaj
+    defaults:   { _controller: "AppBundle:front/SubmitPost:new" }
+
+contact:
+    path:       /kontakt
+    defaults:   { _controller: "AppBundle:front/Contact:new" }
+     
+search:
+    path:       /fajl-pretraga
+    defaults:   { _controller: "AppBundle:front/Search:site", "currentPage":1 }
+   
+blog_author:
+    path:       /o-blogu
+    defaults:   { _controller: "AppBundle:front/Personal:things" }
+
+comments-front:
+    path:       /komentari
+    defaults:   { _controller: "AppBundle:front/FrontComment:newComment" }
+    
+video_front:
+    path:       /lista-filmova
+    defaults:   { _controller: "AppBundle:front/VideoFront:listVideos", "currentPage":1 }
+    methods:  [GET, POST]
+    
+video_play:
+    path:       /gledaj-film
+    defaults:   { _controller: "AppBundle:front/VideoFront:watchVideos",}
+    methods:  [GET, POST]
+    
+video_search:
+    path:       /pretraga-videa
+    defaults:   { _controller: "AppBundle:front/VideoFront:searchVideo"}
+
+#check_upload_status:
+    #path:       /check-status
+    #defaults:   { _controller: "AppBundle:back/CheckUploadStatus:check" }
+    

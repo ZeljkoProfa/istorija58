@@ -1,0 +1,73 @@
+{% extends 'back/base.html.twig' %}
+
+{% block body %}
+    <h1>Posts list</h1>
+
+    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>Title</th>
+                
+                <th>Author</th>
+                <th>Adminid</th>
+                <th>Category</th>
+                <th>Created</th>
+                <th>Status</th>
+                <th>Razred</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr class="odd gradeX">
+                <td><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.title }}</a></td>
+                
+                <td>{{ post.author }}</td>
+                <td>{{ post.adminId }}</td>
+                <td>{{ post.category }}</td>
+                <td>{% if post.created %}{{ post.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ post.status }}</td>
+                <td>{{ post.class }}</td>
+                <td>
+                    <ul  class="buttons">
+                        <li>
+                            <a href="{{ path('post_show', { 'id': post.id }) }}" class="btn btn-primary"><i class="fa fa-eye"></i>show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('post_edit', { 'id': post.id }) }}" class="btn btn-primary"><i class="fa fa-pencil"></i>edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        {% if maxPages > 1 %}
+        <ul class="pagination pagination-sm">
+            {# `«` arrow  #}
+            {# `currentPage var is the one defined in routing yaml/pageroute/defaults.  #}
+            <li {% if thisPage == 1  %} class="disabled" {% endif %} >
+                <a href="{{ path('post_index', { currentPage: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+            </li>
+
+            {# Render each page number #}
+            {% for i in 1..maxPages %}{# Creates a sequence based on the operand before and after the operator!!! #}
+                <li {% if thisPage == i  %} class="active"  {% endif %} >
+
+                    <a href="{{ path('post_index', { currentPage: i}) }}" >{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {# `»` arrow #}
+            <li {% if thisPage == maxPages %} class="disabled" {% endif %} >
+                <a href="{{ path('post_index', { currentPage: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+            </li>
+        </ul>
+    {% endif %}
+
+    <ul class="buttons">
+        <li>
+            <a href="{{ path('post_new') }}" style="margin-left: -40px !important;" class="btn btn-primary"><i class="fa fa-plus"></i>Create a new post</a>
+        </li>
+    </ul>
+{% endblock %}

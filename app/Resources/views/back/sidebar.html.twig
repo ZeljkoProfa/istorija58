@@ -1,0 +1,134 @@
+
+
+
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+
+            <!-- OVDE TREBA DA VAM IDU SVI MENIJI KOJI SE VEZUJU PREKO RUTA ZA KONTROLERE I AKCIJE -->
+            <li class="section-title">
+                <a href="{{ path('homepage') }}">
+                    <i class="fa fa-home"></i> <p>Pocetak</p>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="section-title">
+                    <i class="fa fa-user"></i> <p>Administratori</p>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="section-content content-style" >
+                    <li>
+                        <a href="{{ path('admin_index') }}"> Lista admina </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_new') }}"> Dodaj admina </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="section-title">
+                    <i class="fa fa-tags"></i> <p>Kategorije</p>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="section-content content-style" >
+                    <li>
+                        <a href="{{ path('category_index') }}"> Lista kategorija </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('category_new') }}"> Dodaj kategoriju </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="section-title">
+                    <i class="fa fa-comment"></i> <p>Komentari</p>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="section-content content-style" >
+                    <li>
+                        <a href="{{ path('comment_index') }}"> Lista komentara </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('comment_new') }}"> Dodaj komentar </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="section-title">
+                    <i class="fa fa-sticky-note"></i> <p>Postovi</p>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="section-content content-style" >
+                    <li>
+                        <a href="{{ path('post_index') }}"> Lista postova </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('post_new') }}"> Dodaj post </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="section-title">
+                    <i class="fa fa-phone-square"></i> <p>Pitanja posetilaca</p>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="section-content content-style" >
+                    <li>
+                        <a href="{{ path('contact_index') }}"> Lista pitanja </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="section-title">
+                    <i class="fa fa-youtube-play"></i> <p>Video</p>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="section-content content-style" >
+                    <li>
+                        <a href="{{ path('video_index') }}"> Lista videa </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('video_new') }}"> Dodaj video </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="section-title">
+                    <i class="fa fa-question-circle "></i> <p>Kviz</p>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="section-content content-style" >
+                    <li>
+                        <a href="{{ path('quiz_index') }}"> Lista kvizova </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('quiz_new') }}"> Dodaj kviz </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="section-title">
+                    <i class="fa fa-question-circle "></i> <p>Misli dana</p>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="section-content content-style" >
+                    <li>
+                        <a href="{{ path('thoughts_index') }}"> Lista misli </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('thoughts_new') }}"> Dodaj misao </a>
+                    </li>
+                </ul>
+            </li>
+            <!--<li>
+                <a href="{# path('check_upload_status')#}" class="section-title">
+                    <i class="fa fa-power-off"></i> <p>Iskljuciti front upload</p>
+                </a>
+                
+            </li>-->
+        </ul>
+    </div>
+</div>
+
+</nav>

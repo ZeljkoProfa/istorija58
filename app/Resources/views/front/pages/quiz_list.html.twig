@@ -1,0 +1,22 @@
+{% extends 'front/front-main.html.twig' %}
+
+{% set page_title = title %}
+{% block body %}
+    
+    
+    <div class="row main-div">
+        <div class="col-md-12">
+            <h5 class="margin-bottom-20">Proveri svoje znanje, odigraj jedan kviz!</h5>
+            <div class="quiz-links row">
+
+                {% for quiz in quizzes %} 
+                    {# dump(quiz) #}
+                    <div class="quiz-links-margins col-sm-12 col-md-6">
+                        <a href="{{ path('quiz', { 'id': quiz.id }) }}" class="fire-new ap">{{ quiz.quizName }}</a>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,243 @@
+.ppt a{
+    text-decoration: none;
+
+}
+
+.tought-button-click{
+    background-color: #f72e20;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 0 5px 4px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 auto;
+}
+
+.tought-button{
+    text-align: center;
+    height: 25px;
+}
+.tought-of-day{
+    display:none;
+    text-align: center;
+}
+
+.tought-of-day span{
+    text-align: center;
+    background-color: #c19999;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 0 5px 4px 5px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    margin: 5px auto;
+}
+
+#nav-bre{
+    padding: 0 0 0 0!important;
+}
+
+.no-padd{
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.brand-style{
+    font-weight: normal;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.color-orange{
+    background-color: #f0ad4e;
+}
+
+.comment-input input {
+    margin-bottom: 15px;
+}
+
+.upload-message{
+    margin: 10px auto;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    background-color: lightblue;
+}
+
+.feed-article{
+    margin: 10px 0 10px 0;
+    
+    text-align: center;
+    vertical-align: middle;
+    background-color: #4CAF50;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+}
+
+.block-bre{
+    display: block;
+    margin: 15px auto;
+}
+
+.ap {
+    margin-left: 5px;
+    float: right;
+    /*display: inline;*/
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#k2 {
+    display: none;
+    height:400px
+}
+
+#k1 {
+    height:400px
+}
+
+.button-reply {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+
+
+}
+
+.showed-comment {
+    border:1px solid lightgrey; 
+    padding: 5px 5px 5px 10px;
+
+}
+
+
+.personal {
+    height: 100px;
+    width: auto;
+}
+
+.comnnets-list {
+    margin: 10px 0 20px 20px;
+    display: block;
+    width: 100%;
+}
+
+
+.pagination li a {
+    position: relative!important;
+    float: left!important;
+    padding: 6px 12px!important;
+    margin-left: -1px!important;
+    line-height: 1.42857143!important;
+    color: #337ab7!important;
+    text-decoration: none!important;
+    background-color: #fff!important;
+    border: 1px solid #ddd!important;
+}
+
+.pagination-sm li a {
+    padding: 5px 10px!important;
+    font-size: 12px!important;
+    line-height: 1.5!important;
+}
+
+*::after, *::before{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+} 
+* {
+    box-sizing: border-box;
+    
+}
+
+
+
+No classes on this element
+*::after, *::before {
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+element {
+
+}
+.pagination  .active a {
+    z-index: 3;
+    color: #fff!important;
+    cursor: default!important;
+    background-color: #337ab7!important;
+    border-color: #337ab7!important;
+}
+
+.disabled  a:focus {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd;
+}
+
+.show-answers {
+    background-color: yellowgreen;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 0 5px 4px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+}
+
+.counter {
+    width: 22px;
+    height: 45px;
+    background-color: white;
+    display: inline-block;
+    color: white;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 28px;
+    box-shadow: inset 0px 10px 30px black;
+}
+
+.fire-new{
+    border-color: #f0ad4e;
+    background-color: #f0ad4e;
+    width: 100%;
+    margin: 0 0 10px 0;
+    padding-left: 0px;
+}
+
+.quiz-links{
+    list-style: none;
+    padding-left: 0px;
+}
+
+.quiz-links-margins{
+    margin: 5px 0 5px 0;
+}
+

@@ -1,0 +1,37 @@
+{% extends 'back/base.html.twig' %}
+
+{% block body %}
+    <h1>Quiz edit</h1>
+
+    {{ form_start(edit_form) }}
+    <div class="form-group">
+        {{ form_label(edit_form.quizName) }}
+        {{ form_errors(edit_form.quizName) }}
+        {{ form_widget(edit_form.quizName) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(edit_form.quizCategory) }}
+        {{ form_errors(edit_form.quizCategory) }}
+        {{ form_widget(edit_form.quizCategory) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(edit_form.status) }}
+        {{ form_errors(edit_form.status) }}
+        {{ form_widget(edit_form.status) }}
+    </div>
+    <i class="fa fa-pencil move-right" style="color:white; right:-10px;"></i>
+    <input type="submit" value="Edit" style="position:relative; left: -10px!important;" class="btn btn-primary btn-create btn-move-fafa"/>
+    {{ form_end(edit_form) }}
+
+
+    <ul class="buttons">
+        <li>
+            <a href="{{ path('quiz_index') }}" style="margin-left: -40px !important;" class="btn btn-primary fixed_left"><i class="fa fa-list"></i>Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <i class="fa fa-trash move-right" style="color:white;"></i><input type="submit" value="Delete" class="btn danger btn-move-fafa">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

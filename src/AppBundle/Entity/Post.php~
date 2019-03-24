@@ -1,0 +1,329 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Post
+ *
+ * @ORM\Table(name="post", indexes={@ORM\Index(name="admin_id", columns={"admin_id"}), @ORM\Index(name="category_id", columns={"category_id"})})
+ * @ORM\Entity
+ */
+class Post
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="seo_title", type="string", length=255, nullable=true)
+     */
+    private $seoTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=500, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="author", type="string", length=100, nullable=true)
+     */
+    private $author;
+
+    /**
+     * @var \AppBundle\Entity\Admin
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Admin", inversedBy="posts")
+     * @ORM\JoinColumn(name="adminId", referencedColumnName="id")
+     */
+    private $adminId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="body", type="string", length=500, nullable=false)
+     */
+    private $body;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
+     */
+    private $created;
+
+    
+
+    /**
+     * @var \AppBundle\Entity\Category
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="posts")
+     * @ORM\JoinColumn(name="category", referencedColumnName="id")
+     * 
+     */
+    private $category;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="postId")
+     */
+    private $comments;
+    
+     public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
+    
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Post
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Post
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set seoTitle
+     *
+     * @param string $seoTitle
+     *
+     * @return Post
+     */
+    public function setSeoTitle($seoTitle)
+    {
+        $this->seoTitle = $seoTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get seoTitle
+     *
+     * @return string
+     */
+    public function getSeoTitle()
+    {
+        return $this->seoTitle;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Post
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set author
+     *
+     * @param string $author
+     *
+     * @return Post
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * Set adminId
+     *
+     * @param integer $adminId
+     *
+     * @return Post
+     */
+    public function setAdminId($adminId)
+    {
+        $this->adminId = $adminId;
+
+        return $this;
+    }
+
+    /**
+     * Get adminId
+     *
+     * @return integer
+     */
+    public function getAdminId()
+    {
+        return $this->adminId;
+    }
+
+    /**
+     * Set body
+     *
+     * @param string $body
+     *
+     * @return Post
+     */
+    public function setBody($body)
+    {
+        $this->body = $body;
+
+        return $this;
+    }
+
+    /**
+     * Get body
+     *
+     * @return string
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return Post
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\Category $category
+     *
+     * @return Post
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+}
