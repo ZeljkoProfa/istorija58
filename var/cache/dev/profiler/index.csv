@@ -6,3 +6,12 @@ a01388,178.221.251.41,GET,http://istorija58.in.rs/app_dev.php/,1553457113,,500
 7fc8d5,127.0.0.1,GET,http://istorija58.in.rs/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAppBundle%253Afront%252FCounter%253Avisitor,1553457272,a4721f,200
 90c819,127.0.0.1,GET,http://istorija58.in.rs/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAppBundle%253Afront%252FMainPage%253AlistLastPowPP,1553457272,a4721f,200
 a4721f,178.221.251.41,GET,http://istorija58.in.rs/app_dev.php/,1553457272,,200
+d26fbd,127.0.0.1,GET,http://istorija58.loc/app_dev.php/,1553465771,1424b1,200
+1424b1,127.0.0.1,GET,http://istorija58.loc/app_dev.php/,1553465771,,500
+b4a1d8,127.0.0.1,GET,http://istorija58.loc/app_dev.php/,1553465775,3a2bd1,200
+3a2bd1,127.0.0.1,GET,http://istorija58.loc/app_dev.php/,1553465775,,500
+8c3761,127.0.0.1,GET,http://istorija58.loc/app_dev.php/,1553465792,9eab57,200
+9eab57,127.0.0.1,GET,http://istorija58.loc/app_dev.php/,1553465792,,500
+40f011,127.0.0.1,GET,http://istorija58.loc/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAppBundle%253Afront%252FNav%253AlistCategory,1553465835,d289d2,200
+cbe530,127.0.0.1,GET,http://istorija58.loc/app_dev.php/,1553465835,d289d2,200
+d289d2,127.0.0.1,GET,http://istorija58.loc/app_dev.php/,1553465835,,500

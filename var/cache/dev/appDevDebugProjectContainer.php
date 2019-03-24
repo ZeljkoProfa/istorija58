@@ -86,8 +86,8 @@ class appDevDebugProjectContainer extends Container
             'autowired.appbundle\\entity\\video' => 'autowired.AppBundle\\Entity\\Video',
         );
         $this->methodMap = array(
-            '1_ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cd' => 'get1Ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cdService',
-            '2_ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cd' => 'get2Ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cdService',
+            '1_c8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339da' => 'get1C8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339daService',
+            '2_c8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339da' => 'get2C8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339daService',
             'AppBundle\\Controller\\back\\AdminController' => 'getAppBundle_Controller_Back_AdminControllerService',
             'AppBundle\\Controller\\back\\CategoryController' => 'getAppBundle_Controller_Back_CategoryControllerService',
             'AppBundle\\Controller\\back\\CheckUploadStatusController' => 'getAppBundle_Controller_Back_CheckUploadStatusControllerService',
@@ -387,8 +387,8 @@ class appDevDebugProjectContainer extends Container
             'web_profiler.debug_toolbar' => 'getWebProfiler_DebugToolbarService',
         );
         $this->privates = array(
-            '1_ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cd' => true,
-            '2_ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cd' => true,
+            '1_c8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339da' => true,
+            '2_c8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339da' => true,
             'AppBundle\\Form\\AdminType' => true,
             'AppBundle\\Form\\CategoryType' => true,
             'AppBundle\\Form\\CommentType' => true,
@@ -912,8 +912,8 @@ class appDevDebugProjectContainer extends Container
     protected function getConfigCacheFactoryService()
     {
         return $this->services['config_cache_factory'] = new \Symfony\Component\Config\ResourceCheckerConfigCacheFactory(new RewindableGenerator(function () {
-            yield 0 => ${($_ = isset($this->services['1_ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cd']) ? $this->services['1_ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cd'] : $this->get1Ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cdService()) && false ?: '_'};
-            yield 1 => ${($_ = isset($this->services['2_ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cd']) ? $this->services['2_ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cd'] : $this->get2Ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cdService()) && false ?: '_'};
+            yield 0 => ${($_ = isset($this->services['1_c8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339da']) ? $this->services['1_c8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339da'] : $this->get1C8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339daService()) && false ?: '_'};
+            yield 1 => ${($_ = isset($this->services['2_c8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339da']) ? $this->services['2_c8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339da'] : $this->get2C8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339daService()) && false ?: '_'};
         }, 2));
     }
 
@@ -1278,7 +1278,7 @@ class appDevDebugProjectContainer extends Container
         $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
         $c->addEventListener(array(0 => 'loadClassMetadata'), ${($_ = isset($this->services['doctrine.orm.default_listeners.attach_entity_listeners']) ? $this->services['doctrine.orm.default_listeners.attach_entity_listeners'] : $this->get('doctrine.orm.default_listeners.attach_entity_listeners')) && false ?: '_'});
 
-        return $this->services['doctrine.dbal.default_connection'] = ${($_ = isset($this->services['doctrine.dbal.connection_factory']) ? $this->services['doctrine.dbal.connection_factory'] : $this->get('doctrine.dbal.connection_factory')) && false ?: '_'}->createConnection(array('driver' => 'pdo_mysql', 'host' => 'mysql579.loopia.se', 'port' => NULL, 'dbname' => 'istorija58_in_rs', 'user' => 'dragorad@i39896', 'password' => 'first132.', 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array());
+        return $this->services['doctrine.dbal.default_connection'] = ${($_ = isset($this->services['doctrine.dbal.connection_factory']) ? $this->services['doctrine.dbal.connection_factory'] : $this->get('doctrine.dbal.connection_factory')) && false ?: '_'}->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => NULL, 'dbname' => 'istorija58', 'user' => 'root', 'password' => 'password', 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), $b, $c, array());
     }
 
     /**
@@ -1382,7 +1382,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_8847f88d0cae81bd27e76ee40a648670ea7f91cdf4043f45bdd211db42ecbaa0');
+        $instance->setNamespace('sf2orm_default_859fe95862749371bbc432f18a375fd35781a7ccf6bf0b9180d571b707890551');
 
         return $instance;
     }
@@ -1396,7 +1396,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_8847f88d0cae81bd27e76ee40a648670ea7f91cdf4043f45bdd211db42ecbaa0');
+        $instance->setNamespace('sf2orm_default_859fe95862749371bbc432f18a375fd35781a7ccf6bf0b9180d571b707890551');
 
         return $instance;
     }
@@ -1410,7 +1410,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_8847f88d0cae81bd27e76ee40a648670ea7f91cdf4043f45bdd211db42ecbaa0');
+        $instance->setNamespace('sf2orm_default_859fe95862749371bbc432f18a375fd35781a7ccf6bf0b9180d571b707890551');
 
         return $instance;
     }
@@ -2561,7 +2561,7 @@ class appDevDebugProjectContainer extends Container
         $w = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $t, array(), $a);
         $w->setOptions(array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($s, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => ${($_ = isset($this->services['security.user.provider.concrete.our_db_provider']) ? $this->services['security.user.provider.concrete.our_db_provider'] : $this->getSecurity_User_Provider_Concrete_OurDbProviderService()) && false ?: '_'}), 'main', $a, $c, $d), 2 => $u, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $t, 'main', $v, $w, array('check_path' => '/login', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, NULL), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5c97e076b82635.57490048', $a, $g), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, ${($_ = isset($this->services['debug.security.access.decision_manager']) ? $this->services['debug.security.access.decision_manager'] : $this->getDebug_Security_Access_DecisionManagerService()) && false ?: '_'}, $s, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $d, $t, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $t, '/login', false), NULL, NULL, $a, false), new \Symfony\Bundle\SecurityBundle\Security\FirewallConfig('main', 'security.user_checker', NULL, true, false, 'security.user.provider.concrete.our_db_provider', 'main', 'security.authentication.form_entry_point.main', NULL, NULL, array(0 => 'logout', 1 => 'form_login', 2 => 'anonymous')));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($s, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => ${($_ = isset($this->services['security.user.provider.concrete.our_db_provider']) ? $this->services['security.user.provider.concrete.our_db_provider'] : $this->getSecurity_User_Provider_Concrete_OurDbProviderService()) && false ?: '_'}), 'main', $a, $c, $d), 2 => $u, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $t, 'main', $v, $w, array('check_path' => '/login', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, NULL), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5c9801eb706731.13756237', $a, $g), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, ${($_ = isset($this->services['debug.security.access.decision_manager']) ? $this->services['debug.security.access.decision_manager'] : $this->getDebug_Security_Access_DecisionManagerService()) && false ?: '_'}, $s, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $d, $t, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $t, '/login', false), NULL, NULL, $a, false), new \Symfony\Bundle\SecurityBundle\Security\FirewallConfig('main', 'security.user_checker', NULL, true, false, 'security.user.provider.concrete.our_db_provider', 'main', 'security.authentication.form_entry_point.main', NULL, NULL, array(0 => 'logout', 1 => 'form_login', 2 => 'anonymous')));
     }
 
     /**
@@ -3249,23 +3249,23 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
-     * Gets the private '1_ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cd' shared service.
+     * Gets the private '1_c8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339da' shared service.
      *
      * @return \Symfony\Component\DependencyInjection\Config\ContainerParametersResourceChecker
      */
-    protected function get1Ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cdService()
+    protected function get1C8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339daService()
     {
-        return $this->services['1_ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cd'] = new \Symfony\Component\DependencyInjection\Config\ContainerParametersResourceChecker($this);
+        return $this->services['1_c8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339da'] = new \Symfony\Component\DependencyInjection\Config\ContainerParametersResourceChecker($this);
     }
 
     /**
-     * Gets the private '2_ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cd' shared service.
+     * Gets the private '2_c8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339da' shared service.
      *
      * @return \Symfony\Component\Config\Resource\SelfCheckingResourceChecker
      */
-    protected function get2Ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cdService()
+    protected function get2C8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339daService()
     {
-        return $this->services['2_ba73cdca3f6182019435713d718e6ef9d14c9d892bf06106faf6789f2b1107cd'] = new \Symfony\Component\Config\Resource\SelfCheckingResourceChecker();
+        return $this->services['2_c8b9901e9fe34ff84e227592539086b27fbbf9f3fbef4512bedc9f883d3339da'] = new \Symfony\Component\Config\Resource\SelfCheckingResourceChecker();
     }
 
     /**
@@ -3698,7 +3698,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_Annotations_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.annotations.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('5jIPCqmmnv', 0, 'lyELDMy4F1MoElWsFsgBMD', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.annotations.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('BeP8RDOYWU', 0, 'aDzVefzd-HF9rh0MN9gy9s', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -3708,7 +3708,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_App_RecorderInnerService($lazyLoad = true)
     {
-        $this->services['cache.app.recorder_inner'] = $instance = new \Symfony\Component\Cache\Adapter\FilesystemAdapter('7hzuecfmlY', 0, (__DIR__.'/pools'));
+        $this->services['cache.app.recorder_inner'] = $instance = new \Symfony\Component\Cache\Adapter\FilesystemAdapter('acWUsgOuLu', 0, (__DIR__.'/pools'));
 
         if ($this->has('monolog.logger.cache')) {
             $instance->setLogger(${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
@@ -3724,7 +3724,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_Serializer_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.serializer.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('VopQJ48AuN', 0, 'lyELDMy4F1MoElWsFsgBMD', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.serializer.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('P-wp-dwyIM', 0, 'aDzVefzd-HF9rh0MN9gy9s', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -3734,7 +3734,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_System_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.system.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('RxyBB0-Hak', 0, 'lyELDMy4F1MoElWsFsgBMD', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.system.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('TBIRLWGlE4', 0, 'aDzVefzd-HF9rh0MN9gy9s', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -3754,7 +3754,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_Validator_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.validator.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('FRPVr+9K+o', 0, 'lyELDMy4F1MoElWsFsgBMD', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.validator.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('+9OamUY8cr', 0, 'aDzVefzd-HF9rh0MN9gy9s', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -4005,7 +4005,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_Provider_Anonymous_MainService()
     {
-        return $this->services['security.authentication.provider.anonymous.main'] = new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5c97e076b82635.57490048');
+        return $this->services['security.authentication.provider.anonymous.main'] = new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5c9801eb706731.13756237');
     }
 
     /**
@@ -4582,11 +4582,11 @@ class appDevDebugProjectContainer extends Container
             ),
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'appDevDebugProjectContainer',
-            'database_host' => 'mysql579.loopia.se',
+            'database_host' => 'localhost',
             'database_port' => NULL,
-            'database_name' => 'istorija58_in_rs',
-            'database_user' => 'dragorad@i39896',
-            'database_password' => 'first132.',
+            'database_name' => 'istorija58',
+            'database_user' => 'root',
+            'database_password' => 'password',
             'mailer_transport' => 'smtp',
             'mailer_host' => NULL,
             'mailer_user' => NULL,

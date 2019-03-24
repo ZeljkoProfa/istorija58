@@ -1,7 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f6a428a6-d89b-475f-90e2-3a0e163cf466" name="Default Changelist" comment="" />
+    <list default="true" id="f6a428a6-d89b-475f-90e2-3a0e163cf466" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/istorija58.in.rs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/istorija58.in.rs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/parameters.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/parameters.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerCompiler.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerCompiler.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlGenerator.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlGenerator.php.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlMatcher.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlMatcher.php.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/0d/0dcff4d2a84cecd7fb787cf769fbbed9fa7e129acf185753dede2ef37527491b.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/0d/0dcff4d2a84cecd7fb787cf769fbbed9fa7e129acf185753dede2ef37527491b.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/0d/0dd7d0dc60ffca20a7355cbe4387786ea56fe8369456b372bf4283ed86fd2095.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/0d/0dd7d0dc60ffca20a7355cbe4387786ea56fe8369456b372bf4283ed86fd2095.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/0f/0f38d57e2e59938d06e4297f9de4a677dd394fdd8595be8bde0a24a98b666db2.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/0f/0f38d57e2e59938d06e4297f9de4a677dd394fdd8595be8bde0a24a98b666db2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/11/11cafb4e7ce456f1afe7d2952ee01cec3acad50c4dad194553b439e0cd199c89.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/11/11cafb4e7ce456f1afe7d2952ee01cec3acad50c4dad194553b439e0cd199c89.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/14/145cf7a52f36e9c2e9ced2c130deaf0133a2b84fbee5e1e6c96caa71185a01ec.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/14/145cf7a52f36e9c2e9ced2c130deaf0133a2b84fbee5e1e6c96caa71185a01ec.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/19/19a19632278df2a47e58bfe0276045a58735270af98bfb1257ba8039f87d9283.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/19/19a19632278df2a47e58bfe0276045a58735270af98bfb1257ba8039f87d9283.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/19/19b94b5dfd25604a336d504191f982393319fbccbdf527b1630ae45497494a4c.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/19/19b94b5dfd25604a336d504191f982393319fbccbdf527b1630ae45497494a4c.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/1f/1fdad842867433610e4032480c9e1d33cc8e7ad943352157b155ce797a0b9d8b.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/1f/1fdad842867433610e4032480c9e1d33cc8e7ad943352157b155ce797a0b9d8b.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/27/27a43ab2f03778ea0aac9f75bdaa2cf51d41b09af888f02a8285d2f344d070e5.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/27/27a43ab2f03778ea0aac9f75bdaa2cf51d41b09af888f02a8285d2f344d070e5.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/2c/2ce1bd98dcfd435d418143ccb3bd1f07d01f99342670f077c9b79feb26955299.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/2c/2ce1bd98dcfd435d418143ccb3bd1f07d01f99342670f077c9b79feb26955299.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/2e/2ec46571d7752ac83d2dd313f72e9d036f6d745940580f63d04d348dc074220e.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/2e/2ec46571d7752ac83d2dd313f72e9d036f6d745940580f63d04d348dc074220e.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/3a/3af37ed8779536e02ad7d98f6673dc8954711e4a070662201972494ad485aa74.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/3a/3af37ed8779536e02ad7d98f6673dc8954711e4a070662201972494ad485aa74.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/3f/3f8b9e538f6e84d8e451ae210f79d627c897a765a10ced8fa02565791b13b855.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/3f/3f8b9e538f6e84d8e451ae210f79d627c897a765a10ced8fa02565791b13b855.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/40/4045d8b5f862a9e8fd0d0190aa25ba0edaae1a8b7c20b48712ac80af3e0198c0.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/40/4045d8b5f862a9e8fd0d0190aa25ba0edaae1a8b7c20b48712ac80af3e0198c0.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/49/497609b36c21d9828ce36561d630b662a1015f3f55ed452f1ad599f98c9cc0b0.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/49/497609b36c21d9828ce36561d630b662a1015f3f55ed452f1ad599f98c9cc0b0.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/50/5090fde83f530e9a27a5f9d3eb08fb5c328746836ca33d0ca360469c60543162.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/50/5090fde83f530e9a27a5f9d3eb08fb5c328746836ca33d0ca360469c60543162.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/53/53c1ce2284f4de4323f9d1fcfce13e8739dbbb5a74257d6ff57776b06cbdeb60.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/53/53c1ce2284f4de4323f9d1fcfce13e8739dbbb5a74257d6ff57776b06cbdeb60.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/5a/5ae6fe3b36c3589ea8d493be3e19602d501cf34fcc12b1872611072656014231.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/5a/5ae6fe3b36c3589ea8d493be3e19602d501cf34fcc12b1872611072656014231.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/5d/5d4271f16e09e98498859de1ebacca01392b18b1870408b7e4a20cc6f76757f6.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/5d/5d4271f16e09e98498859de1ebacca01392b18b1870408b7e4a20cc6f76757f6.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/60/60d1988eee3af8476bd8aaaa914216ab64e7bb03a8790484fa56476eadcf64eb.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/60/60d1988eee3af8476bd8aaaa914216ab64e7bb03a8790484fa56476eadcf64eb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/67/67b65bda09dfc9597b4fd107da401eeb148e8f5d62e9892344927a56a8b8d0e5.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/67/67b65bda09dfc9597b4fd107da401eeb148e8f5d62e9892344927a56a8b8d0e5.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/68/68e60999852ca31c00e24a78f0d541c4100c05314fb5d3e2b334fb9382b81d8f.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/68/68e60999852ca31c00e24a78f0d541c4100c05314fb5d3e2b334fb9382b81d8f.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/6a/6a5bbde33e9db7f8aa264b66627ba94fa340f679422091c54cd3ca4e0a9a01f7.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/6a/6a5bbde33e9db7f8aa264b66627ba94fa340f679422091c54cd3ca4e0a9a01f7.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/6f/6f5abd83f592aaaeac8ec9d42b78e12b1c9eed52e49d253349fde752cd1bdab3.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/6f/6f5abd83f592aaaeac8ec9d42b78e12b1c9eed52e49d253349fde752cd1bdab3.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/72/72f0f8133f412b2fdcedfd04dbad187357761938d751a387631baf4e6838d484.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/72/72f0f8133f412b2fdcedfd04dbad187357761938d751a387631baf4e6838d484.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/7e/7ec17a3b41ccc76c17551247cdf61e9affc276f3b473686fbea973baf47a83f0.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/7e/7ec17a3b41ccc76c17551247cdf61e9affc276f3b473686fbea973baf47a83f0.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/7f/7f76d18ed2e71fde7fa7b4ed56551b944a5b3827384f88d9f38b19455973eba7.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/7f/7f76d18ed2e71fde7fa7b4ed56551b944a5b3827384f88d9f38b19455973eba7.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/86/86b55b381d61794c21b8b683a6fc2ddcd0061f3207ef3a3bea3847691a40a504.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/86/86b55b381d61794c21b8b683a6fc2ddcd0061f3207ef3a3bea3847691a40a504.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/8c/8ce409d6fe05ff4336ce7726c51ff46605f6c5f3c781679ef1511b94da0c197a.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/8c/8ce409d6fe05ff4336ce7726c51ff46605f6c5f3c781679ef1511b94da0c197a.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/8f/8f3c4fb95e7bf12400e1a27e2009210f2a29b0f495156738462c88f5754b1847.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/8f/8f3c4fb95e7bf12400e1a27e2009210f2a29b0f495156738462c88f5754b1847.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/90/90e1fe5cbed5ddf18a3187ead2bbec1cb77143f861e9962b3c77362d356e8052.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/90/90e1fe5cbed5ddf18a3187ead2bbec1cb77143f861e9962b3c77362d356e8052.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/93/93200eac72d07382749e8f77859efce2e54ac4f9fad99b8aea04af4cf2c7914f.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/93/93200eac72d07382749e8f77859efce2e54ac4f9fad99b8aea04af4cf2c7914f.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/94/94c8756f1fd64d9a0a6a727397e03e6a7ba705fb0969700fdefd79d6f27f6698.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/94/94c8756f1fd64d9a0a6a727397e03e6a7ba705fb0969700fdefd79d6f27f6698.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/9e/9e34bf20eae63da8cc08c1b849c8d1b376600108dc3f84fd4ac541458fa986a3.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/9e/9e34bf20eae63da8cc08c1b849c8d1b376600108dc3f84fd4ac541458fa986a3.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/a2/a2b85e2adc1de2ab19abca901c696d108898b34cb1f00bd61cbedfe34ccccd54.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/a2/a2b85e2adc1de2ab19abca901c696d108898b34cb1f00bd61cbedfe34ccccd54.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/a3/a31fe66b45a961b2e1c29ebea01007aa2964ddea4dedc23d99d8ebd988db329c.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/a3/a31fe66b45a961b2e1c29ebea01007aa2964ddea4dedc23d99d8ebd988db329c.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/a3/a3c3350cb4cdcf29966f2bc28ef95c04ced035ad1b28babe63721f0c2d952a7e.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/a3/a3c3350cb4cdcf29966f2bc28ef95c04ced035ad1b28babe63721f0c2d952a7e.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/a6/a66bfc313143cbffc29dbb5cefb246be89dc381f7952c2f6ff9d81bad7756e96.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/a6/a66bfc313143cbffc29dbb5cefb246be89dc381f7952c2f6ff9d81bad7756e96.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/ab/abd0886441abf3d2fa8c242da2edc2cae9a36d2420193cbf85ad4b0c592cf26f.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/ab/abd0886441abf3d2fa8c242da2edc2cae9a36d2420193cbf85ad4b0c592cf26f.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/b6/b6c35861ebd2a02f7e8ed5a6c391055919b2be22749e1a2d4da462d16475dd0e.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/b6/b6c35861ebd2a02f7e8ed5a6c391055919b2be22749e1a2d4da462d16475dd0e.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/bb/bb3884b6ae9c4c3d0f7737d13123658ee5a7c23fb8359a8950232454e427b76c.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/bb/bb3884b6ae9c4c3d0f7737d13123658ee5a7c23fb8359a8950232454e427b76c.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/bb/bbad8e0f5093029b385a0e8bdfb20f10d91f1bdde24c42d6b891fd22969baf00.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/bb/bbad8e0f5093029b385a0e8bdfb20f10d91f1bdde24c42d6b891fd22969baf00.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/bc/bc763764d392370ac165a7b5feeb9f72bcf286a333a60d0f3f3cfc5d9d213ff9.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/bc/bc763764d392370ac165a7b5feeb9f72bcf286a333a60d0f3f3cfc5d9d213ff9.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/c4/c45fc527026143ca891284d89fb3a94aa45f9d80bb82342d963f2d2919c18b35.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/c4/c45fc527026143ca891284d89fb3a94aa45f9d80bb82342d963f2d2919c18b35.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/c8/c81a97f3a5d76ed7c6b262fbd77a33a3820d093395dbb6802053441be642201c.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/c8/c81a97f3a5d76ed7c6b262fbd77a33a3820d093395dbb6802053441be642201c.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/d0/d02df9006d66223215035c7f17e9b43880b6996ce4f64a5995251f88ac0e7c97.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/d0/d02df9006d66223215035c7f17e9b43880b6996ce4f64a5995251f88ac0e7c97.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/d9/d9da4db9ea8aaab5c674850fdc71fa1e62d58dc8837ee4121b2759468e9d0d09.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/d9/d9da4db9ea8aaab5c674850fdc71fa1e62d58dc8837ee4121b2759468e9d0d09.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/de/de2b3a525aec9c1aa6fdcf6382128737882c2ba825471c44a9fa95a1c1d70a1b.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/de/de2b3a525aec9c1aa6fdcf6382128737882c2ba825471c44a9fa95a1c1d70a1b.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/e3/e38a1108d5282fa4844ee55439bb4808bdf80ae7be1e747be5169c75ab571871.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/e3/e38a1108d5282fa4844ee55439bb4808bdf80ae7be1e747be5169c75ab571871.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/e4/e4bb16f951c99f4a9b10f86d3279cca29b1ad6b9f20056ddeae35c86fa3efe5c.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/e4/e4bb16f951c99f4a9b10f86d3279cca29b1ad6b9f20056ddeae35c86fa3efe5c.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/ea/eac0ee63d414c602918e492ab815e4a63b384d5bcba820823f8de8b8c6f39be6.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/ea/eac0ee63d414c602918e492ab815e4a63b384d5bcba820823f8de8b8c6f39be6.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/ee/eef091515ed3cd8529b8c08d311885cff6e321eed6d14050c9c6f6206aff206b.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/ee/eef091515ed3cd8529b8c08d311885cff6e321eed6d14050c9c6f6206aff206b.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/f0/f0b1fadd4bf60a9ac297f7b9640956119d40aad0fbfed6e98b73b83a8266c029.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/f0/f0b1fadd4bf60a9ac297f7b9640956119d40aad0fbfed6e98b73b83a8266c029.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/f6/f630ce2a86b12390e5a0515f026311925f7e652b8a4be10676f02b73e2c2db7e.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/f6/f630ce2a86b12390e5a0515f026311925f7e652b8a4be10676f02b73e2c2db7e.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/f7/f79eededcec00f5f398bd649270af18710f2330057d3c69761b22401a76588ac.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/f7/f79eededcec00f5f398bd649270af18710f2330057d3c69761b22401a76588ac.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/fa/fa28ee4f7dfda9bbc94d255ea5ad1be74c0e6ddba876b60e621fefebd522c16c.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/fa/fa28ee4f7dfda9bbc94d255ea5ad1be74c0e6ddba876b60e621fefebd522c16c.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/logs/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/logs/dev.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/logs/prod.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/logs/prod.log" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,16 +83,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+            <state relative-caret-position="110">
+              <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public_html/app_dev.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
@@ -32,9 +102,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/front/MainPageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
+            <state relative-caret-position="1782">
               <caret line="81" column="17" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
               <folding>
                 <element signature="e#46#75#0#PHP" expanded="true" />
@@ -46,7 +125,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/SecurityService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
+            <state relative-caret-position="968">
               <caret line="49" column="43" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
             </state>
           </provider>
@@ -55,7 +134,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/front/front-main.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="938">
+            <state relative-caret-position="4928">
               <caret line="224" column="54" selection-start-line="224" selection-start-column="54" selection-end-line="224" selection-end-column="54" />
             </state>
           </provider>
@@ -87,9 +166,7 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/front/CounterController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/front/MainPageController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Services/SecurityService.php" />
-        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/public_html/app_dev.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/Resources/views/front/pages/quiz-first.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/front/pages/visitor.html.twig" />
@@ -98,6 +175,8 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/ContactRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/ThoughtsRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/front/ContactController.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
       </list>
     </option>
   </component>
@@ -156,6 +235,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -227,7 +307,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -259,30 +338,33 @@
       <option name="presentableId" value="Default" />
       <updated>1548620244418</updated>
       <workItem from="1548620245574" duration="235000" />
-      <workItem from="1553380115614" duration="10948000" />
+      <workItem from="1553380115614" duration="11860000" />
+      <workItem from="1553465672248" duration="299000" />
+      <workItem from="1553466244134" duration="586000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11183000" />
+    <option name="totallyTimeSpent" value="12980000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25291827" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26070037" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
       <window_info anchor="bottom" id="Version Control" order="2" />
-      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.50027794" side_tool="true" weight="0.31590182" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
       <window_info anchor="bottom" id="Run" order="6" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.31590182" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49972206" visible="true" weight="0.31590182" />
       <window_info anchor="bottom" id="TODO" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -376,16 +458,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/front/front-main.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="938">
-          <caret line="224" column="54" selection-start-line="224" selection-start-column="54" selection-end-line="224" selection-end-column="54" />
+        <state relative-caret-position="110">
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/app_dev.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/front/MainPageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
+        <state relative-caret-position="1782">
           <caret line="81" column="17" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
           <folding>
             <element signature="e#46#75#0#PHP" expanded="true" />
@@ -395,29 +491,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/SecurityService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
+        <state relative-caret-position="968">
           <caret line="49" column="43" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/front/front-main.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/app_dev.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        <state relative-caret-position="4928">
+          <caret line="224" column="54" selection-start-line="224" selection-start-column="54" selection-end-line="224" selection-end-column="54" />
         </state>
       </provider>
     </entry>

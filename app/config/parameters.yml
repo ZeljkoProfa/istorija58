@@ -1,10 +1,10 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_host: mysql579.loopia.se
+    database_host: localhost
     database_port: null
-    database_name: istorija58_in_rs
-    database_user: dragorad@i39896
-    database_password: first132.
+    database_name: istorija58
+    database_user: root
+    database_password: password
     mailer_transport: smtp
     mailer_host: null
     mailer_user: null
