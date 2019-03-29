@@ -3,10 +3,9 @@
 namespace AppBundle\Controller\back;
 
 use AppBundle\Entity\Comment;
+use AppBundle\Services\SecurityService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Comp;
-use Doctrine\Common\Util\Debug;
 
 /**
  * Comment controller.
@@ -17,18 +16,21 @@ class CommentController extends Controller
     /**
      * Lists all comment entities.
      *
+     * @param Request $request
+     * @param int $currentPage
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction($currentPage = 1)
+    public function indexAction(Request $request, $currentPage = 1)
     {
         $limit = 10;
 
-        if (isset($_GET['currentPage'])) {
-            $currentPage = htmlspecialchars($_GET['currentPage']);
+        if (!empty($request->request->get('currentPage'))){
+            $currentPage = $request->request->get('currentPage');
         }
         
         $comments = $this->getDoctrine()
                         ->getRepository('AppBundle:Comment')
-                        ->getLastCommentAddedBack($currentPage, $limit);
+                        ->getLastCommentAddedBack($limit, $currentPage);
         
         $maxPages = ceil($comments->count() / $limit);
         $thisPage = $currentPage;
@@ -43,6 +45,9 @@ class CommentController extends Controller
     /**
      * Creates a new comment entity.
      *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
      */
     public function newAction(Request $request)
     {
@@ -69,11 +74,14 @@ class CommentController extends Controller
     /**
      * Finds and displays a comment entity.
      *
+     * @param Comment $comment
+     * @param SecurityService $securityService
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction(Comment $comment)
+    public function showAction(Comment $comment, SecurityService $securityService)
     {
         $id = $comment->getId();
-        $user_ip = $this->getDoctrine()->getRepository('AppBundle:Contact')->takeIp($id, $origin = 'comment');
+        $user_ip = $securityService->takeIp($id, $origin = 'comment');
         
         $deleteForm = $this->createDeleteForm($comment);
 
@@ -87,11 +95,15 @@ class CommentController extends Controller
     /**
      * Displays a form to edit an existing comment entity.
      *
+     * @param Request $request
+     * @param Comment $comment
+     * @param SecurityService $securityService
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, Comment $comment)
+    public function editAction(Request $request, Comment $comment, SecurityService $securityService)
     {
         $id = $comment->getId();
-        $user_ip = $this->getDoctrine()->getRepository('AppBundle:Contact')->takeIp($id, $origin = 'comment');
+        $user_ip = $securityService->takeIp($id, $origin = 'comment');
         
         $deleteForm = $this->createDeleteForm($comment);
         $editForm = $this->createForm('AppBundle\Form\CommentType', $comment);
@@ -117,6 +129,9 @@ class CommentController extends Controller
     /**
      * Deletes a comment entity.
      *
+     * @param Request $request
+     * @param Comment $comment
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Comment $comment)
     {

@@ -1,6 +1,6 @@
 <?php
 
-/* front/main/comments-main.html.twig */
+/* :front/main:comments-main.html.twig */
 class __TwigTemplate_8826e33a6c7fc65d920b5533362a8867368b59aabe29639db862ef8bdb9bc5aa extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,11 +15,11 @@ class __TwigTemplate_8826e33a6c7fc65d920b5533362a8867368b59aabe29639db862ef8bdb9
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9b88df08639fb363b66e91a5db649a9b837168d7165247bcb9f026752fca2040 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_9b88df08639fb363b66e91a5db649a9b837168d7165247bcb9f026752fca2040->enter($__internal_9b88df08639fb363b66e91a5db649a9b837168d7165247bcb9f026752fca2040_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "front/main/comments-main.html.twig"));
+        $__internal_4c6bb175547f7ab5a4e0da46fc4ba9ff50137122603cd481695f2380a6f4bd5c = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_4c6bb175547f7ab5a4e0da46fc4ba9ff50137122603cd481695f2380a6f4bd5c->enter($__internal_4c6bb175547f7ab5a4e0da46fc4ba9ff50137122603cd481695f2380a6f4bd5c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":front/main:comments-main.html.twig"));
 
-        $__internal_14756daa7b03d1e3a8421930ee7678f71a23c698ec2ef0b07524ade1aa147891 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_14756daa7b03d1e3a8421930ee7678f71a23c698ec2ef0b07524ade1aa147891->enter($__internal_14756daa7b03d1e3a8421930ee7678f71a23c698ec2ef0b07524ade1aa147891_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "front/main/comments-main.html.twig"));
+        $__internal_3a4cf41a9306b6e469e8e79cb38afdcb53253eaa944b5b4c10665ab24ab4cb0c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_3a4cf41a9306b6e469e8e79cb38afdcb53253eaa944b5b4c10665ab24ab4cb0c->enter($__internal_3a4cf41a9306b6e469e8e79cb38afdcb53253eaa944b5b4c10665ab24ab4cb0c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":front/main:comments-main.html.twig"));
 
         // line 1
         echo "<!--included in front-main.html.twig-->
@@ -115,7 +115,7 @@ class __TwigTemplate_8826e33a6c7fc65d920b5533362a8867368b59aabe29639db862ef8bdb9
                 if (twig_length_filter($this->env, $this->getAttribute($context["comment"], "children", array()))) {
                     // line 43
                     echo "                    ";
-                    $this->loadTemplate("front/main/comments-main.html.twig", "front/main/comments-main.html.twig", 43)->display(array_merge($context, array("comments" => $this->getAttribute($context["comment"], "children", array()))));
+                    $this->loadTemplate("front/main/comments-main.html.twig", ":front/main:comments-main.html.twig", 43)->display(array_merge($context, array("comments" => $this->getAttribute($context["comment"], "children", array()))));
                     // line 44
                     echo "                ";
                 }
@@ -140,16 +140,16 @@ class __TwigTemplate_8826e33a6c7fc65d920b5533362a8867368b59aabe29639db862ef8bdb9
         echo "
 ";
         
-        $__internal_9b88df08639fb363b66e91a5db649a9b837168d7165247bcb9f026752fca2040->leave($__internal_9b88df08639fb363b66e91a5db649a9b837168d7165247bcb9f026752fca2040_prof);
+        $__internal_4c6bb175547f7ab5a4e0da46fc4ba9ff50137122603cd481695f2380a6f4bd5c->leave($__internal_4c6bb175547f7ab5a4e0da46fc4ba9ff50137122603cd481695f2380a6f4bd5c_prof);
 
         
-        $__internal_14756daa7b03d1e3a8421930ee7678f71a23c698ec2ef0b07524ade1aa147891->leave($__internal_14756daa7b03d1e3a8421930ee7678f71a23c698ec2ef0b07524ade1aa147891_prof);
+        $__internal_3a4cf41a9306b6e469e8e79cb38afdcb53253eaa944b5b4c10665ab24ab4cb0c->leave($__internal_3a4cf41a9306b6e469e8e79cb38afdcb53253eaa944b5b4c10665ab24ab4cb0c_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "front/main/comments-main.html.twig";
+        return ":front/main:comments-main.html.twig";
     }
 
     public function isTraitable()
@@ -221,6 +221,6 @@ class __TwigTemplate_8826e33a6c7fc65d920b5533362a8867368b59aabe29639db862ef8bdb9
     {% endif %}
 {% endfor %}{# include 'front/main/comments-main.html.twig' with {'comments':children} #}
 
-", "front/main/comments-main.html.twig", "/www/webvol5/q5/0messcb7d0j2zxl/istorija58.in.rs/app/Resources/views/front/main/comments-main.html.twig");
+", ":front/main:comments-main.html.twig", "/home/zeljko/projects/istorija58.in.rs/app/Resources/views/front/main/comments-main.html.twig");
     }
 }

@@ -11,13 +11,14 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class CommentRepository extends \Doctrine\ORM\EntityRepository
 {
-    
+
     /**
-     * Get all posts for homepage in the back section
-     * @param integer $currentPage The current page (passed from controller)
-     * @return \Doctrine\ORM\Tools\Pagination\Paginator
+     * @param int $currentPage
+     * @param int $limit
+     * @return Paginator
      */
-    public function getComments($currentPage = 1, $limit) {
+    public function getComments($currentPage = 1, $limit = 10)
+    {
         // 
         $query = $this->createQueryBuilder('c')
                         ->where('c.status = 1', 'c.parentId is null')
@@ -33,7 +34,8 @@ class CommentRepository extends \Doctrine\ORM\EntityRepository
      * @param integer $currentPage The current page (passed from controller)
      * @return \Doctrine\ORM\Tools\Pagination\Paginator
      */
-    public function getLastCommentAddedBack($currentPage = 1, $limit) {
+    public function getLastCommentAddedBack($limit, $currentPage = 1)
+    {
         // 
         $query = $this->createQueryBuilder('c')
                         ->orderBy('c.id', 'DESC')
@@ -51,7 +53,8 @@ class CommentRepository extends \Doctrine\ORM\EntityRepository
      *
      * @return \Doctrine\ORM\Tools\Pagination\Paginator
      */
-    public function paginate($dql, $page = 1, $limit = 10) {
+    public function paginate($dql, $page = 1, $limit = 10)
+    {
         $paginator = new Paginator($dql);
         $paginator->setUseOutputWalkers(false);
         //$paginator->setUseOutputWalkers(false);
@@ -64,7 +67,8 @@ class CommentRepository extends \Doctrine\ORM\EntityRepository
         return $paginator;
     }
     
-    public function getCommentsLastTen() {
+    public function getCommentsLastTen()
+    {
         // Getting last 15 records for homepage on the back/admin. Returns array.
         return $this->getEntityManager()
                         ->createQuery(

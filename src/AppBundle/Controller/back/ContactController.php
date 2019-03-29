@@ -27,7 +27,7 @@ class ContactController extends Controller
         
         $contacts = $this->getDoctrine()
                         ->getRepository('AppBundle:Contact')
-                        ->getLastContactAdded($currentPage, $limit);
+                        ->getLastContactAdded($limit, $currentPage);
         
         $maxPages = ceil($contacts->count() / $limit);
         $thisPage = $currentPage;

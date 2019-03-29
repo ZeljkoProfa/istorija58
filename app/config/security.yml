@@ -2,7 +2,6 @@
 # https://symfony.com/doc/current/security.html
 security:
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
         AppBundle\Entity\Admin: plaintext
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded

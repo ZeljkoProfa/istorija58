@@ -1,6 +1,6 @@
 main_front_page:
     path:       /
-    defaults:   { _controller: "AppBundle:front/MainPage:listLastAdded", "currentPage":1}
+    defaults:   { _controller: "AppBundle:front/MainPage:index", "currentPage":1}
     
 content_pages:
     path:       /kategorije/{title}/{id}/{currentPage}

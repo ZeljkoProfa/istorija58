@@ -25,12 +25,15 @@ class SecurityController extends Controller {
 
     public function forbidAction (Request $request){
         $ip = $request->request->get('ip');
-        $sql = "INSERT INTO bannedd_ip (ip, banned, created) VALUES (
-                :ip, :banned, NOW())";
-            $params = [
-                'ip' => $ip,
-                'banned' => '1'
-            ];
+        $sql = /** @lang mysql */
+            'INSERT INTO bannedd_ip (ip, banned, created) VALUES (
+            :ip, :banned, NOW())';
+
+        $params = [
+            'ip' => $ip,
+            'banned' => '1'
+        ];
+
         $em = $this->getDoctrine()->getManager();
         $stmt = $em->getConnection()->prepare($sql);
         $status = $stmt->execute($params);

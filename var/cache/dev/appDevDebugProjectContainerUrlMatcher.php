@@ -499,7 +499,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->redirect($pathinfo.'/', 'main_front_page');
             }
 
-            return array (  '_controller' => 'AppBundle\\Controller\\front\\MainPageController::listLastAddedAction',  'currentPage' => 1,  '_route' => 'main_front_page',);
+            return array (  '_controller' => 'AppBundle\\Controller\\front\\MainPageController::indexAction',  'currentPage' => 1,  '_route' => 'main_front_page',);
         }
 
         if (0 === strpos($pathinfo, '/k')) {

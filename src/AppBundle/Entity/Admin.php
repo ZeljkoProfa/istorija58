@@ -88,9 +88,6 @@ class Admin implements UserInterface, \Serializable
         $this->thoughts = new ArrayCollection();
         $this->posts = new ArrayCollection();
         $this->categories = new ArrayCollection();
-        
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid('', true));
     }
 
 
