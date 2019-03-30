@@ -12,5 +12,6 @@ var/sessions/
 /vendor/
 /web/bundles/
 .idea/*
+.idea/
 /.idea/*
 /public_html/uploads/*
