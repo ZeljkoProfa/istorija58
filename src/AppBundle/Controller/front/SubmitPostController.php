@@ -63,14 +63,14 @@ class SubmitPostController extends Controller {
             unset($post);
             unset($form);
 
-            return $this->redirectToRoute('front_submit_post', array(
+            return $this->redirectToRoute('front_submit_post', [
                 'submit_message' => $message
-            ));
+            ]);
         }
 
-        return $this->render('front/pages/new.html.twig', array(
+        return $this->render('front/pages/new.html.twig', [
                     'post' => $post,
                     'form' => $form->createView(),
-        ));
+        ]);
     }
 }

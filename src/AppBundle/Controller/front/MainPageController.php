@@ -51,32 +51,31 @@ class MainPageController extends Controller {
 
                 $comment = new Comment();
                 $form = $this->createForm('AppBundle\Form\CommentType', $comment);
-                return $this->render('front/front-main.html.twig', array(
+                return $this->render('front/front-main.html.twig', [
                             'thought' => $thoughtOfTheDay,
                             'posts' => $posts,
                             'comments' => $comments,
                             'maxPages' => $maxPages,
                             'thisPage' => $thisPage,
                             'form_comment' => $form->createView()
-                ));
+                ]);
         }
-        return $this->render('front/front-main.html.twig', array(
+        return $this->render('front/front-main.html.twig', [
                     'thought' => $thoughtOfTheDay,
                     'posts' => $posts,
                     'comments' => $comments,
                     'maxPages' => $maxPages,
                     'thisPage' => $thisPage,
                     'form_comment' => $form->createView()
-        ));
+        ]);
     }
 
     public function listLastPowPPAction()
     {
         $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->getLastPpp();
 
-        return $this->render('front/main/showPPP.html.twig', array(
+        return $this->render('front/main/showPPP.html.twig', [
                     'posts' => $posts
-        ));
+        ]);
     }
-
 }

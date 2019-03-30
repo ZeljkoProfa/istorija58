@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller\back;
 
-use \PDO;
+use AppBundle\Services\SecurityService;
 use AppBundle\Entity\Contact;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,13 +16,16 @@ class ContactController extends Controller
     /**
      * Lists all contact entities.
      *
+     * @param Request $request
+     * @param int $currentPage
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction($currentPage = 1)
+    public function indexAction(Request $request, $currentPage = 1)
     {
         $limit = 10;
 
-        if (isset($_GET['currentPage'])) {
-            $currentPage = htmlspecialchars($_GET['currentPage']);
+        if (empty($request->request->get('currentPage'))) {
+            $currentPage = $request->request->get('currentPage');
         }
         
         $contacts = $this->getDoctrine()
@@ -32,62 +35,72 @@ class ContactController extends Controller
         $maxPages = ceil($contacts->count() / $limit);
         $thisPage = $currentPage;
 
-        return $this->render('back/contact/index.html.twig', array(
+        return $this->render('back/contact/index.html.twig', [
                     'contacts' => $contacts,
                     'maxPages' => $maxPages,
                     'thisPage' => $thisPage
-        ));
+        ]);
     }
 
     /**
      * Finds and displays a contact entity.
      *
+     * @param Contact $contact
+     * @param SecurityService $securityService
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction(Contact $contact)
+    public function showAction(Contact $contact, SecurityService $securityService)
     {
         $id = $contact->getId();
         //var_dump($id);exit;
-        $user_ip = $this->getDoctrine()->getRepository('AppBundle:Contact')->takeIp($id, $origin = 'contact');
+        $user_ip = $securityService->takeIp($id, $origin = 'contact');
         //var_dump($user_ip);exit;
         $deleteForm = $this->createDeleteForm($contact);
         
-        return $this->render('back/contact/show.html.twig', array(
+        return $this->render('back/contact/show.html.twig', [
             'user_ip' => $user_ip,
             'contact' => $contact,
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
      * Displays a form to edit an existing contact entity.
      *
+     * @param Request $request
+     * @param Contact $contact
+     * @param SecurityService $securityService
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, Contact $contact)
+    public function editAction(Request $request, Contact $contact, SecurityService $securityService)
     {
         $deleteForm = $this->createDeleteForm($contact);
         $editForm = $this->createForm('AppBundle\Form\ContactType', $contact);
         $editForm->handleRequest($request);
         $id = $contact->getId();
         //var_dump($id);exit;
-        $user_ip = $this->getDoctrine()->getRepository('AppBundle:Contact')->takeIp($id, $origin = 'contact');
+        $user_ip = $securityService->takeIp($id, $origin = 'contact');
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('contact_edit', array('id' => $contact->getId()));
+            return $this->redirectToRoute('contact_edit', ['id' => $contact->getId()]);
         }
 
-        return $this->render('back/contact/edit.html.twig', array(
+        return $this->render('back/contact/edit.html.twig', [
             'user_ip' => $user_ip,
             'contact' => $contact,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView()
-        ));
+        ]);
     }
 
     /**
      * Deletes a contact entity.
      *
+     * @param Request $request
+     * @param Contact $contact
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Contact $contact)
     {
@@ -113,7 +126,7 @@ class ContactController extends Controller
     private function createDeleteForm(Contact $contact)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('contact_delete', array('id' => $contact->getId())))
+            ->setAction($this->generateUrl('contact_delete', ['id' => $contact->getId()]))
             ->setMethod('DELETE')
             ->getForm()
         ;

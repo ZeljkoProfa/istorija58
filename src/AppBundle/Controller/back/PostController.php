@@ -3,30 +3,33 @@
 namespace AppBundle\Controller\back;
 
 use AppBundle\Entity\Post;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Services\SecurityService;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use AppBundle\Form\PostType;
-use AppBundle\Form\PostEditType;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * Post controller.
  *
+ * Class PostController
+ * @package AppBundle\Controller\back
  */
 class PostController extends Controller {
 
     /**
      * Lists all post entities.
      *
+     * @param Request $request
+     * @param int $currentPage
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction($currentPage = 1) {
+    public function indexAction(Request $request, $currentPage = 1) {
         $limit = 10;
 
-        if (isset($_GET['currentPage'])) {
-            $currentPage = htmlspecialchars($_GET['currentPage']);
+        if (empty($request->request->get('currentPage'))) {
+            $currentPage = $request->request->get('currentPage');
         }
 
         $posts = $this->getDoctrine()
@@ -36,81 +39,88 @@ class PostController extends Controller {
         $maxPages = ceil($posts->count() / $limit);
         $thisPage = $currentPage;
 
-        return $this->render('back/post/index.html.twig', array(
+        return $this->render('back/post/index.html.twig', [
                     'posts' => $posts,
                     'maxPages' => $maxPages,
                     'thisPage' => $thisPage
-        ));
+        ]);
     }
 
     /**
      * Creates a new post entity.
      *
+     * @param Request $request
+     * @param LoggerInterface $logger
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function newAction(Request $request) {
+    public function newAction(Request $request, LoggerInterface $logger) {
         $post = new Post();
         $form = $this->createForm('AppBundle\Form\PostType', $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Setting time created.
-            $post->setCreated(new \DateTime('now'));
-            // Setting creator's id.
-            $post->setAdminId($this->getUser());
-            // $file stores the uploaded PDF file
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            /** @var UploadedFile $file */
             $file = $post->getBody();
-
-            // Generate a unique name for the file before saving it
             $fileName = md5(uniqid()) . '.' . $file->guessExtension();
 
-            // Move the file to the directory where brochures are stored
             $file->move(
                     $this->getParameter('post_directory'), $fileName
             );
-            // Update the 'brochure' property to store the PDF file name
-            // instead of its contents
+
             $post->setBody($fileName);
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($post);
-            $em->flush();
+            try {
+                $post->setCreated(new \DateTime('now'));
+                $post->setAdminId($this->getUser());
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($post);
+                $em->flush();
+            }catch (\Exception $e){
+                $logger->error('Error while creating post. Error '.$e->getMessage());
+            }
 
-            return $this->redirectToRoute('post_show', array('id' => $post->getId()));
+            return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
         }
 
-        return $this->render('back/post/new.html.twig', array(
+        return $this->render('back/post/new.html.twig', [
                     'post' => $post,
                     'form' => $form->createView(),
-        ));
+        ]);
     }
 
     /**
      * Finds and displays a post entity.
      *
+     * @param Post $post
+     * @param SecurityService $securityService
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction(Post $post) {
+    public function showAction(Post $post, SecurityService $securityService) {
         
         $id = $post->getId();
-        $user_ip = $this->getDoctrine()->getRepository('AppBundle:Contact')->takeIp($id, $origin = 'post');
+        $user_ip = $securityService->takeIp($id, $origin = 'post');
         
         $deleteForm = $this->createDeleteForm($post);
 
-        return $this->render('back/post/show.html.twig', array(
+        return $this->render('back/post/show.html.twig', [
                     'user_ip' => $user_ip,
                     'post' => $post,
                     'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
      * Displays a form to edit an existing post entity.
      *
+     * @param Request $request
+     * @param Post $post
+     * @param SecurityService $securityService
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, Post $post) {
+    public function editAction(Request $request, Post $post, SecurityService $securityService) {
         
         $id = $post->getId();
-        $user_ip = $this->getDoctrine()->getRepository('AppBundle:Contact')->takeIp($id, $origin = 'post');
+        $user_ip = $securityService->takeIp($id, $origin = 'post');
         
         // Set value of $post->getBody to be a instance of Symfony\Component\HttpFoundation\File\File
         $fileName = $post->getBody();
@@ -126,31 +136,29 @@ class PostController extends Controller {
             $post->setBody($fileName);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('post_index', array('id' => $post->getId()));
+            return $this->redirectToRoute('post_index', ['id' => $post->getId()]);
         }
 
-        return $this->render('back/post/edit.html.twig', array(
+        return $this->render('back/post/edit.html.twig', [
                     'user_ip' => $user_ip,
                     'post' => $post,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
      * Deletes a post entity.
      *
+     * @param Request $request
+     * @param Post $post
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Post $post) {
         $form = $this->createDeleteForm($post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            // Remove file from web/uploads/posts folder.
-            /* $filename = $post->getTitle();
-              $filesystem = new Filesystem();
-              $filesystem->remove(array('../../../../web/uploads/posts/' , $filename)); */
             if (isset($post)) {
                 unlink('../public_html/uploads/posts/' . $post->getBody());
             }
@@ -171,7 +179,7 @@ class PostController extends Controller {
      */
     private function createDeleteForm(Post $post) {
         return $this->createFormBuilder()
-                        ->setAction($this->generateUrl('post_delete', array('id' => $post->getId())))
+                        ->setAction($this->generateUrl('post_delete', ['id' => $post->getId()]))
                         ->setMethod('DELETE')
                         ->getForm()
         ;

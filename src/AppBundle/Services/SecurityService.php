@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zeljko
- * Date: 24.3.19.
- * Time: 15.36
- */
 
 namespace AppBundle\Services;
-
 
 use AppBundle\Entity\Comment;
 use Doctrine\ORM\EntityManager;
@@ -157,7 +150,7 @@ class SecurityService
         return empty($row) ? false : true;
     }
 
-    public function takeIp($id, $origin = 'contact')
+    public function takeIp($id, $origin)
     {
         if ($origin === 'contact') {
             $sql = /** @lang mysql */
@@ -225,5 +218,4 @@ class SecurityService
             $this->logger->error('Error while writing IP to database. Error '.$e->getMessage());
         }
     }
-
 }
