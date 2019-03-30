@@ -3,13 +3,11 @@
 /build/
 /phpunit.xml
 /var/cache/*
-!var/cache/.gitkeep
 /var/logs/*
-!var/logs/.gitkeep
 /var/sessions/*
-!var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
 .idea/*
+/.idea/*
 /public_html/uploads/*
