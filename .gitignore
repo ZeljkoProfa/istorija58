@@ -2,9 +2,12 @@
 /app/config/parameters.yml
 /build/
 /phpunit.xml
-/var/cache/*
-/var/logs/*
-/var/sessions/*
+/var/cache/
+var/cache/
+/var/logs/
+var/logs/
+/var/sessions/
+var/sessions/
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
