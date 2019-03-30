@@ -1,3 +1,19 @@
+.success-upload{
+    margin: 10px auto;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    background-color: lightblue;
+}
+
+.danger-upload{
+    margin: 10px auto;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    background-color: plum;
+}
+
 .ppt a{
     text-decoration: none;
 

@@ -14,4 +14,3 @@ var/sessions/
 .idea/
 /.idea/
 /public_html/uploads/*
-.idea/workspace.xml

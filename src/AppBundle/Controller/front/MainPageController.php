@@ -31,35 +31,40 @@ class MainPageController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-                if(
-                    $securityService->commentCheck($comment) &&
-                    $securityService->checkIp($request)
-                ) {
-                    try {
-                        $comment->setCreated(new \DateTime('now'));
-                        $em = $this->getDoctrine()->getManager();
-                        $em->persist($comment);
-                        $em->flush();
-                        $securityService->writeIps($comment->getId(), 'comment');
-                    }catch (\Exception $e){
-                        $logger->error('Error while writing comment to database. Error '.$e->getMessage());
-                    }
+            if(
+                $securityService->commentCheck($comment) &&
+                $securityService->checkIp($request)
+            ) {
+                try {
+                    $comment->setCreated(new \DateTime('now'));
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($comment);
+                    $em->flush();
+                    $securityService->writeIps($comment->getId(), 'comment');
+                    $this->addFlash('success','Poslato!');
+                }catch (\Exception $e){
+                    $logger->error('Error while writing comment to database. Error '.$e->getMessage());
                 }
+            }else{
+                $this->addFlash('error','Onemogućeno vam je dodavanje materijala, komentara i ostalog na ovaj sajt!');
+            }
 
-                unset($form);
-                unset($comment);
+            unset($form);
+            unset($comment);
 
-                $comment = new Comment();
-                $form = $this->createForm('AppBundle\Form\CommentType', $comment);
-                return $this->render('front/front-main.html.twig', [
-                            'thought' => $thoughtOfTheDay,
-                            'posts' => $posts,
-                            'comments' => $comments,
-                            'maxPages' => $maxPages,
-                            'thisPage' => $thisPage,
-                            'form_comment' => $form->createView()
-                ]);
+            $comment = new Comment();
+            $form = $this->createForm('AppBundle\Form\CommentType', $comment);
+
+            return $this->render('front/front-main.html.twig', [
+                        'thought' => $thoughtOfTheDay,
+                        'posts' => $posts,
+                        'comments' => $comments,
+                        'maxPages' => $maxPages,
+                        'thisPage' => $thisPage,
+                        'form_comment' => $form->createView()
+            ]);
         }
+
         return $this->render('front/front-main.html.twig', [
                     'thought' => $thoughtOfTheDay,
                     'posts' => $posts,

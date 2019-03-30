@@ -41,21 +41,21 @@ class ContactController extends Controller {
                     $em->persist($contact);
                     $em->flush();
                     $securityService->writeIps($contact->getId(), 'comment');
+                    $this->addFlash('success', 'Poslato!');
                 }catch (\Exception $e){
                     $logger->error('Error while writing comment to database. Error '.$e->getMessage());
                 }
+            }else{
+                $this->addFlash(
+                    'error',
+                    'Onemogućeno vam je postavljanje materijala, komentara i ostalog na ovaj sajt!'
+                );
             }
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($contact);
-            $em->flush();
             $contactId = $contact->getId();
-            //var_dump($contact_id, $ip);exit;
             $securityService->writeIps($contactId, 'contact');
 
-            return $this->redirectToRoute('main_front_page', [
-                        'kontaktmsg' => 'Poslato!'
-            ]);
+            return $this->redirectToRoute('main_front_page');
         }
 
         return $this->render('front/contact/new.html.twig', [

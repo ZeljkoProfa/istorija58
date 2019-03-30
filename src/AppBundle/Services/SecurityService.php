@@ -85,6 +85,7 @@ class SecurityService
         $this->proxy = $request->server->get('HTTP_X_FORWARDED_FOR');
 
         if($this->checkRemoteIp($this->remoteIp)){
+            //dump($this->remoteIp);exit;
             return false;
         }
 
@@ -99,7 +100,8 @@ class SecurityService
         return true;
     }
 
-    public function checkRemoteIp($remoteIp) {
+    public function checkRemoteIp($remoteIp)
+    {
         try {
             $sql = /** @lang mysql */
                 'SELECT ip, banned FROM bannedd_ip WHERE ip = :ip AND banned = 1';
@@ -112,7 +114,7 @@ class SecurityService
         }catch (\Exception $e){
             $this->logger->error('Error while checking remote IP. Error '.$e->getMessage());
         }
-
+// dump($row);exit;
         return empty($row) ? false : true;
     }
 

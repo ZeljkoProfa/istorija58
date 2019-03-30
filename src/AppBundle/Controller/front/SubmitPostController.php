@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * SubmitPost controller.
- *
  */
 class SubmitPostController extends Controller {
     /**
@@ -41,7 +40,6 @@ class SubmitPostController extends Controller {
             );
 
             $post->setBody($fileName);
-            $message = 'Because of yours previous posts, comments and others, it is forbidden to you to post anything on this site!';
 
             if($securityService->checkIp($request)) {
 
@@ -54,18 +52,25 @@ class SubmitPostController extends Controller {
                     $em->flush();
 
                     $securityService->writeIps($post->getId(), 'post');
-                    $message = 'Uspesno ste dodali članak. Biće vidljiv na sajtu kada ga administrator odobri.';
+                    $this->addFlash(
+                        'success',
+                        'Uspešno ste dodali članak. 
+                        Biće vidljiv na sajtu kada ga administrator odobri.'
+                    );
                 }catch (\Exception $e){
                     $logger->error('Error while writing comment to database. Error '.$e->getMessage());
                 }
+            }else{
+                $this->addFlash(
+                    'error',
+                    'Onemogućeno vam je postavljanje materijala, komentara i ostalog na ovaj sajt!'
+                );
             }
 
             unset($post);
             unset($form);
 
-            return $this->redirectToRoute('front_submit_post', [
-                'submit_message' => $message
-            ]);
+            return $this->redirectToRoute('front_submit_post');
         }
 
         return $this->render('front/pages/new.html.twig', [

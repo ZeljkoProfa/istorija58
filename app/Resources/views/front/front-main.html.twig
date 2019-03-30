@@ -52,38 +52,18 @@
         </div>
         <!-- Navigation -->
         {{ render(controller('AppBundle:front/Nav:listCategory')) }}
+{#{{ dump(app.session.flashbag.all) }}#}
+        {% for messages in app.flashes('success') %}
+            <div class="success-upload">
+                {{ messages }}
+            </div>
+        {% endfor %}
 
-        {% if app.request.get('submit_message') %}
-            <div class="upload-message">
-                <p>
-                    {{ app.request.get('submit_message') }}
-                </p>
+        {% for messages in app.flashes('error') %}
+            <div class="danger-upload">
+                {{ messages }}
             </div>
-        {% endif %}
-        
-        {% if  app.request.get('kontaktmsg') is defined %}
-            <div class="upload-message">
-                <p>
-                    {{ app.request.get('kontaktmsg') }}
-                </p>
-            </div>
-        {% endif %}
-        <!-- Forbiden ip message -->
-        {% if app.request.get('checked') is defined %}
-            <div class="upload-message" style="background-color: red">
-                <p>
-                    {{ app.request.get('checked') }}
-                </p>
-            </div>
-        {% endif %}
-        <!-- Forbiden ip message -->
-        {% if message is defined %}
-            <div class="upload-message" style="background-color: red">
-                <p>
-                    {{ message }}
-                </p>
-            </div>
-        {% endif %}
+        {% endfor %}
 
         <!-- Page Content -->
         <div class="container">
