@@ -67,9 +67,11 @@
         {% endblock header %}
         <div class="container">
             <div class="row">
-                <!-- Content -->
-                {% block body %} {% endblock %}
-                <!-- End content -->
+                <div class="col-md-8">
+                    <!-- Content -->
+                        {% block body %} {% endblock %}
+                    <!-- End content -->
+                </div>
                 <div class="col-md-4" id="side">
                     {% block right_side %}
                         {% include 'front/front_side.html.twig' %}

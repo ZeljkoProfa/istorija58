@@ -1,110 +1,108 @@
 {% extends 'front/base.html.twig' %}
 
 {% block body %}
-    <div class="col-md-8" id="search-content">
-        <h5 class="title-main">Učite istoriju? Dobro došli! </h5>
-        <span class="lead">
-                            Rešite kviz ili potrazite materijal u odgovarajućem meniju.
-                        </span>
-        <hr>
-        <ul class="bxslider">
-            <li><img src="{{ asset('skins/history/bxslider/images/greek_teathar_720_261.jpg') }}" alt=""/></li>
-            <li><img src="{{ asset('skins/history/bxslider/images/misar_719_261.jpg') }}" alt=""/></li>
-            <li><img src="{{ asset('skins/history/bxslider/images/last_super.jpg') }}" alt=""/></li>
-        </ul>
-        <hr>
-        <div class="tought-button">
-            <span class="tought-button-click">Pročitaj misao dana!</span>
-        </div>
-        {% if thought is not empty %}
-            <div class="tought-of-day">
-                <span>{{ thought.text }}<i class="float-right">{{ thought.author }}</i></span>
-            </div>
-        {% endif %}
-        <hr>
-        <p>Poslednje dodato:</p>
-        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-            <thead>
-            <tr>
-                <th>Naslov</th>
-                <th>Dodao</th>
-                <th>Vreme dodavanja</th>
-                <th>Akcije</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for post in posts %}
-                <tr>
-                    <td>{{ post.title }}</td>
-                    <td>
-                        {% if post.author is defined %}
-                            {{ post.author }}
-                        {% elseif post.adminId is defined %}
-                            {{ post.adminId }}
-                        {% else %}
-                            {{ nepoznat }}
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% if post.created %}
-                            {{ post.created|date('Y-m-d H:i:s') }}
-                        {% endif %}
-                    </td>
-                    <td>
-                        <ul style="list-style-type: none">
-                            <li>
-                                <a href="{{ asset('uploads/posts/') }}{{post.body}}" target="_blank">Prikazi</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        <!-- Comments -->
-        <div class="card my-4" >
-            <h5 class="card-header" >Ostavi komentar:</h5>
-            <div class="card-body" >
-                {{ form_start(form_comment) }}
-                <div class="form-group">
-                    {{ form_label(form_comment.author) }}
-                    {{ form_errors(form_comment.author) }}
-                    {{ form_widget(form_comment.author) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form_comment.body) }}
-                    {{ form_errors(form_comment.body) }}
-                    {{ form_widget(form_comment.body) }}
-                </div>
-                <div class="form-group">
-                    {% do form_comment.status.setRendered() %}
-                </div>
-                <i class="fa fa-plus move-right" style="color:white; right:-10px;"></i><input type="submit" value="Create" style="position:relative; left: -10px!important;" class="btn btn-primary btn-create btn-move-fafa"/>
-                {{ form_end(form_comment) }}
-            </div>
-        </div>
-        <h4 style="display:block; width:100%;">Komentari:</h4>
-        <div class="width-90">
-            {% include 'front/main/comments_main.html.twig' with {'commments':comments} %}
-        </div>
-        {% if maxPages > 1 %}
-            <ul class="pagination pagination-sm">
-                {# `«` arrow  #}
-                {# `currentPage var is the one defined in routing yaml/pageroute/defaults.  #}
-                <li {% if thisPage == 1  %} class="disabled" {% endif %} >
-                    <a href="{{ path('main_front_page', { currentPage: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
-                </li>
-                {# Render each page number #}
-                {% for i in 1..maxPages %}{# Creates a sequence based on the operand before and after the operator!!! #}
-                    <li {% if thisPage == i  %} class="active"  {% endif %} >
-                        <a href="{{ path('main_front_page', { currentPage: i}) }}" >{{ i }}</a>
-                    </li>
-                {% endfor %}
-                {# `»` arrow #}
-                <li {% if thisPage == maxPages %} class="disabled" {% endif %} >
-                    <a href="{{ path('main_front_page', { currentPage: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
-                </li>
-            </ul>
-        {% endif %}
+    <h5 class="title-main">Učite istoriju? Dobro došli! </h5>
+    <span class="lead">
+                        Rešite kviz ili potrazite materijal u odgovarajućem meniju.
+                    </span>
+    <hr>
+    <ul class="bxslider">
+        <li><img src="{{ asset('skins/history/bxslider/images/greek_teathar_720_261.jpg') }}" alt=""/></li>
+        <li><img src="{{ asset('skins/history/bxslider/images/misar_719_261.jpg') }}" alt=""/></li>
+        <li><img src="{{ asset('skins/history/bxslider/images/last_super.jpg') }}" alt=""/></li>
+    </ul>
+    <hr>
+    <div class="tought-button">
+        <span class="tought-button-click">Pročitaj misao dana!</span>
     </div>
+    {% if thought is not empty %}
+        <div class="tought-of-day">
+            <span>{{ thought.text }}<i class="float-right">{{ thought.author }}</i></span>
+        </div>
+    {% endif %}
+    <hr>
+    <p>Poslednje dodato:</p>
+    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+        <tr>
+            <th>Naslov</th>
+            <th>Dodao</th>
+            <th>Vreme dodavanja</th>
+            <th>Akcije</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.title }}</td>
+                <td>
+                    {% if post.author is defined %}
+                        {{ post.author }}
+                    {% elseif post.adminId is defined %}
+                        {{ post.adminId }}
+                    {% else %}
+                        {{ nepoznat }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if post.created %}
+                        {{ post.created|date('Y-m-d H:i:s') }}
+                    {% endif %}
+                </td>
+                <td>
+                    <ul style="list-style-type: none">
+                        <li>
+                            <a href="{{ asset('uploads/posts/') }}{{post.body}}" target="_blank">Prikazi</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <!-- Comments -->
+    <div class="card my-4" >
+        <h5 class="card-header" >Ostavi komentar:</h5>
+        <div class="card-body" >
+            {{ form_start(form_comment) }}
+            <div class="form-group">
+                {{ form_label(form_comment.author) }}
+                {{ form_errors(form_comment.author) }}
+                {{ form_widget(form_comment.author) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form_comment.body) }}
+                {{ form_errors(form_comment.body) }}
+                {{ form_widget(form_comment.body) }}
+            </div>
+            <div class="form-group">
+                {% do form_comment.status.setRendered() %}
+            </div>
+            <i class="fa fa-plus move-right" style="color:white; right:-10px;"></i><input type="submit" value="Create" style="position:relative; left: -10px!important;" class="btn btn-primary btn-create btn-move-fafa"/>
+            {{ form_end(form_comment) }}
+        </div>
+    </div>
+    <h4 style="display:block; width:100%;">Komentari:</h4>
+    <div class="width-90">
+        {% include 'front/main/comments_main.html.twig' with {'commments':comments} %}
+    </div>
+    {% if maxPages > 1 %}
+        <ul class="pagination pagination-sm">
+            {# `«` arrow  #}
+            {# `currentPage var is the one defined in routing yaml/pageroute/defaults.  #}
+            <li {% if thisPage == 1  %} class="disabled" {% endif %} >
+                <a href="{{ path('main_front_page', { currentPage: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+            </li>
+            {# Render each page number #}
+            {% for i in 1..maxPages %}{# Creates a sequence based on the operand before and after the operator!!! #}
+                <li {% if thisPage == i  %} class="active"  {% endif %} >
+                    <a href="{{ path('main_front_page', { currentPage: i}) }}" >{{ i }}</a>
+                </li>
+            {% endfor %}
+            {# `»` arrow #}
+            <li {% if thisPage == maxPages %} class="disabled" {% endif %} >
+                <a href="{{ path('main_front_page', { currentPage: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+            </li>
+        </ul>
+    {% endif %}
 {% endblock %}

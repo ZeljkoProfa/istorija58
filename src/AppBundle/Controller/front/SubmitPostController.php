@@ -70,7 +70,7 @@ class SubmitPostController extends Controller
             return $this->redirectToRoute('front_submit_post');
         }
 
-        return $this->render('front/pages/contact.html.twig', [
+        return $this->render('front/pages/add_post.html.twig', [
                     'post' => $post,
                     'form' => $form->createView(),
         ]);
