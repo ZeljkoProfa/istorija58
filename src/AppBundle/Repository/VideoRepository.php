@@ -32,7 +32,7 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
      * @param integer $currentPage The current page (passed from controller)
      * @return \Doctrine\ORM\Tools\Pagination\Paginator
      */
-    public function searchVids($string, $currentPage = 1, $limit) {
+    public function searchVids($string, $currentPage = 1) {
         // Getting records from video. Returns array.
         $query = $this->createQueryBuilder('u')
                 ->where('u.status = 1', 'u.title LIKE :string')

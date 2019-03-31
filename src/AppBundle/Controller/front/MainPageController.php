@@ -9,15 +9,19 @@ use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class MainPageController extends Controller {
-
+class MainPageController extends Controller
+{
     public function indexAction(
         Request $request,
         SecurityService $securityService,
         ThoughtService $thoughtService,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        $currentPage = 1
     ){
-        $currentPage = $request->get('currentPage');
+        if(!empty($request->query->get('currentPage'))){
+            $currentPage = $request->query->get('currentPage');
+        }
+
         $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->getLastAdded();
         $comments = $this->getDoctrine()->getRepository('AppBundle:Comment')->getComments($currentPage);
 
@@ -55,7 +59,7 @@ class MainPageController extends Controller {
             $comment = new Comment();
             $form = $this->createForm('AppBundle\Form\CommentType', $comment);
 
-            return $this->render('front/front-main.html.twig', [
+            return $this->render('front/pages/main_page.html.twig', [
                         'thought' => $thoughtOfTheDay,
                         'posts' => $posts,
                         'comments' => $comments,
@@ -65,7 +69,7 @@ class MainPageController extends Controller {
             ]);
         }
 
-        return $this->render('front/front-main.html.twig', [
+        return $this->render('front/pages/main_page.html.twig', [
                     'thought' => $thoughtOfTheDay,
                     'posts' => $posts,
                     'comments' => $comments,

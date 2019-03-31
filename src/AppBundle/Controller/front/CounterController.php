@@ -2,32 +2,31 @@
 
 namespace AppBundle\Controller\front;
 
-use AppBundle\Entity\Contact;
+use AppBundle\Entity\Counter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Counter controller.
- *
- */
-class CounterController extends Controller {
+class CounterController extends Controller
+{
 
-    public function visitorAction(Request $request) {
-        // Get num of visits - counter
+    public function visitorAction(Request $request)
+    {
         $visit = $this->getDoctrine()->getRepository('AppBundle:Counter')->getLastVisit();
         $visitNum = $visit[0];
-        $firstObjectInOneObjectArray = $visit[0];
-        $id = $firstObjectInOneObjectArray->getId();
-        //var_dump($counter);exit;
-        $counter = $firstObjectInOneObjectArray->getCounter();
-        // Update counter
-        if (!isset($_COOKIE['firsttime'])) {
+
+        /** @var Counter $counter */
+        $counter = $visit[0];
+        $id = $counter->getId();
+        $counter = $counter->getCounter();
+
+        if (empty($request->cookies->get('firsttime'))) {
             setcookie("firsttime", "no", time() + 60);
             $this->getDoctrine()->getRepository('AppBundle:Counter')->incrementVisit($id, $counter);
         }
-        return $this->render('front/pages/visitor.html.twig', array(
-                    'visit' => $visitNum
-        ));
+
+        return $this->render('front/pages/visitor.html.twig', [
+            'visit' => $visitNum
+        ]);
     }
 
 }

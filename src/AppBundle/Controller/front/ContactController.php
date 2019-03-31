@@ -8,11 +8,8 @@ use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Contact front controller.
- */
-class ContactController extends Controller {
-
+class ContactController extends Controller
+{
     /**
      * Creates a new contact entity.
      *
@@ -58,7 +55,7 @@ class ContactController extends Controller {
             return $this->redirectToRoute('main_front_page');
         }
 
-        return $this->render('front/contact/new.html.twig', [
+        return $this->render('front/pages/contact.html.twig', [
                     'contact' => $contact,
                     'form' => $form->createView(),
         ]);

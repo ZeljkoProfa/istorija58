@@ -1,4 +1,4 @@
-<!--included in front-main.html.twig-->
+<!--included in main_page.html.twig-->
 
 {% for comment in comments %}
     {% if comment.status == '1' %}
@@ -6,7 +6,7 @@
         <div  class="comnnets-list">
             <div class="showed-comment">
                 <div>
-                    <h5 class="mt-0" style="display:inline;"><i>{{ comment.author }}</i></h5> 
+                    <h5 class="mt-0" style="display:inline;"><i>{{ comment.author }}</i></h5>
                     <i style="float:right;">{{ comment.created|date('Y-m-d') }}</i><span  style="width:20px; float:right;">,</span>
                     <i style="float:right;">{{ comment.created|date('H:i:s') }}</i>
                 </div>
@@ -40,10 +40,10 @@
             </div>
             <div class="answers" style="display:none;">
                 {% if comment.children|length %}
-                    {% include 'front/main/comments-main.html.twig' with {'comments':comment.children} %}
+                    {% include 'front/main/comments_main.html.twig' with {'comments':comment.children} %}
                 {% endif %}
             </div>
         </div>
     {% endif %}
-{% endfor %}{# include 'front/main/comments-main.html.twig' with {'comments':children} #}
+{% endfor %}{# include 'front/main/comments_main.html.twig' with {'comments':children} #}
 

@@ -9,33 +9,35 @@ use Symfony\Component\HttpFoundation\Request;
 class QuizFirstController extends Controller
 {
     
-    public function playQuizAction(Request $request, $id){
-        if(isset($_GET['id'])){
-            //var_dump($_GET['id']);exit;
-            $id = $_GET['id'];
+    public function playQuizAction(Request $request, $id)
+    {
+
+        if(!empty($request->query->get('id'))){
+            $id = $request->query->get('id');
         }
-        $quizzes_REPO = $this->getDoctrine()->getRepository('AppBundle:Quiz');
-        $quiz = $quizzes_REPO->findOneById($id);
+        $quizzesRepo = $this->getDoctrine()->getRepository('AppBundle:Quiz');
+        $quiz = $quizzesRepo->findOneBy(['id' => $id]);
         
-        $questions_REP = $this->getDoctrine()->getRepository('AppBundle:QuizQuestions');
-        $questions = $questions_REP->findByQuizId($id);
-        //var_dump($questions);exit;
-        return $this->render('front/pages/quiz-first.html.twig', array(
+        $questionsRepo = $this->getDoctrine()->getRepository('AppBundle:QuizQuestions');
+        $questions = $questionsRepo->findBy(['quizId' => $quiz->getId()]);
+
+        return $this->render('front/pages/quiz_first.html.twig', [
             'title' => 'Kviz',
             'quiz'  => $quiz,
             'questions'  =>$questions
                 
-        ));
+        ]);
     }
     
-    public function quizListAction(){
-        $quizzess = $this->getDoctrine()->getRepository('AppBundle:Quiz');
-        $quizs = $quizzess->getByStatusQuizId();
-        
+    public function quizListAction()
+    {
+        $quizzes = $this->getDoctrine()->getRepository('AppBundle:Quiz');
+        $quizzes = $quizzes->getByStatusQuizId();
+
         //var_dump($questions);exit;
         return $this->render('front/pages/quiz_list.html.twig', array(
             'title' => 'Izaberi kviz',
-            'quizzes' => $quizs
+            'quizzes' => $quizzes
         ));
     }
 }

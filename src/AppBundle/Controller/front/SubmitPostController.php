@@ -9,10 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * SubmitPost controller.
- */
-class SubmitPostController extends Controller {
+class SubmitPostController extends Controller
+{
     /**
      * Creates a new post entity.
      *
@@ -46,7 +44,6 @@ class SubmitPostController extends Controller {
                 try {
                     $post->setCreated(new \DateTime('now'));
                     $post->setAdminId($this->getUser());
-                    // dump($file, $post);exit;
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($post);
                     $em->flush();
@@ -73,7 +70,7 @@ class SubmitPostController extends Controller {
             return $this->redirectToRoute('front_submit_post');
         }
 
-        return $this->render('front/pages/new.html.twig', [
+        return $this->render('front/pages/contact.html.twig', [
                     'post' => $post,
                     'form' => $form->createView(),
         ]);

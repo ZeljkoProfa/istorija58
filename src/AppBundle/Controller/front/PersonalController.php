@@ -8,6 +8,6 @@ Class PersonalController extends Controller
 {
     public function thingsAction()
     {
-        return $this->render('front/pages/personal-things.html.twig');
+        return $this->render('front/pages/about_us.html.twig');
     }
 }
