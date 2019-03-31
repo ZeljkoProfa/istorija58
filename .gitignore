@@ -10,6 +10,7 @@ var/logs/
 var/sessions/
 !var/SymfonyRequirements.php
 /vendor/
+vendor/
 /web/bundles/
 .idea/
 /.idea/
