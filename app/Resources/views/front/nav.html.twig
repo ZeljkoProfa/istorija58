@@ -1,32 +1,37 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="nav-bre">
     <div class="container">
-        <a class="navbar-brand nav-item " style="" href="{{ path('main_front_page') }}" style="text-indent: 10px;">
-        <img class="brand-style" src="{{asset('favicon.jpg')}}" style="width:30px; height:30px; border-radius: 5px">
-        <strong style="text-indent: 10px;" class="brand-style">
-		
-            Istorija5-8
-        </strong>
+        <a class="navbar-brand nav-item txt-indent-10" href="{{ path('main_front_page') }}" >
+            <img class="brand-style logo-css" src="{{asset('favicon.jpg')}}" alt="logo">
+            <strong class="txt-indent-10 brand-style">
+                Istorija5-8
+            </strong>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto main-nav">
-                <li class="nav-item color-orange" style="background-color: #f0ad4e;">
+                <li class="nav-item color-orange">
                     <a class="nav-link " href="{{ path('quiz_list') }}">Kviz!</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('front_submit_post') }}"><i class="fa fa-upload" style="margin-right: 3px;" aria-hidden="true"></i>Dodaj</a>
+                    <a class="nav-link" href="{{ path('front_submit_post') }}"><i class="fa fa-upload margin-right-3" aria-hidden="true"></i>Dodaj</a>
                 </li>
                 <li class="nav-item">
                     <div>
                         <a class="nav-link" href="#">Za nastavnike</a>
                     </div>
                     <div>
-                        <ul class="menu-list">
+                        <ul class="menu-list font-normal">
                             {% for teachersCat in teachersCats %}
-                                <li><strong><a href="{{  path('content_pages', { 'id': teachersCat.id, 'title': teachersCat.title })  }}" style="font-weight: normal;">{{ teachersCat.title }}</a></strong></li>
-                                {% endfor %}
+                                <li>
+                                    <strong>
+                                        <a href="{{ path('content_pages', { 'id': teachersCat.id, 'title': teachersCat.title }) }}">
+                                            {{ teachersCat.title }}
+                                        </a>
+                                    </strong>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </li>
@@ -35,9 +40,15 @@
                         <a class="nav-link" href="#">Sadržaji</a>
                     </div>
                     <div>
-                        <ul class="menu-list">
+                        <ul class="menu-list font-normal">
                             {% for studsCat in studsCats %}
-                                <li><strong><a href="{{  path('content_pages', { 'id': studsCat.id, 'title': studsCat.title })  }}" style="font-weight: normal;">{{ studsCat.title }}</a></strong></li>
+                                <li>
+                                    <strong>
+                                        <a href="{{  path('content_pages', { 'id': studsCat.id, 'title': studsCat.title }) }}">
+                                            {{ studsCat.title }}
+                                        </a>
+                                    </strong>
+                                </li>
                                 {% endfor %}
                             <li><a href="{{ path('video_front') }}">video</a></li>
                         </ul>
@@ -49,9 +60,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('blog_author') }}">Neka reč</a>
                 </li>
-
             </ul>
         </div>
     </div>
-               
 </nav>

@@ -2,8 +2,8 @@
 {% block body %}
     <div>
         <form action="{{ path('video_search') }}" method="GET">
-            <input type="text" name="q" placeholder="pretraga videa" id="video-search" class="form-control" style="width:80%; vertical-align: middle; display:inline-block; float:left; margin: 10px auto;">
-            <input type="submit" value="GO!" style="display:inline-block; width:20%; margin-top: 10px; vertical-align: middle;" class="btn btn-primary">
+            <input type="text" name="q" placeholder="pretraga videa" id="video-search" class="form-control video-search-field">
+            <input type="submit" value="GO!"  class="btn btn-primary video-search-button">
         </form>
     </div>
         
@@ -12,7 +12,7 @@
         <thead>
             <tr>
                 <th>Naslov</th>
-                <th style="text-indent: 15%;">Akcije</th>
+                <th class="txt-indent-10">Akcije</th>
             </tr>
         </thead>
         <tbody>
@@ -21,12 +21,13 @@
                 <td>{{ video.title }}</td>
                 
                 <td>
-                    <ul style="list-style: none;">
+                    <ul class="td-list">
                         <li>
-                            <a href="{{ path('video_play', { 'id': video.id }) }}" class="btn btn-primary" ><i class="fa fa-youtube-play" style="margin-right: 4px;"></i>play</a>
+                            <a href="{{ path('video_play', { 'id': video.id }) }}" class="btn btn-primary" >
+                                <i class="fa fa-youtube-play margin-right-3" ></i>
+                                play
+                            </a>
                         </li>
-                        
-                        
                     </ul>
                 </td>
             </tr>
@@ -34,27 +35,25 @@
         </tbody>
     </table>
 
-    
-
     {% if maxPages > 1 %}
         <ul class="pagination pagination-sm">
             {# `«` arrow  #}
             {# `currentPage var is the one defined in routing yaml/pageroute/defaults.  #}
             <li {% if thisPage == 1  %} class="disabled" {% endif %} >
-                <a href="{{ path('video', { currentPage: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+                <a href="{{ path('video_play', { currentPage: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
             </li>
 
             {# Render each page number #}
             {% for i in 1..maxPages %}{# Creates a sequence based on the operand before and after the operator!!! #}
                 <li {% if thisPage == i  %} class="active"  {% endif %} >
 
-                    <a href="{{ path('video', { currentPage: i}) }}" >{{ i }}</a>
+                    <a href="{{ path('video_play', { currentPage: i}) }}" >{{ i }}</a>
                 </li>
             {% endfor %}
 
             {# `»` arrow #}
             <li {% if thisPage == maxPages %} class="disabled" {% endif %} >
-                <a href="{{ path('video', { currentPage: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+                <a href="{{ path('video_play', { currentPage: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
             </li>
         </ul>
     {% endif %}

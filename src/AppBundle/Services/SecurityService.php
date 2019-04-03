@@ -75,6 +75,14 @@ class SecurityService
             return false;
         }
 
+        if(strpos($text, 'bit.ly') !== false){
+            return false;
+        }
+
+        if(strpos($text, '.ly') !== false){
+            return false;
+        }
+
         return true;
     }
 

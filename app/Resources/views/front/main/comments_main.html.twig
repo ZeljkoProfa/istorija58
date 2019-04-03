@@ -6,39 +6,40 @@
         <div  class="comnnets-list">
             <div class="showed-comment">
                 <div>
-                    <h5 class="mt-0" style="display:inline;"><i>{{ comment.author }}</i></h5>
-                    <i style="float:right;">{{ comment.created|date('Y-m-d') }}</i><span  style="width:20px; float:right;">,</span>
-                    <i style="float:right;">{{ comment.created|date('H:i:s') }}</i>
+                    <h5 class="mt-0 display-inline"><i>{{ comment.author }}</i></h5>
+                    <i class="float-right">{{ comment.created|date('Y-m-d') }}</i><span>,</span>
+                    <i class="float-right">{{ comment.created|date('H:i:s') }}</i>
                 </div>
                         {{ comment.body }}
                 <input class="hidden-id-comment" type="hidden" value="{{ comment.id }}">
                 <button class="button-reply">Odgovori</button>
                 {% if comment.children|length %}
-                    <button class="show-answers " style="margin: 10px; font-size: 20px;"> <i class="fa fa-angle-down"></i> </button>
+                    <button class="show-answers button-answers"> <i class="fa fa-angle-down"></i> </button>
 					{{ 'Odgovora  ' }}{{ comment.children|length }}
 				{% endif %}
                 <!-- Replies -->
 
                 <!-- Reply form -->
-                <div class="card my-4 replyForm" style="width: 100%;display:none" >
+                <div class="card my-4 reply-form">
                     <h5 class="card-header" >Ostavi komentar:</h5>
                     <div class="card-body" >
                         <form action="{{ path('comments-front') }}" method="POST">
                             <div class="form-group" >
                                 <input type="hidden" name="parentId" class="parentId" value="">
-                                <label>Ime</label>
-                                <input type="text" name="author" repuired class="form-control"/>
+
+                                <label for="author">Ime</label>
+                                <input type="text" name="author" id="author" required class="form-control"/>
                             </div>
                             <div class="form-group" >
-                                <label>Komentar</label>
-                                <textarea type="text" name="body" repuired class="form-control"/></textarea>
+                                <label for="body">Komentar</label>
+                                <textarea type="text" name="body" id="body" required class="form-control"></textarea>
                             </div>
-                            <i class="fa fa-plus move-right" style="color:white; right:-10px;"></i><input type="submit" value="Potvrdi" style="position:relative; left: -10px!important;" class="btn btn-primary btn-create btn-move-fafa"/>
+                            <input type="submit" value="Potvrdi" class="btn btn-primary btn-create btn-move-fafa"/>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="answers" style="display:none;">
+            <div class="answers display-none">
                 {% if comment.children|length %}
                     {% include 'front/main/comments_main.html.twig' with {'comments':comment.children} %}
                 {% endif %}

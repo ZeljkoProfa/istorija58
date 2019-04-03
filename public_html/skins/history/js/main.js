@@ -42,13 +42,13 @@ $(document).ready(function () {
         e.stopPropagation();
         e.preventDefault();
 
-        var commentReplyForm = $('.replyForm');
+        var commentReplyForm = $('.reply-form');
 
         // Ukoliko je vidljiva sakrivamo je u suprotnom prikazujemo
         if (commentReplyForm.is(':visible')) {
-            $(this).closest('.showed-comment').children('.replyForm').slideUp();
+            $(this).closest('.showed-comment').children('.reply-form').slideUp();
         } else {
-            $(this).closest('.showed-comment').find('.replyForm').slideDown();
+            $(this).closest('.showed-comment').find('.reply-form').slideDown();
         }
 
         // Ovde dohvatamo id komentara na koji korisnik zeli da odgovori

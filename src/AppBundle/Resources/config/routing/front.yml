@@ -32,7 +32,7 @@ video_front:
     methods:  [GET, POST]
     
 video_play:
-    path:       /gledaj-film
+    path:       /gledaj-film/{id}
     defaults:   { _controller: "AppBundle:front/VideoFront:watchVideos",}
     methods:  [GET, POST]
     

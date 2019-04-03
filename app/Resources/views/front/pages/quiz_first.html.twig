@@ -11,21 +11,21 @@
                     {# dump(questions) #}
                     {% set total_points = 0 %}
                     {% for question in questions %}
-                        <div id="{{ question.id }}" class="single-question-block" style="display:none;" >
+                        <div id="{{ question.id }}" class="single-question-block">
                             <input type="hidden" class="bubling-check" value="">
                             <h4 class="quiz-question" data-points="{{ question.lesson }}">{{ question.question }}</h4>
 
                             <div class="check-button mark-answer">
-                                <input type="checkbox" class="check-btn check-b" value="{{ question.answer1 }}" >{{ question.answer1 }}<br>
+                                <input type="checkbox" class="check-btn check-b" value="{{ question.answer1 }}" >{{ question.answer1 }}
                             </div>
                             <div class="check-button mark-answer">
-                                <input type="checkbox" class="check-btn check-b" value="{{ question.answer2 }}" >{{ question.answer2 }}<br>
+                                <input type="checkbox" class="check-btn check-b" value="{{ question.answer2 }}" >{{ question.answer2 }}
                             </div>
                             <div class="check-button mark-answer">
-                                <input type="checkbox" class="check-btn check-b" value="{{ question.answer3 }}" >{{ question.answer3 }}<br>
+                                <input type="checkbox" class="check-btn check-b" value="{{ question.answer3 }}" >{{ question.answer3 }}
                             </div>
                             <div class="check-button mark-answer">
-                                <input type="checkbox" class="check-btn check-b" value="{{ question.answer4 }}" >{{ question.answer4 }}<br>
+                                <input type="checkbox" class="check-btn check-b" value="{{ question.answer4 }}" >{{ question.answer4 }}
                             </div>
                             <div class="row">
                                 <div class="col-8 col-sm-8 col-md-8">
@@ -39,12 +39,12 @@
                                     <button class="btn-default forword">Dalje</button>
                                 </div>
                             </div>
-                            <div class="row hidden-answerQ" style="display:none" data-lesson="{{ question.lesson }}">
+                            <div class="row hidden-answerQ" style="display:none;" data-lesson="{{ question.lesson }}">
                                 <div class="col-xs-12 col-md-6">
-                                    <span>{{ question.lesson }} </span>
+                                    <span>{{ question.lesson }}</span>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
-                                    <img class="img-no-over-edges" src="{{ '/uploads/img/' ~ question.img }}">
+                                    <img class="img-no-over-edges" src="{{ '/uploads/img/' ~ question.img }}" alt="{{ question.img }}">
                                 </div>
                             </div>
                             {% if question.learnMore is defined %}
@@ -53,11 +53,11 @@
                                 </div>
                             {% endif %}
 
-                            <div class="hidden-points" style="display:none;" data-points="{{ question.points }}">
+                            <div class="hidden-points display-none" data-points="{{ question.points }}">
                             </div>
-                            <div class="hidden-answerZ trueanswer" style="display:none;" data-realanswer="{{ question.trueAnswer }}">
+                            <div class="hidden-answerZ trueanswer display-none" data-realanswer="{{ question.trueAnswer }}">
                             </div>
-                        </div> 
+                        </div>
                         {% set total_points = total_points +  question.points %}
                     {% endfor %}
                     <div class="single-question-block">
@@ -67,8 +67,8 @@
                         </div>
                     </div>
                 </div>
-                <p id="points-old" style="display:none;">0</p>
-                <p id="points-full-old" style="display:none;">0</p>
+                <p id="points-old" class="display-none" >0</p>
+                <p id="points-full-old" class="display-none">0</p>
             </div>
         </div>
     </div>
@@ -106,20 +106,12 @@
             $('.mark-answer').on('click', function (event) {
                 event.preventDefault();
                 event.stopPropagation();
-                
+
                 $('input').prop('checked', false);
                 $(this).find('input').prop('checked', true);
-                
+
                 return false;
             });
-
-            /*if ($(this).find('input').is(':checked')) {
-             
-             } else {
-             var choosed = $(this).find('input').val();
-             }*/
-
-
 
             $('.ans').on('click', function (event) {
                 event.preventDefault();

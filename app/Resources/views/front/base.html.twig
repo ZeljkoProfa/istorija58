@@ -24,10 +24,8 @@
         {% block stylesheets %}
             <link href="{{ asset('skins/history/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
             <link href="{{ asset('skins/history/css/blog-post.css') }}" rel="stylesheet">
-            <link href="{{ asset('skins/history/css/quiz-first.css') }}" rel="stylesheet">
+            <link href="{{ asset('assets/css/front.css') }}" rel="stylesheet">
             <link href="{{ asset('skins/history/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-            <link href="{{ asset('skins/history/css/myfront.css') }}" rel="stylesheet" type="text/css"/>
-            <link href="{{ asset('skins/history/bxslider/jquery.bxslider.min.css') }}" rel="stylesheet">
             <link href="{{ asset('skins/history/bxslider/jquery.bxslider.min.css') }}" rel="stylesheet" type="text/css"/>
         {% endblock %}
 
@@ -44,10 +42,10 @@
         {% block header %}
             <div class="pillars">
                 <div>
-                    <img src="{{ asset('skins/history/img/ancient_column_done.jpg') }}" alt="" style="position: fixed; left:-5%; width: auto; height: 100%; top: 39px">
+                    <img src="{{ asset('skins/history/img/ancient_column_done.jpg') }}" alt="pillar" class="pillar-left">
                 </div>
                 <div >
-                    <img src="{{ asset('skins/history/img/ancient_column_done.jpg') }}"  alt="" style="position :fixed; right:-5%; width: auto; height: 100%; top: 39px">
+                    <img src="{{ asset('skins/history/img/ancient_column_done.jpg') }}"  alt="pillar" class="pillar-right">
                 </div>
             </div>
             <!-- Navigation -->

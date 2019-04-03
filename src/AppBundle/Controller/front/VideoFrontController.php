@@ -28,13 +28,8 @@ Class VideoFrontController extends Controller
         ]);
     }
     
-    public function watchVideosAction(Request $request)
+    public function watchVideosAction(Video $video)
     {
-        $id = $request->request->get('id');
-        
-        $repository = $this->getDoctrine()->getRepository(Video::class);
-        $video = $repository->findOneBy(['id' => $id]);
-
         return $this->render('front/pages/video_play.html.twig', [
             'video' => $video
         ]);

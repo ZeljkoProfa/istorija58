@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -324,27 +323,33 @@ class QuizQuestions
         return $this->created;
     }
     
-    public function getNumber() {
+    public function getNumber()
+    {
         return $this->number;
     }
     
-    public function setNumber($number){
+    public function setNumber($number)
+    {
         $this->number = $number;
     }
     
-    public function getLesson() {
+    public function getLesson()
+    {
         return $this->lesson;
     }
     
-    public function setLesson($lesson){
+    public function setLesson($lesson)
+    {
         $this->lesson = $lesson;
     }
     
-    public function getImg() {
+    public function getImg()
+    {
         return $this->img;
     }
     
-    public function setImg($img){
+    public function setImg($img)
+    {
         $this->img = $img;
     }
 }

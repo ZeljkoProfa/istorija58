@@ -2,7 +2,7 @@
 
 {% set page_title = title %}
 {% block body %}
-    <h5 style="margin-top: 15px;">Svi unosi iz kategorije {{ title }}:</h5>
+    <h5 class="contact-heading">Svi unosi iz kategorije {{ title }}:</h5>
     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
         <thead>
             <tr>
@@ -26,40 +26,40 @@
                         {% endif %}
                     </td>
                     <td>{% if post.created %}
-                        {{ post.created|date('Y-m-d H:i:s') }}
+                        {{ post.created|date('Y-m-d') }}
                         {% endif %}
-                        </td>
-                        <td>
-                            <ul style="list-style-type: none">
-                                <li>
-                                    <a href="{{ asset('uploads/posts/') }}{{post.body}}" target="_blank">Prikazi</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-                {% if maxPages > 1 %}
-                    <ul class="pagination pagination-sm bcrumb-pages">
-                        {# `«` arrow  #}
-                        {# `currentPage var is the one defined in routing yaml/pageroute/defaults.  #}
-                        <li {% if thisPage == 1  %} class="disabled" {% endif %} >
-                            <a href="{{ path('content_pages', { 'id': id, 'title': title, currentPage: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
-                        </li>
-
-                        {# Render each page number #}
-                        {% for i in 1..maxPages %}{# Creates a sequence based on the operand before and after the operator!!! #}
-                            <li {% if thisPage == i  %} class="active" {% endif %} >
-                                
-                                <a href="{{ path('content_pages', { 'id': id, 'title': title, currentPage: i}) }}" >{{ i }}</a>
+                    </td>
+                    <td>
+                        <ul class="td-list">
+                            <li>
+                                <a href="{{ asset('uploads/posts/') }}{{post.body}}" target="_blank">Prikazi</a>
                             </li>
-                        {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if maxPages > 1 %}
+        <ul class="pagination pagination-sm bcrumb-pages">
+            {# `«` arrow  #}
+            {# `currentPage var is the one defined in routing yaml/pageroute/defaults.  #}
+            <li {% if thisPage == 1  %} class="disabled" {% endif %} >
+                <a href="{{ path('content_pages', { 'id': id, 'title': title, currentPage: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+            </li>
 
-                        {# `»` arrow #}
-                        <li {% if thisPage == maxPages %} class="disabled" {% endif %} >
-                            <a href="{{ path('content_pages', { 'id': id, 'title': title, currentPage: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
-                        </li>
-                    </ul>
-                {% endif %}
-                {% endblock %}    
+            {# Render each page number #}
+            {% for i in 1..maxPages %}{# Creates a sequence based on the operand before and after the operator!!! #}
+                <li {% if thisPage == i  %} class="active" {% endif %} >
+
+                    <a href="{{ path('content_pages', { 'id': id, 'title': title, currentPage: i}) }}" >{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {# `»` arrow #}
+            <li {% if thisPage == maxPages %} class="disabled" {% endif %} >
+                <a href="{{ path('content_pages', { 'id': id, 'title': title, currentPage: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+            </li>
+        </ul>
+    {% endif %}
+{% endblock %}

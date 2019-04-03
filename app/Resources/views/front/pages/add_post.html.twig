@@ -3,7 +3,7 @@
 {% block body %}
 
     {% if hidden_message is defined %}{{ hidden_message }}{% endif %}
-    <h3 style="margin-top: 10px;">Dodaj sadržaj</h3>
+    <h3 class="margin-top-10">Dodaj sadržaj</h3>
 
     {{ form_start(form) }}
     <div class="form-group">
@@ -36,8 +36,9 @@
         {{ form_errors(form.author) }}
         {{ form_widget(form.author) }}
     </div>
-    <i class="fa fa-plus move-right" style="color:white; right:-10px;"></i><input type="submit" value="Potvrdi" style="position:relative; left: -10px!important;" class="btn btn-primary btn-create btn-move-fafa"/>
+    {#<i class="fa fa-plus plus-icon-front"></i>#}
+    <input type="submit" value="Potvrdi" class="btn btn-primary btn-create-front btn-move-fafa"/>
     {{ form_end(form) }}
 
-    <p style="margin-top: 10px;">*Na ovoj stranici nije moguce dodati video.</p>
+    <p class="margin-top-10">*Na ovoj stranici nije moguce dodati video.</p>
 {% endblock %}

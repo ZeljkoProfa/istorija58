@@ -1,9 +1,9 @@
 {% extends 'front/base.html.twig' %}
 {% block body %}
 
-    <div>
+    <div class="video">
         <h4 id="video-title">{{ video.title }}</h4>
-        <iframe id="video-frame" 
+        <iframe id="video-frame" height="auto" width="100%" class="video-height"
                 src="{{ video.path }}"
                 frameborder="0" allowfullscreen >
         </iframe>
