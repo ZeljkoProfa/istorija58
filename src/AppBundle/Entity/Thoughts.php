@@ -3,8 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * Thoughts
@@ -46,14 +45,14 @@ class Thoughts
     private $adminId;
             
     /**
-     * @var datetime
+     * @var \Datetime $created
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */
     private $created;
     
     /**
-     * @var date
+     * @var Date
      *
      * @ORM\Column(name="test_date", type="date", nullable=true)
      */
@@ -65,13 +64,10 @@ class Thoughts
      * @ORM\Column(name="current_thought", type="string", nullable=true)
      */
     private $current_thought = NULL;
-    
+
     /**
-     * Set text
-     *
-     * @param string $text
-     *
-     * @return Thoughts
+     * @param $current_thought
+     * @return $this
      */
     public function setCurrentThought($current_thought)
     {
@@ -151,11 +147,8 @@ class Thoughts
     }
 
     /**
-     * Set test_date
-     *
-     * @param \Date $test_date
-     *
-     * @return Thoughts
+     * @param $test_date
+     * @return $this
      */
     public function setTest_date($test_date)
     {
@@ -165,9 +158,7 @@ class Thoughts
     }
 
     /**
-     * Get test_date
-     *
-     * @return \Date
+     * @return Date
      */
     public function getTest_date()
     {
@@ -212,12 +203,9 @@ class Thoughts
     }
 
     /**
-     * Get adminId
-     *
-     * @return integer
+     * @return Admin
      */
     public function getAdminId() {
         return $this->adminId;
     }
-    
 }

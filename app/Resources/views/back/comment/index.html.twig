@@ -9,7 +9,7 @@
                 <th>Author</th>
                 <th>Body</th>
                 <th>Created</th>
-                <th>Postid</th>
+                {#<th>Postid</th>#}
                 <th>Status</th>
                 <th>Actions</th>
             </tr>
@@ -20,10 +20,10 @@
                 <td>{{ comment.author }}</td>
                 <td>{{ comment.body }}</td>
                 <td>{% if comment.created %}{{ comment.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ comment.postId }}</td>
+                {#<td>{{ comment.postId }}</td>#}
                 <td>{{ comment.status }}</td>
-                <td>
-                    <ul  class="buttons">
+                <td class="space-for-action">
+                    <ul  class="buttons buttons-in-line">
                         <li>
                             <a href="{{ path('comment_show', { 'id': comment.id }) }}" class="btn btn-primary"><i class="fa fa-eye"></i>show</a>
                         </li>
@@ -60,7 +60,7 @@
     {% endif %}
     <ul class="buttons">
         <li>
-            <a href="{{ path('comment_new') }}" style="margin-left: -40px !important;" class="btn btn-primary"><i class="fa fa-plus"></i>Create a new comment</a>
+            <a href="{{ path('comment_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i>Create a new comment</a>
         </li>
     </ul>
 {% endblock %}

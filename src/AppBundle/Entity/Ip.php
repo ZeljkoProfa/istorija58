@@ -3,14 +3,12 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Ip
  *
  * @ORM\Table(name="ip")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\IpRepository")
+ * @ORM\Entity()
  */
 class Ip
 {
@@ -73,18 +71,15 @@ class Ip
     private $banned = '0';
     
     /**
-     * @var datetime
+     * @var \Datetime $created
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */
     private $created;
-    
+
     /**
-     * Set ip
-     *
-     * @param string $ip
-     *
-     * @return BannedIp
+     * @param $ip
+     * @return $this
      */
     public function setIp($ip)
     {
@@ -112,13 +107,10 @@ class Ip
     {
         return $this->id;
     }
-    
+
     /**
-     * Set post_id
-     *
-     * @param string $post_id
-     *
-     * @return BannedIp
+     * @param $post_id
+     * @return $this
      */
     public function setPostId($post_id)
     {
@@ -136,13 +128,10 @@ class Ip
     {
         return $this->post_id;
     }
-    
+
     /**
-     * Set comment_id
-     *
-     * @param string $comment_id
-     *
-     * @return BannedIp
+     * @param $comment_id
+     * @return $this
      */
     public function setCommentId($comment_id)
     {
@@ -160,13 +149,10 @@ class Ip
     {
         return $this->comment_id;
     }
-    
+
     /**
-     * Set contact_id
-     *
-     * @param string $contact_id
-     *
-     * @return BannedIp
+     * @param $contact_id
+     * @return $this
      */
     public function setContactId($contact_id)
     {
@@ -184,13 +170,10 @@ class Ip
     {
         return $this->contact_id;
     }
-    
+
     /**
-     * Set proxy
-     *
-     * @param string $proxy
-     *
-     * @return BannedIp
+     * @param $proxy
+     * @return $this
      */
     public function setProxy($proxy)
     {
@@ -208,13 +191,10 @@ class Ip
     {
         return $this->proxy;
     }
-    
+
     /**
-     * Set banned
-     *
-     * @param string $banned
-     *
-     * @return BannedIp
+     * @param $banned
+     * @return $this
      */
     public function setBanned($banned)
     {
@@ -232,13 +212,10 @@ class Ip
     {
         return $this->banned;
     }
-    
+
     /**
-     * Set client_ip
-     *
-     * @param string $client_ip
-     *
-     * @return BannedIp
+     * @param $client_ip
+     * @return $this
      */
     public function setClient_ip($client_ip)
     {

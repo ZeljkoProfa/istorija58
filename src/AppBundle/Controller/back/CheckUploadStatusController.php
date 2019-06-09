@@ -2,26 +2,16 @@
 
 namespace AppBundle\Controller\back;
 
-use AppBundle\Entity\CheckUploadStatus;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use AppBundle\Form\PostType;
-use AppBundle\Form\PostEditType;
-use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Filesystem\Filesystem;
 
-/**
- * Post controller.
- *
- */
-class CheckUploadStatusController extends Controller {
+class CheckUploadStatusController extends Controller
+{
+    public function checkAction(Request $request)
+    {
 
-    public function checkAction() {
-
-        if (isset($_GET['check'])) {
-            $check = htmlspecialchars($_GET['check']);
+        if (!empty($request->query->get('check'))) {
+            $check = $request->query->get('check');
 
             $this->getDoctrine()->getRepository('AppBundle:CheckUploadStatus')->editStatusRep($check);
 
@@ -33,5 +23,4 @@ class CheckUploadStatusController extends Controller {
         return $this->render('back/checkStatus/edit.html.twig', array(
         ));
     }
-
 }

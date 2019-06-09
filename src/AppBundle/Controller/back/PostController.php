@@ -16,7 +16,8 @@ use Symfony\Component\HttpFoundation\File\File;
  * Class PostController
  * @package AppBundle\Controller\back
  */
-class PostController extends Controller {
+class PostController extends Controller
+{
 
     /**
      * Lists all post entities.
@@ -25,7 +26,8 @@ class PostController extends Controller {
      * @param int $currentPage
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request, $currentPage = 1) {
+    public function indexAction(Request $request, $currentPage = 1)
+    {
         $limit = 10;
 
         if (empty($request->request->get('currentPage'))) {
@@ -34,15 +36,15 @@ class PostController extends Controller {
 
         $posts = $this->getDoctrine()
                 ->getRepository('AppBundle:Post')
-                ->getLastAddedBack($currentPage, $limit);
+                ->getLastAddedBack($limit, $currentPage);
 
         $maxPages = ceil($posts->count() / $limit);
         $thisPage = $currentPage;
 
         return $this->render('back/post/index.html.twig', [
-                    'posts' => $posts,
-                    'maxPages' => $maxPages,
-                    'thisPage' => $thisPage
+                'posts' => $posts,
+                'maxPages' => $maxPages,
+                'thisPage' => $thisPage
         ]);
     }
 
@@ -53,7 +55,8 @@ class PostController extends Controller {
      * @param LoggerInterface $logger
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function newAction(Request $request, LoggerInterface $logger) {
+    public function newAction(Request $request, LoggerInterface $logger)
+    {
         $post = new Post();
         $form = $this->createForm('AppBundle\Form\PostType', $post);
         $form->handleRequest($request);
@@ -95,7 +98,8 @@ class PostController extends Controller {
      * @param SecurityService $securityService
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction(Post $post, SecurityService $securityService) {
+    public function showAction(Post $post, SecurityService $securityService)
+    {
         
         $id = $post->getId();
         $user_ip = $securityService->takeIp($id, $origin = 'post');
@@ -117,12 +121,12 @@ class PostController extends Controller {
      * @param SecurityService $securityService
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, Post $post, SecurityService $securityService) {
+    public function editAction(Request $request, Post $post, SecurityService $securityService)
+    {
         
         $id = $post->getId();
         $user_ip = $securityService->takeIp($id, $origin = 'post');
-        
-        // Set value of $post->getBody to be a instance of Symfony\Component\HttpFoundation\File\File
+
         $fileName = $post->getBody();
         $file = new File($this->getParameter('post_directory') . '/' . $post->getBody());
         $post->setBody($file);
@@ -154,7 +158,8 @@ class PostController extends Controller {
      * @param Post $post
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteAction(Request $request, Post $post) {
+    public function deleteAction(Request $request, Post $post)
+    {
         $form = $this->createDeleteForm($post);
         $form->handleRequest($request);
 
@@ -177,12 +182,11 @@ class PostController extends Controller {
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Post $post) {
+    private function createDeleteForm(Post $post)
+    {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('post_delete', ['id' => $post->getId()]))
                         ->setMethod('DELETE')
-                        ->getForm()
-        ;
+                        ->getForm();
     }
-
 }

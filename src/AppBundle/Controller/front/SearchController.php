@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-Class SearchController extends Controller
+class SearchController extends Controller
 {
     /**
      * @param Request $request
@@ -25,7 +25,7 @@ Class SearchController extends Controller
         }
 
         $requestString = $request->query->get('q');
-        $search = $this->getDoctrine()->getRepository('AppBundle:Post')->searchSite($requestString, $currentPage, $limit);
+        $search = $this->getDoctrine()->getRepository('AppBundle:Post')->searchSite($requestString, $currentPage);
         
         $maxPages = ceil($search->count() / $limit);
         $thisPage = $currentPage;

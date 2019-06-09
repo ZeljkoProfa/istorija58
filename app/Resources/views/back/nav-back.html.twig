@@ -1,27 +1,21 @@
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+<nav class="navbar navbar-default navbar-static-top margin-botom-0" role="navigation" >
 
-    <div class="navbar-header" style="padding: 0 0 0 0; margin: 0 0 0 0;">
-        <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-             <span class="sr-only">Toggle navigation</span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </button>-->
-        <a class="navbar-brand icon-bar title-pic" style="padding: 5px 0 0 5px; margin: 0 0 0 0;" href="{{ path('homepage') }}">
-            <img src="{{asset('favicon.jpg')}}" style="width:30px; height:30px; border-radius: 5px">
+    <div class="navbar-header no-padd no-margin">
+        <a class="navbar-brand icon-bar title-pic logo-back" href="{{ path('homepage') }}">
+            <img src="{{asset('favicon.jpg')}}" class="logo-back-img">
             Istorija58 | Admin panel
         </a>
     </div>
 
-    <ul class="navbar-right" style="list-style-type: none; color: black; display: inline; float:right; margin-bottom: 0px;">
-        <li style="padding-right: 20px; float:right!important ;">
+    <ul class="navbar-right nav-list">
+        <li class="back-nav-list-li">
             <div>
-                <a class="navbar-brand header-link" href="{{ path('logout') }}" style="color:black;">
+                <a class="navbar-brand header-link" href="{{ path('logout') }}">
                     Logout
                 </a>
             </div>
         </li>
-        <li style="padding-right: 20px; float:right!important ;">
+        <li class="back-nav-list-li">
             <div class="search-div">
                 <form action="{{ path('search_back') }}" class="searchform" method="get" name="searchform" target="_blank">
                 <input type="text" name="q" placeholder="Pretrazi postove"/>
@@ -29,23 +23,23 @@
                 </form>
             </div>
         </li>
-        <li style="padding-right: 20px; float:right!important ;">
+        <li class="back-nav-list-li">
             <div>
-                <a class="navbar-brand header-link" href="{{ path('main_front_page') }}" style="color:black;">
+                <a class="navbar-brand header-link" href="{{ path('main_front_page') }}">
                     Naslovna
                 </a>
             </div>
         </li>
-        <li style="padding-right: 20px; float:right!important ;" class="back-nav-dropdown">
+        <li class="back-nav-list-li back-nav-dropdown">
             <div>
-                <a class="navbar-brand header-link " href="#" style="color:black;">
+                <a class="navbar-brand header-link " href="#">
                     Kategorije
                 </a>
             </div>
             <div>    
                 <ul class="back-nav-dropdown-ul">
                     {% for category in categories %}
-                        <li class="back-nav-dropdown-li" style="padding: 0 0 0 0;">
+                        <li class="back-nav-dropdown-li no-margin">
                             <a class="back-nav-dropdown-li-a" href="{{ path( 'list_posts_by_categories_back', { 'id': category.id, 'title': category.title } ) }}">{{ category.title }}</a>
                         </li>
                     {% endfor %}
@@ -54,3 +48,4 @@
         </li>
 
     </ul>
+</nav>

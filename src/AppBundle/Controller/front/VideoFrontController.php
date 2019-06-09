@@ -6,7 +6,7 @@ use AppBundle\Entity\Video;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-Class VideoFrontController extends Controller
+class VideoFrontController extends Controller
 {
     public function listVideosAction(Request $request, $currentPage = 1)
     {
@@ -16,7 +16,7 @@ Class VideoFrontController extends Controller
         
         $limit = 10;
         $videos = $this->getDoctrine()
-                        ->getRepository('AppBundle:Video')->getVideos($currentPage, $limit);
+                        ->getRepository('AppBundle:Video')->getVideos($limit, $currentPage);
 
         $maxPages = ceil($videos->count() / $limit);
         $thisPage = $currentPage;

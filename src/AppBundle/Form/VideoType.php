@@ -10,9 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class VideoType extends AbstractType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('title', TextType::class, [
@@ -42,10 +39,7 @@ class VideoType extends AbstractType
                         'class' => 'form-control',
             ]]);
     }
-    
-    /**
-     * {@inheritdoc}
-     */
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
@@ -53,13 +47,8 @@ class VideoType extends AbstractType
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix()
     {
         return 'appbundle_video';
     }
-
-
 }

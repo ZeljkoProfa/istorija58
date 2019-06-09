@@ -3,23 +3,15 @@
 namespace AppBundle\Controller\back;
 
 use AppBundle\Entity\Admin;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Admin controller.
- *
- */
 class AdminController extends Controller
 {
-    /**
-     * Lists all admin entities.
-     *
-     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $admins = $em->getRepository('AppBundle:Admin')->findAll();
 
         return $this->render('back/admin/index.html.twig', array(
@@ -27,24 +19,23 @@ class AdminController extends Controller
         ));
     }
 
-    /**
-     * Creates a new admin entity.
-     *
-     */
-    public function newAction(Request $request)
+    public function newAction(Request $request, LoggerInterface $logger)
     {
         $admin = new Admin();
         $form = $this->createForm('AppBundle\Form\AdminType', $admin);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            $admin->setCreated(new \DateTime('now'));
-            $pass = $admin->getPassword();
-            $admin->setPassword(password_hash($pass, PASSWORD_BCRYPT));
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($admin);
-            $em->flush();
+            try {
+                $admin->setCreated(new \DateTime('now'));
+                $pass = $admin->getPassword();
+                $admin->setPassword(password_hash($pass, PASSWORD_BCRYPT));
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($admin);
+                $em->flush();
+            }catch(\Exception $e){
+                $logger->error('Error while creating admin. Error '.$e->getMessage());
+            }
 
             return $this->redirectToRoute('admin_show', array('id' => $admin->getId()));
         }
@@ -55,10 +46,6 @@ class AdminController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a admin entity.
-     *
-     */
     public function showAction(Admin $admin)
     {
         $deleteForm = $this->createDeleteForm($admin);
@@ -69,10 +56,6 @@ class AdminController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing admin entity.
-     *
-     */
     public function editAction(Request $request, Admin $admin)
     {
         $deleteForm = $this->createDeleteForm($admin);
@@ -92,10 +75,6 @@ class AdminController extends Controller
         ));
     }
 
-    /**
-     * Deletes a admin entity.
-     *
-     */
     public function deleteAction(Request $request, Admin $admin)
     {
         $form = $this->createDeleteForm($admin);
@@ -110,19 +89,11 @@ class AdminController extends Controller
         return $this->redirectToRoute('admin_index');
     }
 
-    /**
-     * Creates a form to delete a admin entity.
-     *
-     * @param Admin $admin The admin entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm(Admin $admin)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('admin_delete', array('id' => $admin->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

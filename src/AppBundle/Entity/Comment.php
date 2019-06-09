@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Entity\Comment;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -51,6 +50,13 @@ class Comment
     private $body;
 
     /**
+     * Needs to be empty!
+     *
+     * @ORM\Column(name="required_security", type="string", length=500, nullable=false)
+     */
+    private $required_security;
+
+    /**
      * @var \AppBundle\Entity\Post
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Post", inversedBy="comments")
@@ -67,31 +73,47 @@ class Comment
 
     /**
      * @var string
-     * 
+     *
      * @ORM\Column(name="status", type="string", length=5, nullable=false)
      */
     private $status = '1';
-    
+
     /**
      * @var \AppBundle\Entity\Comment
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Comment", inversedBy="children" )
      * @ORM\JoinColumn(name="parentId", referencedColumnName="id")
      */
     private $parentId;
-    
+
     /**
      * @var \AppBundle\Entity\Comment
-     * 
+     *
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="parentId")
      */
     private $children;
-    
+
     public function __construct()
     {
         $this->children = new ArrayCollection();
     }
-    
+
+    /**
+     * @return mixed
+     */
+    public function getRequiredSecurity()
+    {
+        return $this->required_security;
+    }
+
+    /**
+     * @param mixed $required_security
+     */
+    public function setRequiredSecurity($required_security)
+    {
+        $this->required_security = $required_security;
+    }
+
     public function getChildren() {
         return $this->children;
     }
@@ -100,11 +122,9 @@ class Comment
        $this->children[] = $child;
        $child->setParentId($this);
     }
-    
+
     /**
-     * Get parentId
-     *
-     * @return integer
+     * @return \AppBundle\Entity\Comment
      */
     public function getParentId() {
         return $this->parentId;
@@ -113,37 +133,13 @@ class Comment
     /**
      * Set parentId
      *
-     * @param inetger $parent
+     * @param $parent
      *
      * @return Comment
      */
     public function setParentId($parent) {
         $this->parentId = $parent;
         return $this;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Comment
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 
     /**
@@ -209,9 +205,7 @@ class Comment
     }
 
     /**
-     * Get postId
-     *
-     * @return integer
+     * @return Post
      */
     public function getPostId()
     {
@@ -252,12 +246,14 @@ class Comment
         return $this->id;
     }
     
-    public function setStatus($status){
+    public function setStatus($status)
+    {
         $this->status = $status;
         return $this;
     }
     
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->status;
     }
     

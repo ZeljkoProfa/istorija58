@@ -3,55 +3,41 @@
 namespace AppBundle\Controller\back;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Homepage controller.
- *
- *
- */
-class HomepageController extends Controller {
-
-    /**
-     * Homepage controller.
-     *
-     * Controller contentPages action
-     *
-     * @param integer $currentPage The current page passed via URL
-     */
-    public function indexLastAddedAction($currentPage = 1) {
+class HomepageController extends Controller
+{
+    public function indexLastAddedAction(Request $request, $currentPage = 1)
+    {
         $limit = 10;
-        if (isset($_GET['currentPage'])) {
-            $currentPage = htmlspecialchars($_GET['currentPage']);
-            $currentPage = trim($_GET['currentPage']);
+        if (!empty($request->query->get('currentPage'))) {
+            $currentPage = $request->query->get('currentPage');
         }
         
         $posts = $this->getDoctrine()
-                        ->getRepository('AppBundle:Post')
-                        ->getLastAddedBack($currentPage, $limit);
+                ->getRepository('AppBundle:Post')
+                ->getLastAddedBack($limit, $currentPage);
         
         $maxPages = ceil($posts->count() / $limit);
         $thisPage = $currentPage;
         
         $comments = $this->getDoctrine()
-                        ->getRepository('AppBundle:Comment')
-                        ->getCommentsLastTen();
-        
+                ->getRepository('AppBundle:Comment')
+                ->getCommentsLastTen();
+
         $contacts = $this->getDoctrine()
-                        ->getRepository('AppBundle:Contact')
-                        ->getContactsLastTen();
+                ->getRepository('AppBundle:Contact')
+                ->getContactsLastTen();
 
         $response = $this->render('back/default/admin_homepage.html.twig', array(
-                    'posts' => $posts,
-                    'maxPages' => $maxPages,
-                    'thisPage' => $thisPage,
-                    'comments' => $comments,
-                    'contacts' => $contacts
+                'posts' => $posts,
+                'maxPages' => $maxPages,
+                'thisPage' => $thisPage,
+                'comments' => $comments,
+                'contacts' => $contacts
         ));
-		
-		// cache for 3600 seconds
-		$response->setSharedMaxAge(3600);
 
-		// (optional) set a custom Cache-Control directive
+		$response->setSharedMaxAge(3600);
 		$response->headers->addCacheControlDirective('must-revalidate', true);
 
 		return $response;

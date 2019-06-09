@@ -129,11 +129,11 @@ class Category
     /**
      * Set adminId
      *
-     * @param \AppBundle\Entity\Admin $adminId
+     * @param Admin $adminId
      *
      * @return Category
      */
-    public function setAdminId(\AppBundle\Entity\Admin $adminId = null)
+    public function setAdminId(Admin $adminId = null)
     {
         $this->adminId = $adminId;
 
@@ -157,7 +157,7 @@ class Category
      *
      * @return Category
      */
-    public function addPost(\AppBundle\Entity\Post $post)
+    public function addPost(Post $post)
     {
         $this->posts[] = $post;
 
@@ -169,7 +169,7 @@ class Category
      *
      * @param \AppBundle\Entity\Post $post
      */
-    public function removePost(\AppBundle\Entity\Post $post)
+    public function removePost(Post $post)
     {
         $this->posts->removeElement($post);
     }

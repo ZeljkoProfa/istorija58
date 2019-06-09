@@ -3,19 +3,12 @@
 namespace AppBundle\Controller\back;
 
 use AppBundle\Entity\Category;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Category controller.
- *
- */
 class CategoryController extends Controller
 {
-    /**
-     * Lists all category entities.
-     *
-     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -27,24 +20,22 @@ class CategoryController extends Controller
         ));
     }
 
-    /**
-     * Creates a new category entity.
-     *
-     */
-    public function newAction(Request $request)
+    public function newAction(Request $request, LoggerInterface $logger)
     {
         $category = new Category();
         $form = $this->createForm('AppBundle\Form\CategoryType', $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Setting time created.
-            $category->setCreated( new \DateTime('now'));
-            // Setting creator's id.
-            $category->setAdminId($this->getUser());
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($category);
-            $em->flush();
+            try {
+                $category->setCreated(new \DateTime('now'));
+                $category->setAdminId($this->getUser());
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($category);
+                $em->flush();
+            }catch (\Exception $e){
+                $logger->error('Error while creating category. Error '.$e->getMessage());
+            }
 
             return $this->redirectToRoute('category_show', array('id' => $category->getId()));
         }
@@ -55,10 +46,6 @@ class CategoryController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a category entity.
-     *
-     */
     public function showAction(Category $category)
     {
         $deleteForm = $this->createDeleteForm($category);
@@ -69,10 +56,6 @@ class CategoryController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing category entity.
-     *
-     */
     public function editAction(Request $request, Category $category)
     {
         $deleteForm = $this->createDeleteForm($category);
@@ -92,10 +75,6 @@ class CategoryController extends Controller
         ));
     }
 
-    /**
-     * Deletes a category entity.
-     *
-     */
     public function deleteAction(Request $request, Category $category)
     {
         $form = $this->createDeleteForm($category);
@@ -110,13 +89,6 @@ class CategoryController extends Controller
         return $this->redirectToRoute('category_index');
     }
 
-    /**
-     * Creates a form to delete a category entity.
-     *
-     * @param Category $category The category entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm(Category $category)
     {
         return $this->createFormBuilder()

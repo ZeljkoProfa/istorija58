@@ -4,7 +4,7 @@ namespace AppBundle\Controller\front;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-Class NavController extends Controller
+class NavController extends Controller
 {
     public function listCategoryAction()
     {

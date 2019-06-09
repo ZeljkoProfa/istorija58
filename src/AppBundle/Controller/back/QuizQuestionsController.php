@@ -3,24 +3,14 @@
 namespace AppBundle\Controller\back;
 
 use AppBundle\Entity\QuizQuestions;
-use AppBundle\Controller\back\QuizController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
-use Doctrine\Common\Util\Debug; //::dump($user)
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-/**
- * Quizquestion controller.
- *
- */
-class QuizQuestionsController extends Controller {
-
-    /**
-     * Lists all quizQuestion entities.
-     *
-     */
-    public function indexAction($currentPage = 1) {
+class QuizQuestionsController extends Controller
+{
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $quizQuestions = $em->getRepository('AppBundle:QuizQuestions')->findAll();
@@ -31,57 +21,48 @@ class QuizQuestionsController extends Controller {
     }
 
     /**
-     * Creates a new quizQuestion entity.
-     *
+     * @param Request $request
+     * @return bool|\Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
      */
-    public function newAction(Request $request) {
+    public function newAction(Request $request)
+    {
         $quizQuestions = new Quizquestions();
         $form = $this->createForm('AppBundle\Form\QuizQuestionsType', $quizQuestions);
         $form->handleRequest($request);
 
-        if (isset($_GET['id'])) {
-            $quizQuestions->setQuizId(htmlspecialchars($_GET['id']));
-            $parent_id = $_GET['id'];
+        if (!empty($request->query->get('id'))) {
+            return false;
         }
-        if ($form->isSubmitted() && $form->isValid()) {
-            //$quiz_id = $form['quizId']->getData()->getId();   // <----- Only way I can get associated field.
-            //$repositoryQuiz = $this->getDoctrine()->getRepository('AppBundle:Quiz');
-            //$quiz_entity = $repositoryQuiz->findOneById($quiz_id);
 
+        $quizQuestions->setQuizId($request->query->get('id'));
+        $parentId = $request->query->get('id');
+
+        if ($form->isSubmitted() && $form->isValid()) {
             $last_num = $this->getDoctrine()
                     ->getRepository('AppBundle:QuizQuestions')
-                    ->getLastQuestonNumber($parent_id);
-            //var_dump($last_num);exit;
+                    ->getLastQuestonNumber($parentId);
             if ($last_num == null || $last_num == 0 || $last_num == false || is_array($last_num) || is_object($last_num)) {
                 $last_num = 1;
             }
-            //var_dump($last_num);exit;
-            (int) $last_num;
 
-            $quizQuestions->setNumber($last_num + 1);
+            $quizQuestions->setNumber((int)$last_num + 1);
             $quizQuestions->setCreated(new \DateTime('now'));
 
-            // Update total for Quiz entity!!!
             $this->getDoctrine()
                     ->getRepository('AppBundle:Quiz')
-                    ->updateTotal($last_num + 1, $parent_id);
+                    ->updateTotal($last_num + 1, $parentId);
 
-            // File action
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            /** @var UploadedFile $file */
             $file = $quizQuestions->getImg();
-            //var_dump($file);exit;
             if ($file) {
                 $file_name_ = $file->getClientOriginalName();
-
-                // Generate a unique name for the file before saving it
                 $fileName = $file_name_;
 
-                // Move the file to the directory where brochures are stored
                 $file->move(
                         $this->getParameter('img_directory'), $fileName
                 );
-                // Update the 'brochure' property to store the PDF file name
-                // instead of its contents
+
                 $quizQuestions->setImg($fileName);
             }
 
@@ -90,7 +71,7 @@ class QuizQuestionsController extends Controller {
             $em->flush();
 
             return $this->redirectToRoute('quiz_show', array(
-                        'id' => $parent_id
+                        'id' => $parentId
             ));
         }
 
@@ -101,10 +82,11 @@ class QuizQuestionsController extends Controller {
     }
 
     /**
-     * Finds and displays a quizQuestion entity.
-     *
+     * @param QuizQuestions $quizQuestions
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction(QuizQuestions $quizQuestions) {
+    public function showAction(QuizQuestions $quizQuestions)
+    {
         $deleteForm = $this->createDeleteForm($quizQuestions);
         $quizId = $quizQuestions->getQuizId();
         return $this->render('back/quizquestions/show.html.twig', array(
@@ -115,59 +97,52 @@ class QuizQuestionsController extends Controller {
     }
 
     /**
-     * Displays a form to edit an existing quizQuestion entity.
-     *
+     * @param Request $request
+     * @param QuizQuestions $quizQuestion
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, QuizQuestions $quizQuestion) {
+    public function editAction(Request $request, QuizQuestions $quizQuestion)
+    {
         $img = '';
 
-        //Debug::dump($quizQuestion);
         if ($quizQuestion->getImg() != '') {
-            $image_path = $this->getParameter('img_directory');
-            $image = $image_path . "/" . $quizQuestion->getImg();
-            $fileName_old = $quizQuestion->getImg();
+            $imagePath = $this->getParameter('img_directory');
+            $image = $imagePath . "/" . $quizQuestion->getImg();
+            $fileNameOld = $quizQuestion->getImg();
 
-            if (isset($fileName_old)) {
+            if (isset($fileNameOld)) {
                 $img = new File($image);
-                $old_file_name = $img->getFilename();
+                $oldFileName = $img->getFilename();
                 $quizQuestion->setImg($img);
             }
         }
-        $quizid = $quizQuestion->getQuizId();
+        $quizId = $quizQuestion->getQuizId();
         $deleteForm = $this->createDeleteForm($quizQuestion);
         $editForm = $this->createForm('AppBundle\Form\QuizQuestionsType', $quizQuestion);
         $editForm->handleRequest($request);
         
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $img_delete = $editForm['imgdel']->getData(); // <-- return good value
-            //Debug::dump($editForm->getData());exit;
-            //Debug::dump($old_file_name);exit;
+            $imgDelete = $editForm['imgdel']->getData();
             if ($editForm->getData()->getImg() == null) {
-                if ($old_file_name != '' && $img_delete == false) {
+                if ($oldFileName != '' && $imgDelete == false) {
                     $editForm->getData()->setImg($img);
-                    /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+                    /** @var UploadedFile $file */
                     $file = $img;
-                    $file_name_ = $old_file_name;
-                    // Generate a unique name for the file before saving it ! NOT
-                    $fileName = $file_name_;
+                    $fileName_ = $oldFileName;
+                    $fileName = $fileName_;
                     $file->move($this->getParameter('img_directory'), $fileName);
                     $quizQuestion->setImg($fileName);
-                } else if ($old_file_name != '' && $img_delete == true) {
-                    $file = $img;
-                    $file_name_ = '';
-                    // Generate a unique name for the file before saving it ! NOT
-                    $fileName = $file_name_;
-                    //$file->move($this->getParameter('img_directory'), $fileName);
+                } else if ($oldFileName != '' && $imgDelete == true) {
+                    $fileName_ = '';
+                    $fileName = $fileName_;
                     $quizQuestion->setImg($fileName);
                 }
             } else {
-                /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+                /** @var UploadedFile $file */
                 $file = $quizQuestion->getImg();
-                $file_name_ = $file->getClientOriginalName();
-                // Generate a unique name for the file before saving it ! NOT
-                $fileName = $file_name_;
-                // Move the file to the directory where img's are stored
+                $fileName_ = $file->getClientOriginalName();
+                $fileName = $fileName_;
                 $file->move($this->getParameter('img_directory'), $fileName);
                 $quizQuestion->setImg($fileName);
             }
@@ -175,7 +150,7 @@ class QuizQuestionsController extends Controller {
 
             return $this->redirectToRoute('quizquestions_show', array(
                         'id' => $quizQuestion->getId(),
-                        'quizId' => $quizid
+                        'quizId' => $quizId
             ));
         }
 
@@ -184,15 +159,12 @@ class QuizQuestionsController extends Controller {
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
                     'img' => $img,
-                    'quizid' => $quizid
+                    'quizid' => $quizId
         ));
     }
 
-    /**
-     * Deletes a quizQuestion entity.
-     *
-     */
-    public function deleteAction(Request $request, QuizQuestions $quizQuestion) {
+    public function deleteAction(Request $request, QuizQuestions $quizQuestion)
+    {
         $form = $this->createDeleteForm($quizQuestion);
         $form->handleRequest($request);
 
@@ -207,19 +179,11 @@ class QuizQuestionsController extends Controller {
         ));
     }
 
-    /**
-     * Creates a form to delete a quizQuestion entity.
-     *
-     * @param QuizQuestions $quizQuestion The quizQuestion entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm(QuizQuestions $quizQuestion) {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('quizquestions_delete', array('id' => $quizQuestion->getId())))
                         ->setMethod('DELETE')
-                        ->getForm()
-        ;
+                        ->getForm();
     }
 
 }

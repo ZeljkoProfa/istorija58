@@ -3,27 +3,21 @@
 namespace AppBundle\Controller\back;
 
 use AppBundle\Entity\Video;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Video controller.
- *
- */
 class VideoController extends Controller
 {
-    /**
-     * Lists all video entities.
-     *
-     */
-    public function indexAction($currentPage)
+    public function indexAction(Request $request, $currentPage)
     {
-        if(isset($_POST['currentPage'])){
-            $currentPage = htmlspecialchars($_POST['currentPage']);
+        if(!empty($request->request->get('currentPage'))){
+            $currentPage = $request->request->get('currentPage');
         }
+
         $limit = 10;
         $videos = $this->getDoctrine()
-                        ->getRepository('AppBundle:Video')->getVideos($currentPage, $limit);
+                        ->getRepository('AppBundle:Video')->getVideos($limit,$currentPage);
         
         $maxPages = ceil($videos->count() / $limit);
         $thisPage = $currentPage;
@@ -35,22 +29,21 @@ class VideoController extends Controller
         ));
     }
 
-    /**
-     * Creates a new video entity.
-     *
-     */
-    public function newAction(Request $request)
+    public function newAction(Request $request, LoggerInterface $logger)
     {
         $video = new Video();
         $form = $this->createForm('AppBundle\Form\VideoType', $video);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Setting time created.
-            $video->setCreated(new \DateTime('now'));
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($video);
-            $em->flush();
+            try {
+                $video->setCreated(new \DateTime('now'));
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($video);
+                $em->flush();
+            }catch (\Exception $e){
+                $logger->error('Error while creating video. Error: '.$e->getMessage());
+            }
 
             return $this->redirectToRoute('video_show', array('id' => $video->getId()));
         }
@@ -61,10 +54,6 @@ class VideoController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a video entity.
-     *
-     */
     public function showAction(Video $video)
     {
         $deleteForm = $this->createDeleteForm($video);
@@ -75,10 +64,6 @@ class VideoController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing video entity.
-     *
-     */
     public function editAction(Request $request, Video $video)
     {
         $deleteForm = $this->createDeleteForm($video);
@@ -98,10 +83,6 @@ class VideoController extends Controller
         ));
     }
 
-    /**
-     * Deletes a video entity.
-     *
-     */
     public function deleteAction(Request $request, Video $video)
     {
         $form = $this->createDeleteForm($video);
@@ -116,41 +97,29 @@ class VideoController extends Controller
         return $this->redirectToRoute('video_index');
     }
 
-    /**
-     * Creates a form to delete a video entity.
-     *
-     * @param Video $video The video entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm(Video $video)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('video_delete', array('id' => $video->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
     
-    public function findVideosAction(Request $request, $currentPage = 1){
-        
+    public function findVideosAction(Request $request, $currentPage = 1)
+    {
         $limit = 10;
-        
-        if (isset($_GET['currentPage'])) {
-            $currentPage = htmlspecialchars($_GET['currentPage']);
+
+        if(!empty($request->request->get('currentPage'))){
+            $currentPage = $request->request->get('currentPage');
         }
-        
-        //$requestString = $request->request->get('searchedFor');
+
         $string = htmlspecialchars($request->query->get('q'));
-        //dump($requestString);exit;
-        $search = $this->getDoctrine()->getRepository('AppBundle:Video')->searchVids($string, $currentPage, $limit);
-        //dump($search);exit;
-        //$searched = new JsonResponse(json_encode($search));
+        $search = $this->getDoctrine()->getRepository('AppBundle:Video')->searchVids($string, $currentPage);
         
         $maxPages = ceil($search->count() / $limit);
         $thisPage = $currentPage;
-        //dump($search);exit;
         unset($requestString);
+
         return $this->render('back/video/index.html.twig', array(
             'videos' => $search,
             'maxPages'=> $maxPages,

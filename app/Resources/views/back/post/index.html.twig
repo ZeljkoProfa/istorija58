@@ -21,7 +21,6 @@
         {% for post in posts %}
             <tr class="odd gradeX">
                 <td><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.title }}</a></td>
-                
                 <td>{{ post.author }}</td>
                 <td>{{ post.adminId }}</td>
                 <td>{{ post.category }}</td>

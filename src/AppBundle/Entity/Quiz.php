@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Quiz
@@ -135,23 +134,28 @@ class Quiz
         return $this->created;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->quizName;
     }
     
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->status;
     }
     
-    public function setStatus($status){
+    public function setStatus($status)
+    {
         $this->status = $status;
     }
     
-    public function getTotal(){
+    public function getTotal()
+    {
         return $this->total;
     }
     
-    public function setTotal($total){
+    public function setTotal($total)
+    {
         $this->total = $total;
     }
 }

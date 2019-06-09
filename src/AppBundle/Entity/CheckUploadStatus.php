@@ -2,7 +2,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
@@ -28,25 +27,30 @@ class CheckUploadStatus
      */
     private $status;
     
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
     
-    public function setId($id){
+    public function setId($id)
+    {
         $this->id = $id;
         return $this;
     }
     
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->status;
     }
     
-    public function setStatus($status){
+    public function setStatus($status)
+    {
         $this->status = $status;
         return $this;
     }
     
-    public function __toString() {
+    public function __toString()
+    {
         return $this->status;
     }
 }

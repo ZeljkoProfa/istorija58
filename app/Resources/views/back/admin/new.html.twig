@@ -5,14 +5,16 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <i class="fa fa-plus move-right" style="color:white; right:-10px;"></i>
-        <input type="submit" value="Create" style="position:relative; left: -10px!important;" 
-               class="btn btn-primary btn-create btn-move-fafa"/>
+        <i class="fa fa-plus move-right new-create-plus-icon"></i>
+        <input type="submit" value="Create" class="btn btn-primary btn-create"/>
     {{ form_end(form) }}
 
     <ul class="buttons">
         <li>
-            <a href="{{ path('admin_index') }}" style="margin-left: -40px !important;" class="btn btn-primary fixed_left"><i class="fa fa-list"></i>Back to the list</a>
+            <a href="{{ path('admin_index') }}" class="btn btn-primary fixed_left back-to-list-button">
+                <i class="fa fa-list"></i>
+                Back to the list
+            </a>
         </li>
     </ul>
 {% endblock %}

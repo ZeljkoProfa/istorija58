@@ -4,7 +4,7 @@ namespace AppBundle\Controller\front;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-Class ContentPagesController extends Controller
+class ContentPagesController extends Controller
 {
     /**
      * Controller contentPages action
@@ -18,17 +18,17 @@ Class ContentPagesController extends Controller
     {
         $limit = 10;
         $posts = $this->getDoctrine()
-                        ->getRepository('AppBundle:Post')->getForPagesByCategory($id, $currentPage, $limit);
+                        ->getRepository('AppBundle:Post')->getForPagesByCategory($id, $limit, $currentPage);
 
         $maxPages = ceil($posts->count() / $limit);
         $thisPage = $currentPage;
 
         return $this->render('front/pages/content_pages.html.twig', [
-                    'id' => $id,
-                    'posts' => $posts,
-                    'title' => $title,
-                    'maxPages'=> $maxPages,
-                    'thisPage'=> $thisPage
+                'id' => $id,
+                'posts' => $posts,
+                'title' => $title,
+                'maxPages'=> $maxPages,
+                'thisPage'=> $thisPage
         ]);
     }
 }

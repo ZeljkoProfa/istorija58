@@ -5,7 +5,6 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Post
@@ -15,8 +14,8 @@ use Symfony\Component\HttpFoundation\File\File;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
  * 
  */
-class Post {
-
+class Post
+{
     /**
      * @var integer
      *
@@ -198,9 +197,7 @@ class Post {
     }
 
     /**
-     * Get adminId
-     *
-     * @return integer
+     * @return Admin
      */
     public function getAdminId() {
         return $this->adminId;
@@ -284,11 +281,11 @@ class Post {
     /**
      * Add comment
      *
-     * @param \AppBundle\Entity\Comment $comment
+     * @param Comment $comment
      *
      * @return Post
      */
-    public function addComment(\AppBundle\Entity\Comment $comment) {
+    public function addComment(Comment $comment) {
         $this->comments[] = $comment;
 
         return $this;
@@ -297,9 +294,9 @@ class Post {
     /**
      * Remove comment
      *
-     * @param \AppBundle\Entity\Comment $comment
+     * @param Comment $comment
      */
-    public function removeComment(\AppBundle\Entity\Comment $comment) {
+    public function removeComment(Comment $comment) {
         $this->comments->removeElement($comment);
     }
 

@@ -7,19 +7,14 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Validator\Constraints\Image;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class QuizQuestionsType extends AbstractType {
-
-    /**
-     * {@inheritdoc}
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+class QuizQuestionsType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder->add('question', TextType::class, [
                     'label' => 'Pitanje',
                     'attr' => [
@@ -89,20 +84,15 @@ class QuizQuestionsType extends AbstractType {
             ]]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver) {
+    public function configureOptions(OptionsResolver $resolver)
+    {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\QuizQuestions'
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix() {
+    public function getBlockPrefix()
+    {
         return 'appbundle_quizquestions';
     }
-
 }

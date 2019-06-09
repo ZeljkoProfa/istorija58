@@ -3,14 +3,12 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Ip
  *
  * @ORM\Table(name="bannedd_ip")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\IpRepository")
+ * @ORM\Entity()
  */
 class BanneddIp
 {
@@ -38,7 +36,7 @@ class BanneddIp
     private $banned = '0';
     
     /**
-     * @var datetime
+     * @var \Datetime $created
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */

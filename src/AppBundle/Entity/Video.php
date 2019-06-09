@@ -3,8 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Entity\Video;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -186,12 +184,14 @@ class Video
         return $this->id;
     }
     
-    public function setStatus($status){
+    public function setStatus($status)
+    {
         $this->status = $status;
         return $this;
     }
     
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->status;
     }
     

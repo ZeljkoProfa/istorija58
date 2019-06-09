@@ -7,19 +7,8 @@ use AppBundle\Entity\Contact;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Contact controller.
- *
- */
 class ContactController extends Controller
 {
-    /**
-     * Lists all contact entities.
-     *
-     * @param Request $request
-     * @param int $currentPage
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function indexAction(Request $request, $currentPage = 1)
     {
         $limit = 10;
@@ -42,19 +31,10 @@ class ContactController extends Controller
         ]);
     }
 
-    /**
-     * Finds and displays a contact entity.
-     *
-     * @param Contact $contact
-     * @param SecurityService $securityService
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function showAction(Contact $contact, SecurityService $securityService)
     {
         $id = $contact->getId();
-        //var_dump($id);exit;
         $user_ip = $securityService->takeIp($id, $origin = 'contact');
-        //var_dump($user_ip);exit;
         $deleteForm = $this->createDeleteForm($contact);
         
         return $this->render('back/contact/show.html.twig', [
@@ -64,21 +44,12 @@ class ContactController extends Controller
         ]);
     }
 
-    /**
-     * Displays a form to edit an existing contact entity.
-     *
-     * @param Request $request
-     * @param Contact $contact
-     * @param SecurityService $securityService
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
     public function editAction(Request $request, Contact $contact, SecurityService $securityService)
     {
         $deleteForm = $this->createDeleteForm($contact);
         $editForm = $this->createForm('AppBundle\Form\ContactType', $contact);
         $editForm->handleRequest($request);
         $id = $contact->getId();
-        //var_dump($id);exit;
         $user_ip = $securityService->takeIp($id, $origin = 'contact');
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -95,13 +66,6 @@ class ContactController extends Controller
         ]);
     }
 
-    /**
-     * Deletes a contact entity.
-     *
-     * @param Request $request
-     * @param Contact $contact
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function deleteAction(Request $request, Contact $contact)
     {
         $form = $this->createDeleteForm($contact);
@@ -116,19 +80,11 @@ class ContactController extends Controller
         return $this->redirectToRoute('contact_index');
     }
 
-    /**
-     * Creates a form to delete a contact entity.
-     *
-     * @param Contact $contact The contact entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm(Contact $contact)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('contact_delete', ['id' => $contact->getId()]))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

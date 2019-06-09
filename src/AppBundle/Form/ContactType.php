@@ -11,9 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class ContactType extends AbstractType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('author', TextType::class, [
@@ -34,12 +31,8 @@ class ContactType extends AbstractType
                         'class' => 'form-control',
                         'placeholder' => 'Unesite text'
             ]]);
-                
     }
-    
-    /**
-     * {@inheritdoc}
-     */
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
@@ -47,13 +40,8 @@ class ContactType extends AbstractType
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix()
     {
         return 'appbundle_contact';
     }
-
-
 }

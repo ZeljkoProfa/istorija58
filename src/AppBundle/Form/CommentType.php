@@ -2,8 +2,8 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -12,9 +12,6 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class CommentType extends AbstractType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('author', TextType::class, [
@@ -32,6 +29,7 @@ class CommentType extends AbstractType
                         'placeholder' => 'Unesite komentar',
                         'style="width: 100%;'
             ]])
+                ->add('required_security', HiddenType::class)
                 ->add('status', ChoiceType::class, [
                     'mapped' => false,
                     'choices' => array(
@@ -42,10 +40,7 @@ class CommentType extends AbstractType
                         'class' => 'form-control',
             ]]);
     }
-    
-    /**
-     * {@inheritdoc}
-     */
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
@@ -53,13 +48,8 @@ class CommentType extends AbstractType
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix()
     {
         return 'appbundle_comment';
     }
-
-
 }

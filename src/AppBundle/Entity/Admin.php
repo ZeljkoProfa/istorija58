@@ -61,7 +61,7 @@ class Admin implements UserInterface, \Serializable
     private $phone;
     
     /**
-     * @var datetime
+     * @var \Datetime
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */
@@ -246,13 +246,10 @@ class Admin implements UserInterface, \Serializable
     }
 
     /**
-     * Add category
-     *
-     * @param \AppBundle\Entity\Post $category
-     *
-     * @return Admin
+     * @param Category $category
+     * @return $this
      */
-    public function addCategory(\AppBundle\Entity\Post $category)
+    public function addCategory(Category $category)
     {
         $this->categories[] = $category;
 
@@ -260,11 +257,9 @@ class Admin implements UserInterface, \Serializable
     }
 
     /**
-     * Remove category
-     *
-     * @param \AppBundle\Entity\Post $category
+     * @param Category $category
      */
-    public function removeCategory(\AppBundle\Entity\Post $category)
+    public function removeCategory(Category $category)
     {
         $this->categories->removeElement($category);
     }
@@ -280,13 +275,10 @@ class Admin implements UserInterface, \Serializable
     }
 
     /**
-     * Add post
-     *
-     * @param \AppBundle\Entity\Category $post
-     *
-     * @return Admin
+     * @param \AppBundle\Entity\Post $post
+     * @return $this
      */
-    public function addPost(\AppBundle\Entity\Category $post)
+    public function addPost(Post $post)
     {
         $this->posts[] = $post;
 
@@ -294,11 +286,9 @@ class Admin implements UserInterface, \Serializable
     }
 
     /**
-     * Remove post
-     *
-     * @param \AppBundle\Entity\Category $post
+     * @param \AppBundle\Entity\Post $post
      */
-    public function removePost(\AppBundle\Entity\Category $post)
+    public function removePost(Post $post)
     {
         $this->posts->removeElement($post);
     }

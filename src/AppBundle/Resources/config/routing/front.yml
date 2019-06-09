@@ -13,7 +13,7 @@ front_submit_post:
 contact:
     path:       /kontakt
     defaults:   { _controller: "AppBundle:front/Contact:new" }
-     
+
 search:
     path:       /fajl-pretraga
     defaults:   { _controller: "AppBundle:front/Search:site", "currentPage":1 }
@@ -23,8 +23,9 @@ blog_author:
     defaults:   { _controller: "AppBundle:front/Personal:things" }
 
 comments-front:
-    path:       /komentari
+    path:       /komentarii
     defaults:   { _controller: "AppBundle:front/FrontComment:newComment" }
+    methods:  [POST]
     
 video_front:
     path:       /lista-filmova

@@ -36,7 +36,7 @@ class Contact
     private $author;
 
     /**
-     * @var text
+     * @var
      * @Assert\Length(
      *      min = 10,
      *      max = 500,

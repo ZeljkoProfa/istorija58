@@ -4,22 +4,12 @@ namespace AppBundle\Controller\back;
 
 use AppBundle\Entity\Comment;
 use AppBundle\Services\SecurityService;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Comment controller.
- *
- */
 class CommentController extends Controller
 {
-    /**
-     * Lists all comment entities.
-     *
-     * @param Request $request
-     * @param int $currentPage
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function indexAction(Request $request, $currentPage = 1)
     {
         $limit = 10;
@@ -36,31 +26,27 @@ class CommentController extends Controller
         $thisPage = $currentPage;
 
         return $this->render('back/comment/index.html.twig', array(
-                    'comments' => $comments,
-                    'maxPages' => $maxPages,
-                    'thisPage' => $thisPage
+                'comments' => $comments,
+                'maxPages' => $maxPages,
+                'thisPage' => $thisPage
         ));
     }
 
-    /**
-     * Creates a new comment entity.
-     *
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @throws \Exception
-     */
-    public function newAction(Request $request)
+    public function newAction(Request $request, LoggerInterface $logger)
     {
         $comment = new Comment();
         $form = $this->createForm('AppBundle\Form\CommentType', $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Setting time created.
-            $comment->setCreated(new \DateTime('now'));
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($comment);
-            $em->flush();
+            try {
+                $comment->setCreated(new \DateTime('now'));
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($comment);
+                $em->flush();
+            }catch (\Exception $e){
+                $logger->error('Error while creating comment. Error '.$e->getMessage());
+            }
 
             return $this->redirectToRoute('comment_show', array('id' => $comment->getId()));
         }
@@ -71,13 +57,6 @@ class CommentController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a comment entity.
-     *
-     * @param Comment $comment
-     * @param SecurityService $securityService
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function showAction(Comment $comment, SecurityService $securityService)
     {
         $id = $comment->getId();
@@ -92,14 +71,6 @@ class CommentController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing comment entity.
-     *
-     * @param Request $request
-     * @param Comment $comment
-     * @param SecurityService $securityService
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
     public function editAction(Request $request, Comment $comment, SecurityService $securityService)
     {
         $id = $comment->getId();
@@ -112,7 +83,6 @@ class CommentController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             
             $comment->setStatus('0');
-            //Debug::dump($editForm->getData());exit;
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('comment_index', array('id' => $comment->getId()));
@@ -126,13 +96,6 @@ class CommentController extends Controller
         ));
     }
 
-    /**
-     * Deletes a comment entity.
-     *
-     * @param Request $request
-     * @param Comment $comment
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function deleteAction(Request $request, Comment $comment)
     {
         $form = $this->createDeleteForm($comment);
@@ -147,19 +110,11 @@ class CommentController extends Controller
         return $this->redirectToRoute('comment_index');
     }
 
-    /**
-     * Creates a form to delete a comment entity.
-     *
-     * @param Comment $comment The comment entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm(Comment $comment)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('comment_delete', array('id' => $comment->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

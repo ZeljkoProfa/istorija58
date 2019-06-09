@@ -9,9 +9,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ThoughtsType extends AbstractType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('text', TextType::class, [
@@ -27,10 +24,7 @@ class ThoughtsType extends AbstractType
                         'placeholder' => 'Unesite autora'
             ]]);
     }
-    
-    /**
-     * {@inheritdoc}
-     */
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
@@ -38,9 +32,6 @@ class ThoughtsType extends AbstractType
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix()
     {
         return 'appbundle_thoughts';

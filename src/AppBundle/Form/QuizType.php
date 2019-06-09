@@ -10,9 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class QuizType extends AbstractType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('quizName', TextType::class, [
@@ -36,10 +33,7 @@ class QuizType extends AbstractType
                         'class' => 'form-control',
         ]]);
     }
-    
-    /**
-     * {@inheritdoc}
-     */
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
@@ -47,13 +41,8 @@ class QuizType extends AbstractType
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix()
     {
         return 'appbundle_quiz';
     }
-
-
 }

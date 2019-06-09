@@ -35,14 +35,21 @@
 
     <ul class="buttons">
         <li>
-            <a href="{{ path('comment_index') }}" class="btn btn-primary"><i class="fa fa-list"></i>Back to the list</a>
+            <a href="{{ path('comment_index') }}" class="btn btn-primary">
+                <i class="fa fa-list"></i>
+                Back to the list
+            </a>
         </li>
         <li>
-            <a href="{{ path('comment_edit', { 'id': comment.id }) }}" class="btn btn-primary"><i class="fa fa-pencil" style="color: white;"></i>Edit</a>
+            <a href="{{ path('comment_edit', { 'id': comment.id }) }}" class="btn btn-primary">
+                <i class="fa fa-pencil icon-color" ></i>
+                Edit
+            </a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-            <i style="color:white;" class="fa fa-trash move-right"></i><input type="submit" value="Delete" class="btn btn-move-fafa">
+                <i class="fa fa-trash trash-move-right icon-color"></i>
+                <input type="submit" value="Delete" class="btn icon-color show-delete-button">
             {{ form_end(delete_form) }}
         </li>
     </ul>

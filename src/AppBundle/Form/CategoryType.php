@@ -8,12 +8,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class CategoryType extends AbstractType {
-
-    /**
-     * {@inheritdoc}
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+class CategoryType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder->add('title', TextType::class, [
                     'label' => 'Kategorije',
                     'attr' => [
@@ -38,20 +36,15 @@ class CategoryType extends AbstractType {
         ]]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver) {
+    public function configureOptions(OptionsResolver $resolver)
+    {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Category'
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix() {
+    public function getBlockPrefix()
+    {
         return 'appbundle_category';
     }
-
 }

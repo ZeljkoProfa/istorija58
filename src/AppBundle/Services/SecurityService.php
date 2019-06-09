@@ -59,19 +59,15 @@ class SecurityService
             return false;
         }
 
-        if(strpos($text, 'dot com') !== false){
+        if(strpos(strtolower($text), 'dot com') !== false){
             return false;
         }
 
-        if(strpos($text, 'dotcom') !== false){
+        if(strpos(strtolower($text), 'dotcom') !== false){
             return false;
         }
 
         if(strpos(strtolower($text), strtolower('Спасибо')) !== false){
-            return false;
-        }
-
-        if(strpos($text, 'Спасибо') !== false){
             return false;
         }
 
@@ -80,6 +76,54 @@ class SecurityService
         }
 
         if(strpos($text, '.ly') !== false){
+            return false;
+        }
+
+        if(strpos($text, '<') !== false){
+            return false;
+        }
+
+        if(strpos($text, '>') !== false){
+            return false;
+        }
+
+        if(strpos($text, '=') !== false){
+            return false;
+        }
+
+        if(strpos($text, '{') !== false){
+            return false;
+        }
+
+        if(strpos($text, '}') !== false){
+            return false;
+        }
+
+        if(strpos($text, 'script') !== false){
+            return false;
+        }
+
+        if(strpos($text, 'true') !== false){
+            return false;
+        }
+
+        if(strpos($text, 'false') !== false){
+            return false;
+        }
+
+        if($text === false){
+            return false;
+        }
+
+        if($text === true){
+            return false;
+        }
+
+        if($text === null){
+            return false;
+        }
+
+        if($text === ''){
             return false;
         }
 
@@ -93,7 +137,6 @@ class SecurityService
         $this->proxy = $request->server->get('HTTP_X_FORWARDED_FOR');
 
         if($this->checkRemoteIp($this->remoteIp)){
-            //dump($this->remoteIp);exit;
             return false;
         }
 
@@ -122,7 +165,7 @@ class SecurityService
         }catch (\Exception $e){
             $this->logger->error('Error while checking remote IP. Error '.$e->getMessage());
         }
-// dump($row);exit;
+
         return empty($row) ? false : true;
     }
 
