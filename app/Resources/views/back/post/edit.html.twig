@@ -28,22 +28,26 @@
         {{ form_errors(edit_form.class) }}
         {{ form_widget(edit_form.class) }}
     </div>
-        <i class="fa fa-pencil move-right" style="color:white; right:-10px;"></i><input type="submit" value="Edit" style="position:relative; left: -10px!important;" class="btn btn-primary btn-create btn-move-fafa"/>
+    {% include 'back/common/edit_button.html.twig' %}
     {{ form_end(edit_form) }}
-    
-    {# show ip #}
-    {% if user_ip.ip is defined %}
-    <span class="btn btn-primary">{{ user_ip.ip }}</span>
-    {% endif %}
-    
+
     <ul class="buttons">
         <li>
-            <a href="{{ path('post_index') }}" style="margin-left: -40px !important;" class="btn btn-primary fixed_left"><i class="fa fa-list"></i>Back to the list</a>
+            <a href="{{ path('post_index') }}" class="btn btn-primary fixed_left back-to-list-button">
+                <i class="fa fa-list"></i>
+                Back to the list
+            </a>
+        </li>
+        <li >
+            {% block delete_button %}
+                {% include 'back/common/delete_button.html.twig' %}
+            {% endblock %}
         </li>
         <li>
-            {{ form_start(delete_form) }}
-                <i class="fa fa-trash move-right" style="color:white;"></i><input type="submit" value="Delete" class="btn danger btn-move-fafa">
-            {{ form_end(delete_form) }}
+            {# show ip #}
+            {% if user_ip.ip is defined %}
+                <span class="btn btn-primary">{{ user_ip.ip }}</span>
+            {% endif %}
         </li>
     </ul>
 {% endblock %}

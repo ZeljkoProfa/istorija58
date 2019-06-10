@@ -34,21 +34,23 @@
 
     <ul class="buttons">
         <li>
-            <a href="{{ path('quiz_index') }}" class="btn btn-primary"><i class="fa fa-list"></i>Back to the list</a>
+            <a href="{{ path('quiz_index') }}" class="btn btn-primary">
+                <i class="fa fa-list"></i>
+                Back to the list
+            </a>
         </li>
         <li>
-            <a href="{{ path('quiz_edit', { 'id': quiz.id }) }}" class="btn btn-primary"><i class="fa fa-pencil" style="color: white;"></i>Edit</a>
+            <a href="{{ path('quiz_edit', { 'id': quiz.id }) }}" class="btn btn-primary">
+                <i class="fa fa-pencil" style="color: white;"></i>
+                Izmeni
+            </a>
         </li>
         <li>
-            {{ form_start(delete_form) }}
-            <i style="color:white;" class="fa fa-trash move-right"></i>
-            <input type="submit" value="Delete" class="btn btn-move-fafa">
-            {{ form_end(delete_form) }}
+            {% block delete_button %}
+                {% include 'back/common/delete_button.html.twig' %}
+            {% endblock %}
         </li>
     </ul>
-
-
-
 
     <h1>Quiz questions list</h1>
 
@@ -67,14 +69,13 @@
             {% for quizQuestion in quizQuestions %}
                 <tr class="odd gradeX">
                     <td>{{ quizQuestion.number }}</td>
-                    <!--<td>{# quizQuestion.quizId #}</td>-->
                     <td>{{ quizQuestion.question }}</td>
                     <td>{{ quizQuestion.points }}</td>
                     
                     <td>
                         <ul  class="buttons">
                             <li>
-                                <a href="{{ path('quizquestions_show', { 'id': quizQuestion.id }) }}" class="btn btn-primary"><i class="fa fa-eye"></i>show</a>
+                                <a href="{{ path('quizquestions_show', { 'id': quizQuestion.id }) }}" class="btn btn-primary"><i class="fa fa-eye"></i>Prikazi</a>
                             </li>
                             <li>
                                 <a href="{{ path('quizquestions_edit', { 'id': quizQuestion.id }) }}" class="btn btn-primary"><i class="fa fa-pencil"></i>edit</a>
@@ -89,7 +90,7 @@
 
     <ul class="buttons">
         <li>
-            <a href="{{ path('quizquestions_new', { 'id': quiz.id }) }}" style="margin-left: -40px !important;" class="btn btn-primary"><i class="fa fa-plus"></i>Create a new question</a>
+            <a href="{{ path('quizquestions_new', { 'id': quiz.id }) }}" class="btn btn-primary"><i class="fa fa-plus"></i>Create a new question</a>
         </li>
     </ul>
 {% endblock %}

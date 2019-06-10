@@ -12,7 +12,7 @@ class ContactRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->createQueryBuilder('u')
                 ->orderBy('u.id', 'DESC')
                 ->getQuery();
-        $paginator = $this->paginate($query, $currentPage, $limit);
+        $paginator = $this->paginate($query);
 
         return $paginator;
     }

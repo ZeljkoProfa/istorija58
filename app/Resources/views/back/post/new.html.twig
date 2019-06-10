@@ -33,12 +33,12 @@
         {{ form_errors(form.class) }}
         {{ form_widget(form.class) }}
     </div>
-    <i class="fa fa-plus move-right" style="color:white; right:-10px;"></i><input type="submit" value="Create" style="position:relative; left: -10px!important;" class="btn btn-primary btn-create btn-move-fafa"/>
+    <i class="fa fa-plus icons-positioning-and-styles" style="color:white; right:-10px;"></i><input type="submit" value="Create" style="position:relative; left: -10px!important;" class="btn btn-primary btn-create btn-move-fafa"/>
     {{ form_end(form) }}
 
     <ul class="buttons" >
         <li>
-            <a href="{{ path('post_index') }}" style="margin-left: -40px !important;" class="btn btn-primary fixed_left"><i class="fa fa-list"></i>Back to the list</a>
+            <a href="{{ path('post_index') }}" class="btn btn-primary fixed_left"><i class="fa fa-list"></i>Back to the list</a>
         </li>
     </ul>
 {% endblock %}

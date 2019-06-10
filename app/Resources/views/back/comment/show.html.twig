@@ -1,56 +1,56 @@
 {% extends 'back/base.html.twig' %}
 
 {% block body %}
-    <h1>Comment</h1>
+    <h1>Komentar</h1>
 
     <table class="table table-bordered table-striped">
         <tbody>
             <tr>
-                <th>Author</th>
+                <th>Autor</th>
                 <td>{{ comment.author }}</td>
             </tr>
             <tr>
-                <th>Body</th>
+                <th>Tekst</th>
                 <td>{{ comment.body }}</td>
             </tr>
+            {#<tr>#}
+                {#<th>Postid</th>#}
+                {#<td>{{ comment.postId }}</td>#}
+            {#</tr>#}
             <tr>
-                <th>Postid</th>
+                <th>"Parent" post</th>
                 <td>{{ comment.postId }}</td>
             </tr>
             <tr>
-                <th>ParentId</th>
-                <td>{{ comment.postId }}</td>
-            </tr>
-            <tr>
-                <th>Created</th>
+                <th>Vreme nastanka</th>
                 <td>{% if comment.created %}{{ comment.created|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>
 
-    {# show ip #}
-    {% if user_ip.ip is defined %}
-        <span class="btn btn-primary do-not-receive">{{ user_ip.ip }}</span>
-    {% endif %}
-
     <ul class="buttons">
         <li>
             <a href="{{ path('comment_index') }}" class="btn btn-primary">
                 <i class="fa fa-list"></i>
-                Back to the list
+                Nazad na listu
             </a>
         </li>
         <li>
             <a href="{{ path('comment_edit', { 'id': comment.id }) }}" class="btn btn-primary">
                 <i class="fa fa-pencil icon-color" ></i>
-                Edit
+                Izmeni
             </a>
         </li>
         <li>
-            {{ form_start(delete_form) }}
-                <i class="fa fa-trash trash-move-right icon-color"></i>
-                <input type="submit" value="Delete" class="btn icon-color show-delete-button">
-            {{ form_end(delete_form) }}
+            {% block delete_button %}
+                {% include 'back/common/delete_button.html.twig' %}
+            {% endblock %}
+        </li>
+        <li>
+            {# show ip #}
+            {% if user_ip.ip is defined %}
+                <span class="btn btn-primary do-not-receive">Zabrani ip: {{ user_ip.ip }}</span>
+            {% endif %}
         </li>
     </ul>
     <script>

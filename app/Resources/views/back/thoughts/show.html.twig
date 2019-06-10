@@ -26,16 +26,21 @@
 
     <ul class="buttons">
         <li>
-            <a href="{{ path('thoughts_index') }}" class="btn btn-primary"><i class="fa fa-list"></i>Back to the list</a>
+            <a href="{{ path('thoughts_index') }}" class="btn btn-primary">
+                <i class="fa fa-list"></i>
+                Back to the list
+            </a>
         </li>
         <li>
-            <a href="{{ path('thoughts_edit', { 'id': thought.id }) }}" class="btn btn-primary"><i class="fa fa-pencil" style="color: white;"></i>Edit</a>
+            <a href="{{ path('thoughts_edit', { 'id': thought.id }) }}" class="btn btn-primary">
+                <i class="fa fa-pencil icon-color"></i>
+                Izmeni
+            </a>
         </li>
         <li>
-            {{ form_start(delete_form) }}
-            <i style="color:white;" class="fa fa-trash move-right"></i>
-            <input type="submit" value="Delete" class="btn btn-move-fafa">
-            {{ form_end(delete_form) }}
+            {% block delete_button %}
+                {% include 'back/common/delete_button.html.twig' %}
+            {% endblock %}
         </li>
     </ul>
 {% endblock %}

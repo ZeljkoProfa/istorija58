@@ -1,17 +1,17 @@
 {% extends 'back/base.html.twig' %}
 
 {% block body %}
-    <h1>Comments list</h1>
+    <h1>Lista komentara</h1>
 
     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
         <thead>
             <tr>
-                <th>Author</th>
-                <th>Body</th>
-                <th>Created</th>
+                <th>Autor</th>
+                <th>Tekst</th>
+                <th>Vreme nastanka</th>
                 {#<th>Postid</th>#}
                 <th>Status</th>
-                <th>Actions</th>
+                <th>Akcije</th>
             </tr>
         </thead>
         <tbody>
@@ -25,10 +25,16 @@
                 <td class="space-for-action">
                     <ul  class="buttons buttons-in-line">
                         <li>
-                            <a href="{{ path('comment_show', { 'id': comment.id }) }}" class="btn btn-primary"><i class="fa fa-eye"></i>show</a>
+                            <a href="{{ path('comment_show', { 'id': comment.id }) }}" class="btn btn-primary">
+                                <i class="fa fa-eye"></i>
+                                Prikazi
+                            </a>
                         </li>
                         <li>
-                            <a href="{{ path('comment_edit', { 'id': comment.id }) }}" class="btn btn-primary"><i class="fa fa-pencil"></i>edit</a>
+                            <a href="{{ path('comment_edit', { 'id': comment.id }) }}" class="btn btn-primary">
+                                <i class="fa fa-pencil"></i>
+                                Izmeni
+                            </a>
                         </li>
                     </ul>
                 </td>
@@ -36,7 +42,8 @@
         {% endfor %}
         </tbody>
     </table>
-{% if maxPages > 1 %}
+
+    {% if maxPages > 1 %}
         <ul class="pagination pagination-sm">
             {# `«` arrow  #}
             {# `currentPage var is the one defined in routing yaml/pageroute/defaults.  #}
@@ -58,9 +65,4 @@
             </li>
         </ul>
     {% endif %}
-    <ul class="buttons">
-        <li>
-            <a href="{{ path('comment_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i>Create a new comment</a>
-        </li>
-    </ul>
 {% endblock %}

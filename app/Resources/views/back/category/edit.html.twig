@@ -1,26 +1,24 @@
-  {% extends 'back/base.html.twig' %}
+{% extends 'back/base.html.twig' %}
 
 {% block body %}
-    <h1>Category edit</h1>
+    <h1>Izmeni Kategoriju</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <i class="fa fa-pencil move-right icon-color"></i>
-        <input type="submit" value="Edit" class="btn btn-primary btn-edit"/>
+    {% include 'back/common/edit_button.html.twig' %}
     {{ form_end(edit_form) }}
 
     <ul class="buttons">
         <li>
             <a href="{{ path('category_index') }}" class="btn btn-primary fixed_left back-to-list-button">
                 <i class="fa fa-list"></i>
-                Back to the list
+                Nazad na listu kategorija
             </a>
         </li>
         <li>
-            {{ form_start(delete_form) }}
-                <i class="fa fa-trash move-right-trash-icon icon-color"></i>
-                <input type="submit" value="Delete" class="btn danger delete-button">
-            {{ form_end(delete_form) }}
+            {% block delete_button %}
+                {% include 'back/common/delete_button.html.twig' %}
+            {% endblock %}
         </li>
     </ul>
 {% endblock %}

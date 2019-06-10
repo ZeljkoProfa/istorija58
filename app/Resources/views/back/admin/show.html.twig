@@ -6,11 +6,11 @@
     <table class="table table-bordered table-striped">
         <tbody>
             <tr>
-                <th>Firstname</th>
+                <th>Ime</th>
                 <td>{{ admin.firstName }}</td>
             </tr>
             <tr>
-                <th>Lastname</th>
+                <th>Prezime</th>
                 <td>{{ admin.lastName }}</td>
             </tr>
             <tr>
@@ -18,16 +18,12 @@
                 <td>{{ admin.email }}</td>
             </tr>
             <tr>
-                <th>Password</th>
+                <th>Pasvord</th>
                 <td>{{ admin.password }}</td>
             </tr>
             <tr>
-                <th>Phone</th>
+                <th>Telefon</th>
                 <td>{{ admin.phone }}</td>
-            </tr>
-            <tr>
-                <th>Id</th>
-                <td>{{ admin.id }}</td>
             </tr>
             <tr>
                 <th>Vreme nastanka</th>
@@ -36,25 +32,24 @@
         </tbody>
     </table>
 
-    <ul class="buttons fix-left-space">
+    <ul class="buttons">
         <li>
             <a href="{{ path('admin_index') }}" class="btn btn-primary">
                 <i class="fa fa-list"></i>
-                Back to the list
+                Nazad na listu
             </a>
         </li>
         <li>
             <a href="{{ path('admin_edit', { 'id': admin.id }) }}" class="btn btn-primary">
                 <i class="fa fa-pencil icon-color">
                 </i>
-                Edit
+                Izmeni
             </a>
         </li>
         <li>
-            {{ form_start(delete_form) }}
-                <i class="fa fa-trash trash-move-right icon-color"></i>
-                <input type="submit" value="Delete" class="btn icon-color show-delete-button">
-            {{ form_end(delete_form) }}
+            {% block delete_button %}
+                {% include 'back/common/delete_button.html.twig' %}
+            {% endblock %}
         </li>
     </ul>
 {% endblock %}

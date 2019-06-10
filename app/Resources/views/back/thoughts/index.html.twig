@@ -14,30 +14,30 @@
             </tr>
         </thead>
         <tbody>
-        {% for thought in thoughts %}
-            <tr>
-                <td><a href="{{ path('thoughts_show', { 'id': thought.id }) }}">{{ thought.id }}</a></td>
-                <td>{{ thought.text }}</td>
-                <td>{{ thought.author }}</td>
-                <td>{% if thought.created %}{{ thought.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul  class="buttons">
-                        <li>
-                            <a href="{{ path('thoughts_show', { 'id': thought.id }) }}" class="btn btn-primary">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('thoughts_edit', { 'id': thought.id }) }}" class="btn btn-primary">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
+            {% for thought in thoughts %}
+                <tr>
+                    <td><a href="{{ path('thoughts_show', { 'id': thought.id }) }}">{{ thought.id }}</a></td>
+                    <td>{{ thought.text }}</td>
+                    <td>{{ thought.author }}</td>
+                    <td>{% if thought.created %}{{ thought.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>
+                        <ul  class="buttons">
+                            <li>
+                                <a href="{{ path('thoughts_show', { 'id': thought.id }) }}" class="btn btn-primary">Prikazi</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('thoughts_edit', { 'id': thought.id }) }}" class="btn btn-primary">Izmeni</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
     <ul class="buttons">
         <li>
-            <a href="{{ path('thoughts_new') }}" style="margin-left: -40px !important;" class="btn btn-primary"><i class="fa fa-plus"></i>Create a new question</a>
+            <a href="{{ path('thoughts_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i>Create a new thought</a>
         </li>
     </ul>
 {% endblock %}

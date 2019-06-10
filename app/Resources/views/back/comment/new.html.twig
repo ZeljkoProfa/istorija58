@@ -1,19 +1,19 @@
 {% extends 'back/base.html.twig' %}
-
+{# This should not be visible ever!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #}
 {% block body %}
-    <h1>Comment creation</h1>
+    <h1>Kreiranje komentara</h1>
 
     {{ form_start(form_comment) }}
         {{ form_widget(form_comment) }}
         <i class="fa fa-plus move-right new-create-plus-icon"></i>
-        <input type="submit" value="Create" class="btn btn-primary btn-create"/>
+        <input type="submit" value="Kreiraj" class="btn btn-primary btn-create"/>
     {{ form_end(form_comment) }}
 
     <ul class="buttons">
         <li>
             <a href="{{ path('comment_index') }}" class="btn btn-primary fixed_left back-to-list-button">
                 <i class="fa fa-list"></i>
-                Back to the list
+                Nazad na listu
             </a>
         </li>
     </ul>

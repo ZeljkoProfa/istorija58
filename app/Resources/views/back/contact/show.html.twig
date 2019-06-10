@@ -27,23 +27,24 @@
             </tr>
         </tbody>
     </table>
-            
-    {# show ip #}
-    {% if user_ip.ip is defined %}
-    <span class="btn btn-primary do-not-receive">{{ user_ip.ip }}</span>
-    {% endif %}
     
     <ul class="buttons">
         <li>
             <a href="{{ path('contact_index') }}" class="btn btn-primary"><i class="fa fa-list"></i>Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('contact_edit', { 'id': contact.id }) }}" class="btn btn-primary"><i class="fa fa-pencil" style="color: white;"></i>Edit</a>
+            <a href="{{ path('contact_edit', { 'id': contact.id }) }}" class="btn btn-primary"><i class="fa fa-pencil" style="color: white;"></i>Izmeni</a>
         </li>
         <li>
-            {{ form_start(delete_form) }}
-                <i style="color:white;" class="fa fa-trash move-right"></i><input type="submit" value="Delete" class="btn btn-move-fafa">
-            {{ form_end(delete_form) }}
+            {% block delete_button %}
+                {% include 'back/common/delete_button.html.twig' %}
+            {% endblock %}
+        </li>
+        <li>
+            {# show ip #}
+            {% if user_ip.ip is defined %}
+                <span class="btn btn-primary do-not-receive">{{ user_ip.ip }}</span>
+            {% endif %}
         </li>
     </ul>
             

@@ -5,7 +5,7 @@
 {% block body %}
 
     <h3>Poslednje dodati postovi:</h3>
-    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
         <thead>
             <tr>
                 <th>Naslov</th>
@@ -28,12 +28,19 @@
                     <td>{% if post.created %}{{ post.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                     <td>{{ post.status }}</td>
                     <td>
-                        <ul style="list-style-type: none">
+                        <ul class="buttons buttons-in-line">
                             <li>
-                                <a class="btn btn-primary fixed_left"  href="{{ asset('uploads/posts/') }}{{post.body}}" target="_blank">Otvori</a>
-                                <a href="{{ path('post_show', { 'id': post.id }) }} "  class="btn btn-primary"><i class="fa fa-eye"></i>show</a>
-                                <a href="{{ path('post_edit', { 'id': post.id }) }}"  class="btn btn-primary"><i class="fa fa-pencil"></i>edit</a>
-                                
+                                <a class="btn btn-primary fixed_left"  href="{{ asset('uploads/posts/') }}{{post.body}}" target="_blank">
+                                    Otvori
+                                </a>
+                                <a href="{{ path('post_show', { 'id': post.id }) }} "  class="btn btn-primary">
+                                    <i class="fa fa-eye"></i>
+                                    Prikazi
+                                </a>
+                                <a href="{{ path('post_edit', { 'id': post.id }) }}"  class="btn btn-primary">
+                                    <i class="fa fa-pencil"></i>
+                                    Izmeni
+                                </a>
                             </li>
                         </ul>
                     </td>
@@ -66,7 +73,7 @@
     {% endif %}
 
     <h3>Poslednje dodati komentari:</h3>
-    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
         <thead>
             <tr>
                 <th>Author</th>
@@ -84,12 +91,17 @@
                     <td>{% if comment.created %}{{ comment.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                     <td>{{ comment.status }}</td>
                     <td>
-                        <ul style="list-style-type: none">
+                        <ul class="buttons buttons-in-line">
                             <li>
 
-                                <a href="{{ path('comment_show', { 'id': comment.id }) }} "  class="btn btn-primary"><i class="fa fa-eye"></i>show</a>
-                                <a href="{{ path('comment_edit', { 'id': comment.id }) }}"  class="btn btn-primary"><i class="fa fa-pencil"></i>edit</a>
-                                
+                                <a href="{{ path('comment_show', { 'id': comment.id }) }} "  class="btn btn-primary">
+                                    <i class="fa fa-eye"></i>
+                                    Prikazi
+                                </a>
+                                <a href="{{ path('comment_edit', { 'id': comment.id }) }}"  class="btn btn-primary">
+                                    <i class="fa fa-pencil"></i>
+                                    Izmeni
+                                </a>
                             </li>
                         </ul>
                     </td>
@@ -99,14 +111,14 @@
     </table>
 
     <h3>Poslednje dodata pitanja:</h3>
-    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
         <thead>
             <tr>
                 <th>Autor</th>
                 <th>Sadržaj</th>
                 <th>Email</th>
                 <th>Vreme unosa</th>
-                <th>Actions</th>
+                <th>Akcije</th>
             </tr>
         </thead>
         <tbody>
@@ -117,11 +129,17 @@
                     <td>{{ contact.email }}</td>
                     <td>{% if contact.created %}{{ contact.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                     <td>
-                        <ul style="list-style-type: none">
+                        <ul class="buttons buttons-in-line">
                             <li>
                             
-                                <a href="{{ path('contact_show', { 'id': contact.id }) }} "  class="btn btn-primary"><i class="fa fa-eye"></i>show</a>
-                                <a href="{{ path('contact_edit', { 'id': contact.id }) }}"  class="btn btn-primary"><i class="fa fa-pencil"></i>edit</a>
+                                <a href="{{ path('contact_show', { 'id': contact.id }) }} "  class="btn btn-primary">
+                                    <i class="fa fa-eye"></i>
+                                    Prikazi
+                                </a>
+                                <a href="{{ path('contact_edit', { 'id': contact.id }) }}"  class="btn btn-primary">
+                                    <i class="fa fa-pencil"></i>
+                                    Izmeni
+                                </a>
                             
                             </li>
                         </ul>
